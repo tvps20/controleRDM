@@ -10,3 +10,12 @@ of writing your own CSS rules. For a full list of class names in the theme
 refer to http://docs.nativescript.org/ui/theme.
 */
 @import '~nativescript-theme-core/css/forest.css';
+
+
+/* Configuração da classe dos icones */
+.fa {
+    font-family: "fontawesome-webfont";
+    font-size: 28px;
+    color: #000000;
+    vertical-align: middle;
+}

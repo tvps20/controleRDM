@@ -5,7 +5,8 @@ import { AppComponent } from "./app.component";
 
 // Import pages
 import { HomeComponent } from "./pages/home/home.component";
-import { DisciplinaComponent } from './pages/home/disciplina/disciplina.component';
+import { DisciplinaComponent } from "./pages/home/disciplina/disciplina.component";
+import { SobreComponent } from "./pages/sobre/sobre.component"
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -24,7 +25,8 @@ import { DisciplinaComponent } from './pages/home/disciplina/disciplina.componen
     declarations: [
         AppComponent,
         HomeComponent,
-        DisciplinaComponent
+        DisciplinaComponent,
+        SobreComponent
     ],
     providers: [
 
