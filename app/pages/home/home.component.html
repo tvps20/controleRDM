@@ -18,7 +18,7 @@
                     <ng-template let-item="item">
                         <GridLayout columns="35px, *" class="list-group-item">
                             <label col="0" [text]="icons.get('trash')" class="fa"></label>
-                            <Label col="1" [text]='item.nome'></Label>
+                            <Label col="1" [text]='item.nome' [nsRouterLink]="['/disciplina', item.id]"></Label>
                         </GridLayout> 
                     </ng-template>
                 </ListView>
