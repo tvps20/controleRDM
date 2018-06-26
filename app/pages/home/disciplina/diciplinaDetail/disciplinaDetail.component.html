@@ -1,1 +1,41 @@
 <ActionBar title="Detalhes" class="action-bar"></ActionBar>
+
+<ScrollView>
+    <StackLayout class="page">
+        <StackLayout class="form">
+            <!-- Notas -->
+            <StackLayout style="text-align: center">
+                <GridLayout columns="*,*" rows="*,*,*" class="m-b-10">
+                    <label col="0" row="0" text="Unidade 1"></label>
+                    <GridLayout col="0" row="1" columns="*,*">
+                        <label col="0" text="-"></label>
+                        <label col="1" text="-"></label>
+                    </GridLayout>
+                    <label col="1" row="0" text="Unidade 2"></label>
+                    <GridLayout col="1" row="1" columns="*,*">
+                        <label col="0" text="-"></label>
+                        <label col="1" text="-"></label>
+                    </GridLayout>
+                    <GridLayout col="0" colSpan="2" row="2" rows="*,*">
+                        <label row="0" text="Final"></label>
+                        <label row="1" text="-"></label>
+                    </GridLayout>
+                </GridLayout>
+            </StackLayout>
+            <!-- name -->
+            <StackLayout class="input-field">
+                <label text="Nome" class="label font-weight-bold m-b-5"></label>
+                <TextField class="input" fomrControlName="name"></TextField>
+                <StackLayout class="hr-light"></StackLayout>
+            </StackLayout>
+
+            <!-- Professor -->
+            <StackLayout class="input-field">
+                <label text="Professor" class="label font-weight-bold m-b-5"></label>
+                <TextField class="input" fomrControlName="name"></TextField>
+                <StackLayout class="hr-light"></StackLayout>
+            </StackLayout>
+        </StackLayout>
+
+    </StackLayout>
+</ScrollView>

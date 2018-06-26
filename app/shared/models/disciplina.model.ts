@@ -11,4 +11,9 @@ export class Disciplina {
     public terceiraNota: number;
     public quartaNota: number;
     public finalNota: number;
+
+    constructor (nome: string, cargaHoraria: number){
+        this.nome = nome;
+        this.cargaHoraria = cargaHoraria;
+    }
 }
