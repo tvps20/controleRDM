@@ -9,13 +9,14 @@ import {Component, OnInit} from '@angular/core';
 export class HomeComponent implements OnInit {
 
     public disciplinas: Array<any> = [];
+    public icons: Map<string, string> = new Map<string, string>();
     
     public constructor(){
         this.loadDisciplinas();
     }
 
     ngOnInit(): void {
-
+        this.setIcons();
     }
 
     private loadDisciplinas(){
@@ -26,5 +27,13 @@ export class HomeComponent implements OnInit {
             {id: 4, nome: "Sistemas Operacionais", nota: 7, isClosed: true},
             {id: 5, nome: "Cálculo Numérico", nota: 7.6, isClosed: true}
         ]
+    }
+
+    private setIcons() {
+        this.icons.set('trash', String.fromCharCode(0xf014));
+        this.icons.set('aprovado', String.fromCharCode(0xf087));
+        this.icons.set('reprovado', String.fromCharCode(0xf088));
+        this.icons.set('reprovadoCheio', String.fromCharCode(0xf165));
+        
     }
 }
