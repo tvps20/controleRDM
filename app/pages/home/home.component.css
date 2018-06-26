@@ -1,0 +1,8 @@
+button {
+    font-size: 30px;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    vertical-align: bottom;
+    margin-bottom: 25px;   
+}

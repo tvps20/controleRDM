@@ -4,23 +4,38 @@
 
 
 
-<GridLayout class="page" rows="auto, *">
+<GridLayout class="page" rows="auto, *" sdkExampleTitle sdkToggleNavButton>
 
     <GridLayout row="0" columns="*, auto">
         <Label col="0" text="Previsão do CRE" class="m-15 h2 text-left"></Label>
         <label col="1" text="9" class="m-15 h2 text-left"></label>
     </GridLayout>
 
-    <TabView row="1" selectedIndex="0"  sdkExampleTitle sdkToggleNavButton>
+    <TabView row="1" selectedIndex="0" androidOffscreenTabLimit="1">
         <StackLayout *tabItem="{title: 'Atuais'}">
-            <ListView [items]="disciplinas" class="list-group">     
-                <ng-template let-item="item"> 
-                    <Label [text]='item.nome' class="list-group-item"></Label>
-                </ng-template>
-            </ListView>
+            <GridLayout row="0" columns="*, auto">
+                <ListView colSpan="2" col="0" [items]="disciplinas" class="list-group">     
+                    <ng-template let-item="item">
+                        <GridLayout columns="35px, *" class="list-group-item">
+                            <label text="[x]" col="0"></label>
+                            <Label [text]='item.nome' col="1"></Label>
+                        </GridLayout> 
+                    </ng-template>
+                </ListView>
+
+                <button col="1" text="+" class="btn btn-primary"></button>
+            </GridLayout>
         </StackLayout>
         <StackLayout *tabItem="{title: 'Histórico'}"> 
-            <Label text="Segunda" class="m-15 h2 text-left" color="blue"></Label>
+            <ListView [items]="disciplinas" class="list-group">     
+                <ng-template let-item="item">
+                    <GridLayout columns="35px, *, auto" class="list-group-item">
+                        <label col="0" [text]="item.isClosed ? '[AP]' : '[RE]'"]></label>
+                        <Label col="1" [text]='item.nome'></Label>
+                        <label col="2" text="[x]"></label>
+                    </GridLayout> 
+                </ng-template>
+            </ListView>
         </StackLayout>
     </TabView>
 </GridLayout>
