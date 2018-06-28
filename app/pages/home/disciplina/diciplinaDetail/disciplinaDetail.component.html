@@ -3,25 +3,35 @@
 <ScrollView>
     <StackLayout class="page">
         <StackLayout class="form">
+            <!-- Média -->
+            <GridLayout row="0" rows="auto,auto" columns="*, auto">
+                <Label col="0" text="Média Atual" class="m-15 h2 text-left"></Label>
+                <label col="1" text="7" class="m-15 h2 text-left"></label>
+                <StackLayout col="0" colSpan="2" row="1" class="hr-light"></StackLayout>
+            </GridLayout>
+
             <!-- Notas -->
-            <StackLayout style="text-align: center">
-                <GridLayout columns="*,*" rows="*,*,*" class="m-b-10">
+            <StackLayout style="text-align: center" class="m-10">
+                <GridLayout columns="*,*" rows="*,*,auto,auto">
+                    
                     <label col="0" row="0" text="Unidade 1"></label>
-                    <GridLayout col="0" row="1" columns="*,*">
-                        <label col="0" text="-"></label>
-                        <label col="1" text="-"></label>
+                    <GridLayout col="0" row="1" columns="*,*" style="border-radius: 10%;" class="bg-primary m-10">
+                        <label col="0" text="7"></label>
+                        <label col="1" text="7"></label>
                     </GridLayout>
+
                     <label col="1" row="0" text="Unidade 2"></label>
-                    <GridLayout col="1" row="1" columns="*,*">
-                        <label col="0" text="-"></label>
-                        <label col="1" text="-"></label>
+                    <GridLayout col="1" row="1" columns="*,*" style="border-radius: 10%;" class="bg-primary m-10">
+                        <label col="0" text="7"></label>
+                        <label col="1" text="7"></label>
                     </GridLayout>
-                    <GridLayout col="0" colSpan="2" row="2" rows="*,*">
-                        <label row="0" text="Final"></label>
-                        <label row="1" text="-"></label>
-                    </GridLayout>
+
+                    <label col="0" colSpan="2" row="2" text="Final"></label>
+                    <label col="0" colSpan="2" row="3" text="-" style="border-radius: 10%; width: 350px;" class="bg-primary m-5"></label>
+  
                 </GridLayout>
             </StackLayout>
+
             <!-- name -->
             <StackLayout class="input-field">
                 <label text="Nome" class="label font-weight-bold m-b-5"></label>
@@ -32,9 +42,38 @@
             <!-- Professor -->
             <StackLayout class="input-field">
                 <label text="Professor" class="label font-weight-bold m-b-5"></label>
-                <TextField class="input" fomrControlName="name"></TextField>
+                <TextField class="input"></TextField>
                 <StackLayout class="hr-light"></StackLayout>
             </StackLayout>
+
+            <!-- Carga Horária -->
+            <StackLayout class="input-field">
+                <label text="Carga Horária" class="label font-weight-bold m-b-5"></label>
+                <TextField class="input"></TextField>
+                <StackLayout class="hr-light"></StackLayout>
+            </StackLayout>
+
+            <!-- Horário -->
+            <StackLayout class="input-field">
+                <label text="Horário" class="label font-weight-bold m-b-5"></label>
+                <TextField class="input"></TextField>
+                <StackLayout class="hr-light"></StackLayout>
+            </StackLayout>
+
+            <!-- Sala -->
+            <StackLayout class="input-field">
+                <label text="Sala" class="label font-weight-bold m-b-5"></label>
+                <TextField class="input"></TextField>
+                <StackLayout class="hr-light"></StackLayout>
+            </StackLayout>
+
+            <!-- Está Fechada? -->
+            <GridLayout columns="*, auto" class="input-field">
+                <label col="0" text="Fechar Disciplina" class="label font-weight-bold m-b-5"></label>
+                <Switch col="1" formControlName="isClosed" class="Switch"></Switch>
+            </GridLayout>
+
+            <button text="Atualizar" class="btn btn-primary"></button>
         </StackLayout>
 
     </StackLayout>
