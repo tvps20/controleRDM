@@ -5,7 +5,7 @@ import { ActivatedRoute } from "@angular/router"
     selector: 'disciplina-Detail',
     moduleId: module.id,
     templateUrl: './disciplinaDetail.component.html',
-    styleUrls: ['./disciplinaDetail.component.css']
+    styleUrls: []
 })
 export class DisciplinaDetailComponent implements OnInit {
 

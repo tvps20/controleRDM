@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { DataBaseService } from '~/services/database.service';
 
 @Component({
     selector: 'home',
@@ -11,8 +12,10 @@ export class HomeComponent implements OnInit {
     public disciplinas: Array<any> = [];
     public icons: Map<string, string> = new Map<string, string>();
     
-    public constructor(){
-        this.loadDisciplinas();
+    public constructor(private databaseService: DataBaseService){
+       this.databaseService.getAll().then((res: any) => {
+           this.disciplinas = res;
+       });
     }
 
     ngOnInit(): void {

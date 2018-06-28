@@ -1,1 +1,65 @@
 <ActionBar title="Nova Disciplina" class="action-bar"></ActionBar>
+
+<ScrollView>
+    <StackLayout class="page">
+        <StackLayout class="form">   
+            <!-- Notas -->
+            <StackLayout style="text-align: center" class="m-10">
+                <GridLayout columns="*,*" rows="*,*,auto,auto">
+                    <label col="0" row="0" text="Unidade 1" class="label font-weight-bold m-b-5"></label>
+                    <GridLayout col="0" row="1" columns="*,*" class="input-field">
+                        <TextField col="0" class="input" hint="1º Nota"></TextField>
+                        <TextField col="1" class="input" hint="2º Nota"></TextField>
+                    </GridLayout>
+
+                    <label col="1" row="0" text="Unidade 2" class="label font-weight-bold m-b-5"></label>
+                    <GridLayout col="1" row="1" columns="*,*" class="input-field">
+                        <TextField col="0" class="input" hint="3º Nota"></TextField>
+                        <TextField col="1" class="input" hint="4º Nota"></TextField>
+                    </GridLayout>
+
+                    <label col="0" colSpan="2" row="2" text="Final" class="label font-weight-bold m-b-5"></label>
+                    <TextField col="0" colSpan="2" row="3" class="input" hint="Nota da Final"></TextField>
+                </GridLayout>
+            </StackLayout>
+
+            <!-- name -->
+            <StackLayout class="input-field">
+                <label text="Nome" class="label font-weight-bold m-b-5"></label>
+                <TextField [(ngModel)]="disciplina.nome" class="input"></TextField>
+                <StackLayout class="hr-light"></StackLayout>
+            </StackLayout>
+
+            <!-- Professor -->
+            <StackLayout class="input-field">
+                <label text="Professor" class="label font-weight-bold m-b-5"></label>
+                <TextField [(ngModel)]="disciplina.professor" class="input"></TextField>
+                <StackLayout class="hr-light"></StackLayout>
+            </StackLayout>
+
+            <!-- Carga Horária -->
+            <StackLayout class="input-field">
+                <label text="Carga Horária" class="label font-weight-bold m-b-5"></label>
+                <TextField class="input"></TextField>
+                <StackLayout class="hr-light"></StackLayout>
+            </StackLayout>
+
+            <!-- Horário -->
+            <StackLayout class="input-field">
+                <label text="Horário" class="label font-weight-bold m-b-5"></label>
+                <TextField class="input"></TextField>
+                <StackLayout class="hr-light"></StackLayout>
+            </StackLayout>
+
+            <!-- Sala -->
+            <StackLayout class="input-field">
+                <label text="Sala" class="label font-weight-bold m-b-5"></label>
+                <TextField class="input"></TextField>
+                <StackLayout class="hr-light"></StackLayout>
+            </StackLayout>
+
+            <button text="Adicionar" class="btn btn-primary" (tap)="addDisciplina()"></button>
+        </StackLayout>
+
+    </StackLayout>
+</ScrollView>
