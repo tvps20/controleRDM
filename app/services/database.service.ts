@@ -50,6 +50,35 @@ export class DataBaseService {
         })
     }
 
+    public getDisciplina(id: number){
+        return new Promise((resolve, reject) => {
+            this.createDB().then((res: any) => {
+                return res.get("SELECT * FROM disciplinas WHERE id=?", [id]).then(rows => {
+                    let result: Disciplina = new Disciplina("", undefined);
+                    for(let row in rows){
+                        result.id = rows[row][0];
+                        result.nome = rows[row][1];
+                        result.professor = rows[row][2];
+                        result.cargaHoraria = rows[row][3]
+                        result.horario = rows[row][4];
+                        result.sala = rows[row][5];
+                        result.isClosed = rows[row][6];
+                        result.status = rows[row][7];
+                        result.primeiraNota = rows[row][8];
+                        result.segundaNota = rows[row][9];
+                        result.terceiraNota = rows[row][10];
+                        result.quartaNota = rows[row][11];
+                        result.notaFinal = rows[row][12];
+                    }
+                    resolve(result);
+                }, error => {
+                    console.log("[DATABASE] - SELECT ERROR!");
+                    reject(error);
+                })
+            })
+        })
+    }
+
     public getAll(){
         return new Promise((resolve, reject) => {
             this.createDB().then((res: any) => {

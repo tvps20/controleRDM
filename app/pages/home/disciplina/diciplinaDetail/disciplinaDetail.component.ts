@@ -10,13 +10,13 @@ import { ActivatedRoute } from "@angular/router"
 export class DisciplinaDetailComponent implements OnInit {
 
     public id: number;
+    public editIcons: string = String.fromCharCode(0xf044);
     
     constructor(private router: ActivatedRoute){
-        this.id = +this.router.snapshot.params["id"];
-        console.log(this.id);
+        
     }
 
     ngOnInit(): void {
-        
+        this.id = +this.router.snapshot.params["id"];
     }
 }
