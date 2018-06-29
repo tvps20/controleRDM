@@ -3,12 +3,18 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { AppRoutingModule } from "./app.routing";
 import { AppComponent } from "./app.component";
 
+// Import Modais
+import { HorarioModalComponent } from './modais/horarioModal.component'
+
 // Import pages
 import { HomeComponent } from "./pages/home/home.component";
 import { DisciplinaComponent } from "./pages/home/disciplina/disciplina.component";
 import { DisciplinaDetailComponent } from "./pages/home/disciplina/diciplinaDetail/disciplinaDetail.component";
 import { SobreComponent } from "./pages/sobre/sobre.component";
 import { DataBaseService } from "~/services/database.service";
+
+// importando o serviço para usar os modais
+import { ModalDialogService } from 'nativescript-angular/modal-dialog' 
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
  import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -27,16 +33,22 @@ import { DataBaseService } from "~/services/database.service";
     ],
     declarations: [
         AppComponent,
+        HorarioModalComponent,
         HomeComponent,
         DisciplinaComponent,
         DisciplinaDetailComponent,
         SobreComponent
     ],
     providers: [
-        DataBaseService
+        DataBaseService,
+        ModalDialogService
     ],
     schemas: [
         NO_ERRORS_SCHEMA
+    ],
+    entryComponents: [
+        // Local onde o angular vai carregar os components mesmo sem existir tags para ele.
+        HorarioModalComponent
     ]
 })
 /*

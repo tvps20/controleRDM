@@ -48,7 +48,6 @@ export class HomeComponent implements OnInit {
         this.icons.set('trash', String.fromCharCode(0xf014));
         this.icons.set('aprovado', String.fromCharCode(0xf087));
         this.icons.set('reprovado', String.fromCharCode(0xf088));
-        this.icons.set('reprovadoCheio', String.fromCharCode(0xf165));
-        
+        this.icons.set('reprovadoCheio', String.fromCharCode(0xf165));     
     }
 }
