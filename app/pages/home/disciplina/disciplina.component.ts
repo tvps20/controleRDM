@@ -40,7 +40,6 @@ export class DisciplinaComponent implements OnInit {
 
     public addDisciplina(){
         this.disciplina.status = Status.Matriculado;
-        console.log(this.disciplina)
         this.databaseService.insert(this.disciplina).then(res => {
             this.nav.navigate(['/home'], {clearHistory: true});
         })

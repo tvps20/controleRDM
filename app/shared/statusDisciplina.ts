@@ -1,5 +1,6 @@
 export enum Status {
     Aprovado = 'AP',
     Matriculado = 'MT',
-    Reprovado = 'RE'
+    Reprovado = 'RE',
+    Despensada = 'DP'
 }

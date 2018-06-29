@@ -16,5 +16,6 @@ export class Disciplina {
     constructor (nome: string, cargaHoraria: number){
         this.nome = nome;
         this.cargaHoraria = cargaHoraria;
+        this.isClosed = false;
     }
 }

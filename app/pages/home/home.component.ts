@@ -18,10 +18,10 @@ export class HomeComponent implements OnInit {
     
     public constructor(private databaseService: DataBaseService, private page: Page){
         this.setIcons();
+        this.loadDisciplinas();
     }
 
     ngOnInit(): void { 
-        this.loadDisciplinas();
         // Carrega novamente sempre que cair nessa pagina
         this.page.on("navigatingTo", () => this.loadDisciplinas());
     }

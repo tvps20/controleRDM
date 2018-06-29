@@ -14,7 +14,7 @@
     <TabView row="1" selectedIndex="0" androidOffscreenTabLimit="1">
         <StackLayout *tabItem="{title: 'Atuais'}">
             <GridLayout row="0" columns="*, auto">
-                <ListView colSpan="2" col="0" [items]="disciplinas" class="list-group">     
+                <ListView  colSpan="2" col="0" [items]="disciplinas" class="list-group">     
                     <ng-template let-item="item">
                         <GridLayout columns="35px, *" class="list-group-item">
                             <label col="0" [text]="icons.get('trash')" class="fa" (tap)="deleteDisciplina(item)"></label>
