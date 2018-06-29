@@ -17,7 +17,7 @@
                 <ListView colSpan="2" col="0" [items]="disciplinas" class="list-group">     
                     <ng-template let-item="item">
                         <GridLayout columns="35px, *" class="list-group-item">
-                            <label col="0" [text]="icons.get('trash')" class="fa"></label>
+                            <label col="0" [text]="icons.get('trash')" class="fa" (tap)="deleteDisciplina(item)"></label>
                             <Label col="1" [text]='item.nome' [nsRouterLink]="['/disciplina', item.id]"></Label>
                         </GridLayout> 
                     </ng-template>

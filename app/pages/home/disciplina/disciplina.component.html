@@ -8,39 +8,39 @@
                 <GridLayout columns="*,*" rows="*,*,auto,auto">
                     <label col="0" row="0" text="Unidade 1" class="label font-weight-bold m-b-5"></label>
                     <GridLayout col="0" row="1" columns="*,*" class="input-field">
-                        <TextField col="0" class="input" hint="1º Nota"></TextField>
-                        <TextField col="1" class="input" hint="2º Nota"></TextField>
+                        <TextField col="0" class="input" hint="1º Nota" [(ngModel)]="disciplina.primeiraNota"></TextField>
+                        <TextField col="1" class="input" hint="2º Nota" [(ngModel)]="disciplina.segundaNota"></TextField>
                     </GridLayout>
 
                     <label col="1" row="0" text="Unidade 2" class="label font-weight-bold m-b-5"></label>
                     <GridLayout col="1" row="1" columns="*,*" class="input-field">
-                        <TextField col="0" class="input" hint="3º Nota"></TextField>
-                        <TextField col="1" class="input" hint="4º Nota"></TextField>
+                        <TextField col="0" class="input" hint="3º Nota" [(ngModel)]="disciplina.terceiraNota"></TextField>
+                        <TextField col="1" class="input" hint="4º Nota" [(ngModel)]="disciplina.quartaNota"></TextField>
                     </GridLayout>
 
                     <label col="0" colSpan="2" row="2" text="Final" class="label font-weight-bold m-b-5"></label>
-                    <TextField col="0" colSpan="2" row="3" class="input" hint="Nota da Final"></TextField>
+                    <TextField col="0" colSpan="2" row="3" class="input" hint="Nota da Final" [(ngModel)]="disciplina.notaFinal"></TextField>
                 </GridLayout>
             </StackLayout>
 
             <!-- name -->
             <StackLayout class="input-field">
                 <label text="Nome" class="label font-weight-bold m-b-5"></label>
-                <TextField [(ngModel)]="disciplina.nome" class="input"></TextField>
+                <TextField class="input" [(ngModel)]="disciplina.nome"></TextField>
                 <StackLayout class="hr-light"></StackLayout>
             </StackLayout>
 
             <!-- Professor -->
             <StackLayout class="input-field">
                 <label text="Professor" class="label font-weight-bold m-b-5"></label>
-                <TextField [(ngModel)]="disciplina.professor" class="input"></TextField>
+                <TextField class="input" [(ngModel)]="disciplina.professor"></TextField>
                 <StackLayout class="hr-light"></StackLayout>
             </StackLayout>
 
             <!-- Carga Horária -->
             <StackLayout class="input-field">
                 <label text="Carga Horária" class="label font-weight-bold m-b-5"></label>
-                <TextField class="input"></TextField>
+                <TextField class="input" [(ngModel)]="disciplina.cargaHoraria" ></TextField>
                 <StackLayout class="hr-light"></StackLayout>
             </StackLayout>
 
@@ -54,7 +54,7 @@
             <!-- Sala -->
             <StackLayout class="input-field">
                 <label text="Sala" class="label font-weight-bold m-b-5"></label>
-                <TextField class="input"></TextField>
+                <TextField class="input" [(ngModel)]="disciplina.sala"></TextField>
                 <StackLayout class="hr-light"></StackLayout>
             </StackLayout>
 

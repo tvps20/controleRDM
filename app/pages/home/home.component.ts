@@ -1,5 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import * as dialogs from 'ui/dialogs';
+import { Page } from 'ui/page';
+
 import { DataBaseService } from '~/services/database.service';
+import { Disciplina } from '~/shared/models/disciplina.model';
 
 @Component({
     selector: 'home',
@@ -12,24 +16,32 @@ export class HomeComponent implements OnInit {
     public disciplinas: Array<any> = [];
     public icons: Map<string, string> = new Map<string, string>();
     
-    public constructor(private databaseService: DataBaseService){
-       this.databaseService.getAll().then((res: any) => {
-           this.disciplinas = res;
-       });
-    }
-
-    ngOnInit(): void {
+    public constructor(private databaseService: DataBaseService, private page: Page){
         this.setIcons();
     }
 
+    ngOnInit(): void { 
+        this.loadDisciplinas();
+        // Carrega novamente sempre que cair nessa pagina
+        this.page.on("navigatingTo", () => this.loadDisciplinas());
+    }
+    
+    public deleteDisciplina(disciplina: Disciplina){
+        dialogs.confirm(`Deseja realmente excluir a disciplina "${disciplina.nome}"`)
+            .then(result => {
+                if(result) {
+                    this.databaseService.delete(disciplina.id);
+                    this.loadDisciplinas();
+                } else {
+                    alert("Ocorreu um erro ao tentar remover, tente novamente.")
+                }
+        })
+    }
+
     private loadDisciplinas(){
-        this.disciplinas = [
-            {id: 1, nome: "Linguagens Formais", nota: 8.4, isClosed: true},
-            {id: 2, nome: "Banco de Dados", nota: 7.5, isClosed: false},
-            {id: 3, nome: "Paradgmas Educacionais", nota: 9.4, isClosed: true},
-            {id: 4, nome: "Sistemas Operacionais", nota: 7, isClosed: true},
-            {id: 5, nome: "Cálculo Numérico", nota: 7.6, isClosed: true}
-        ]
+        this.databaseService.getAll().then((res: any) => {
+            this.disciplinas = res;
+        });
     }
 
     private setIcons() {
