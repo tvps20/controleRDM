@@ -13,17 +13,18 @@ import { Disciplina } from '~/shared/models/disciplina.model';
 })
 export class HomeComponent implements OnInit {
 
-    public disciplinas: Array<any> = [];
+    public disciplinas: Array<Disciplina> = [];
     public icons: Map<string, string> = new Map<string, string>();
     
     public constructor(private databaseService: DataBaseService, private page: Page){
         this.setIcons();
-    }
-
-    ngOnInit(): void { 
         this.loadDisciplinas();
         // Carrega novamente sempre que cair nessa pagina
         this.page.on("navigatingTo", () => this.loadDisciplinas());
+    }
+
+    ngOnInit(): void { 
+        console.log(this.disciplinas)
     }
     
     public deleteDisciplina(disciplina: Disciplina){
@@ -39,7 +40,7 @@ export class HomeComponent implements OnInit {
     }
 
     private loadDisciplinas(){
-        this.databaseService.getAll().then((res: any) => {
+        this.databaseService.getAll().then((res: Array<Disciplina>) => {
             this.disciplinas = res;
         });
     }
