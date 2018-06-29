@@ -7,6 +7,7 @@ import { HorarioModalComponent } from '../../../modais/horarioModal.component'
 
 import { Disciplina } from '~/shared/models/disciplina.model';
 import { DataBaseService } from '~/services/database.service';
+import { Status } from '~/shared/statusDisciplina';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class DisciplinaComponent implements OnInit {
 
 
     constructor(private databaseService: DataBaseService, private nav: RouterExtensions, private modalService: ModalDialogService, private vcRef: ViewContainerRef){
-        this.disciplina = new Disciplina('', 0);
+        this.disciplina = new Disciplina('', undefined);
     }
     
     ngOnInit(): void {
@@ -38,6 +39,8 @@ export class DisciplinaComponent implements OnInit {
     }
 
     public addDisciplina(){
+        this.disciplina.status = Status.Matriculado;
+        console.log(this.disciplina)
         this.databaseService.insert(this.disciplina).then(res => {
             this.nav.navigate(['/home'], {clearHistory: true});
         })

@@ -25,7 +25,7 @@ export class DataBaseService {
     public insert(disciplina: Disciplina){
         return new Promise((resolve, reject) => {
             this.createDB().then((res: any) => {
-                res.execSQL("INSERT INTO disciplinas (nome, professor) VALUES (?,?)", [disciplina.nome, disciplina.professor]).then(id => {
+                res.execSQL("INSERT INTO disciplinas (nome, professor, cargaHoraria, horario, sala, isClosed, status, primeiraNota, segundaNota, terceiraNota, quartaNota, notaFinal) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", [disciplina.nome, disciplina.professor, disciplina.cargaHoraria, disciplina.horario, disciplina.sala, disciplina.isClosed, disciplina.status, disciplina.primeiraNota, disciplina.segundaNota, disciplina.terceiraNota, disciplina.quartaNota, disciplina.notaFinal]).then(id => {
                     console.log("INSERT RESULT: ", id);
                     resolve(true);
                 }, error => {
@@ -79,7 +79,7 @@ export class DataBaseService {
         })
     }
 
-    // Retorna um array de objetos
+    // Retorna um array de objetos do tipo Disciplina
     public getAll(){
         return new Promise((resolve, reject) => {
             this.createDB().then((res: any) => {

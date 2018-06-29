@@ -21,7 +21,7 @@ export class DisciplinaDetailComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        
+
     }
 
     public loadDisciplina(){
