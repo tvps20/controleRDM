@@ -1,8 +1,16 @@
 button {
-    font-size: 30px;
-    border-radius: 50%;
+    font-size: 36px;
+    border-radius: 30;
     width: 150px;
     height: 150px;
-    vertical-align: bottom;
-    margin-bottom: 30px;   
+    vertical-align: bottom; 
+    text-align: center;
+    padding-top: 10px;
+    margin-bottom: 5%;
+}
+
+/* Retirando a borda da actionBar */
+ActionBar{
+    border-color: transparent;
+    border-width: 1;
 }

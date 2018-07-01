@@ -3,12 +3,11 @@
 </ActionBar>
 
 
-
 <GridLayout rows="auto, *" sdkExampleTitle sdkToggleNavButton>
 
-    <!-- <GridLayout row="0" columns="*, auto">
-        <Label col="0" text="Previsão do CRE" class="m-15 h2 text-left"></Label>
-        <label col="1" text="9" class="m-15 h2 text-left"></label>
+    <!-- <GridLayout row="0" columns="*, auto" style="background-color: #006968;">
+        <Label col="0" text="Previsão do CRE" class="m-15 h2 text-left" style="color: white"></Label>
+        <label col="1" text="9" class="m-15 h2 text-left" style="color: white"></label>
     </GridLayout> -->
 
     <TabView row="1" selectedIndex="0" androidOffscreenTabLimit="1" tabBackgroundColor="#006968" tabTextColor="white" androidSelectedTabHighlightColor="white" selectedTabTextColor="white">
@@ -24,6 +23,7 @@
                 </ListView>
 
                 <button col="1" text="+" nsRouterLink="/disciplina" class="btn btn-primary"></button>
+                
             </GridLayout>
         </StackLayout>
         <StackLayout *tabItem="{title: 'Histórico'}"> 
