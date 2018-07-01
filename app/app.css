@@ -9,8 +9,8 @@ In many cases you may want to use the NativeScript core theme instead
 of writing your own CSS rules. For a full list of class names in the theme
 refer to http://docs.nativescript.org/ui/theme.
 */
-/* @import '~nativescript-theme-core/css/forest.css'; */
-@import '~nativescript-theme-core/css/lemon.css';
+@import '~nativescript-theme-core/css/forest.css';
+/* @import '~nativescript-theme-core/css/lemon.css'; */
 
 
 /* Configuração da classe dos icones */
@@ -19,4 +19,17 @@ refer to http://docs.nativescript.org/ui/theme.
     font-size: 28px;
     color: #000000;
     vertical-align: middle;
+}
+
+.form-content {
+    background-color: white;
+    padding-top: 60px;
+    padding-left: 42px;
+    padding-right: 42px;
+    padding-bottom: 30px;
+    transform: scale(0.9, 0.9);
+}
+
+.page { 
+    background-color: teal;
 }

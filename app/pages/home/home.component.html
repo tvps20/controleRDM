@@ -1,17 +1,17 @@
-<ActionBar title="Diciplinas" class="action-bar">
+<ActionBar title="Disciplinas" class="action-bar">
     <ActionItem text="Sobre" ios.position="right" nsRouterLink="/sobre" android.position="popup"></ActionItem>
 </ActionBar>
 
 
 
-<GridLayout class="page" rows="auto, *" sdkExampleTitle sdkToggleNavButton>
+<GridLayout rows="auto, *" sdkExampleTitle sdkToggleNavButton>
 
-    <GridLayout row="0" columns="*, auto">
+    <!-- <GridLayout row="0" columns="*, auto">
         <Label col="0" text="Previsão do CRE" class="m-15 h2 text-left"></Label>
         <label col="1" text="9" class="m-15 h2 text-left"></label>
-    </GridLayout>
+    </GridLayout> -->
 
-    <TabView row="1" selectedIndex="0" androidOffscreenTabLimit="1">
+    <TabView row="1" selectedIndex="0" androidOffscreenTabLimit="1" tabBackgroundColor="#006968" tabTextColor="white" androidSelectedTabHighlightColor="white" selectedTabTextColor="white">
         <StackLayout *tabItem="{title: 'Atuais'}">
             <GridLayout row="0" columns="*, auto">
                 <ListView  colSpan="2" col="0" [items]="disciplinas" class="list-group">     

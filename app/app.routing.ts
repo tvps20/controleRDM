@@ -6,14 +6,16 @@ import { Routes } from "@angular/router";
 import { HomeComponent } from "./pages/home/home.component";
 import { DisciplinaComponent } from "./pages/home/disciplina/disciplina.component";
 import { DisciplinaDetailComponent } from "./pages/home/disciplina/diciplinaDetail/disciplinaDetail.component";
+import { DisciplinaUpdateComponent } from './pages/home/disciplina/diciplinaDetail/disciplinaUpdate/disciplinaUpdate.component';
 import { SobreComponent } from "./pages/sobre/sobre.component";
 
 const routes: Routes = [
     { path: "", redirectTo: "home", pathMatch: "full" },
-    { path: "home", component: HomeComponent},
-    { path: "disciplina", component: DisciplinaComponent},
-    { path: "disciplina/:id", component: DisciplinaDetailComponent},
-    { path: "sobre", component: SobreComponent}
+    { path: "home", component: HomeComponent },
+    { path: "disciplina", component: DisciplinaComponent },
+    { path: "disciplina/:id", component: DisciplinaDetailComponent },
+    { path: "update/:id", component: DisciplinaUpdateComponent },
+    { path: "sobre", component: SobreComponent }
 ];
 
 @NgModule({

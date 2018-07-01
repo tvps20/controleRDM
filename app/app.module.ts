@@ -10,6 +10,7 @@ import { HorarioModalComponent } from './modais/horarioModal.component'
 import { HomeComponent } from "./pages/home/home.component";
 import { DisciplinaComponent } from "./pages/home/disciplina/disciplina.component";
 import { DisciplinaDetailComponent } from "./pages/home/disciplina/diciplinaDetail/disciplinaDetail.component";
+import { DisciplinaUpdateComponent } from './pages/home/disciplina/diciplinaDetail/disciplinaUpdate/disciplinaUpdate.component';
 import { SobreComponent } from "./pages/sobre/sobre.component";
 import { DataBaseService } from "~/services/database.service";
 
@@ -37,6 +38,7 @@ import { ModalDialogService } from 'nativescript-angular/modal-dialog'
         HomeComponent,
         DisciplinaComponent,
         DisciplinaDetailComponent,
+        DisciplinaUpdateComponent,
         SobreComponent
     ],
     providers: [

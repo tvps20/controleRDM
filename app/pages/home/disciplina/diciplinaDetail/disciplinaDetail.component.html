@@ -1,79 +1,74 @@
-<ActionBar [title]="disciplina.nome" class="action-bar">
-    <ActionItem text="Editar"  ios.position="right" nsRouterLink=""></ActionItem>
-</ActionBar>
+<ActionBar [title]="disciplina.nome" class="action-bar"></ActionBar>
 
-<ScrollView>
-    <StackLayout class="page">
-        <StackLayout class="form">
-            <!-- Média -->
-            <GridLayout row="0" rows="auto,auto" columns="*, auto">
-                <Label col="0" text="Média Atual" class="m-15 h2 text-left"></Label>
-                <label col="1" text="7" class="m-15 h2 text-left"></label>
-                <StackLayout col="0" colSpan="2" row="1" class="hr-light"></StackLayout>
-            </GridLayout>
-
-            <!-- Notas -->
-            <StackLayout style="text-align: center" class="m-10">
-                <GridLayout columns="*,*" rows="*,*,auto,auto">   
-                    <label col="0" row="0" text="Unidade 1"></label>
-                    <GridLayout col="0" row="1" columns="*,*" style="border-radius: 10%;" class="bg-primary m-10">
-                        <label col="0" [text]="disciplina.primeiraNota"></label>
-                        <label col="1" [text]="disciplina.segundaNota"></label>
-                    </GridLayout>
-
-                    <label col="1" row="0" text="Unidade 2"></label>
-                    <GridLayout col="1" row="1" columns="*,*" style="border-radius: 10%;" class="bg-primary m-10">
-                        <label col="0" [text]="disciplina.terceiraNota"></label>
-                        <label col="1" [text]="disciplina.quartaNota"></label>
-                    </GridLayout>
-
-                    <label col="0" colSpan="2" row="2" text="Final"></label>
-                    <label col="0" colSpan="2" row="3" [text]="disciplina.notaFinal" style="border-radius: 10%; width: 350px;" class="bg-primary m-5"></label>  
+<StackLayout class="page">
+    <ScrollView>
+        <StackLayout class="form-content">
+            <StackLayout class="form">
+                <!-- Média -->
+                <GridLayout row="0" rows="auto,auto" columns="*, auto">
+                    <Label col="0" text="Média Atual" class="m-15 h2 text-left"></Label>
+                    <label col="1" text="7" class="m-15 h2 text-left"></label>
+                    <StackLayout col="0" colSpan="2" row="1" class="hr-light"></StackLayout>
                 </GridLayout>
-            </StackLayout>
 
-            <!-- Professor -->
-            <StackLayout class="input-field">
-                <label text="Professor" class="label font-weight-bold m-b-5"></label>
-                <TextField class="input" [text]="disciplina.professor" editable="false"></TextField>
-                <StackLayout class="hr-light"></StackLayout>
-            </StackLayout>
+                <!-- Notas -->
+                <StackLayout style="text-align: center" class="m-10">
+                    <GridLayout columns="*,*" rows="*,*,auto,auto">   
+                        <label col="0" row="0" text="Unidade 1"></label>
+                        <GridLayout col="0" row="1" columns="*,*" style="border-radius: 10%;" class="bg-primary m-10">
+                            <label col="0" [text]="disciplina.primeiraNota"></label>
+                            <label col="1" [text]="disciplina.segundaNota"></label>
+                        </GridLayout>
 
-            <!-- Carga Horária -->
-            <StackLayout class="input-field">
-                <label text="Carga Horária" class="label font-weight-bold m-b-5"></label>
-                <TextField class="input" [text]="disciplina.cargaHoraria" editable="false"></TextField>
-                <StackLayout class="hr-light"></StackLayout>
-            </StackLayout>
+                        <label col="1" row="0" text="Unidade 2"></label>
+                        <GridLayout col="1" row="1" columns="*,*" style="border-radius: 10%;" class="bg-primary m-10">
+                            <label col="0" [text]="disciplina.terceiraNota"></label>
+                            <label col="1" [text]="disciplina.quartaNota"></label>
+                        </GridLayout>
 
-            <!-- Horário -->
-            <StackLayout class="input-field">
-                <label text="Horário" class="label font-weight-bold m-b-5"></label>
-                <TextField class="input" [text]="disciplina.horario" editable="false"></TextField>
-                <StackLayout class="hr-light"></StackLayout>
-            </StackLayout>
+                        <label col="0" colSpan="2" row="2" text="Final"></label>
+                        <label col="0" colSpan="2" row="3" [text]="disciplina.notaFinal" style="border-radius: 10%; width: 350px;" class="bg-primary m-5"></label>  
+                    </GridLayout>
+                </StackLayout>
 
-            <!-- Sala -->
-            <StackLayout class="input-field">
-                <label text="Sala" class="label font-weight-bold m-b-5"></label>
-                <TextField class="input" [text]="disciplina.sala" editable="false"></TextField>
-                <StackLayout class="hr-light"></StackLayout>
-            </StackLayout>
+                <!-- Professor -->
+                <StackLayout class="input-field">
+                    <label text="Professor" class="label font-weight-bold m-b-5"></label>
+                    <TextField class="input" [text]="disciplina.professor" editable="false"></TextField>
+                    <StackLayout class="hr-light"></StackLayout>
+                </StackLayout>
 
-            <!-- Sala -->
-            <StackLayout class="input-field">
-                <label text="Status" class="label font-weight-bold m-b-5"></label>
-                <TextField class="input" [text]="disciplina.status" editable="false"></TextField>
-                <StackLayout class="hr-light"></StackLayout>
-            </StackLayout>
+                <!-- Carga Horária -->
+                <StackLayout class="input-field">
+                    <label text="Carga Horária" class="label font-weight-bold m-b-5"></label>
+                    <TextField class="input" [text]="disciplina.cargaHoraria" editable="false"></TextField>
+                    <StackLayout class="hr-light"></StackLayout>
+                </StackLayout>
 
-            <!-- Está Fechada?
-            <GridLayout columns="*, auto" class="input-field">
-                <label col="0" text="Fechar Disciplina" class="label font-weight-bold m-b-5"></label>
-                <Switch col="1" formControlName="isClosed" class="Switch" isEnabled="false"></Switch>
-            </GridLayout> -->
+                <!-- Horário -->
+                <StackLayout class="input-field">
+                    <label text="Horário" class="label font-weight-bold m-b-5"></label>
+                    <TextField class="input" [text]="disciplina.horario" editable="false"></TextField>
+                    <StackLayout class="hr-light"></StackLayout>
+                </StackLayout>
+
+                <!-- Sala -->
+                <StackLayout class="input-field">
+                    <label text="Sala" class="label font-weight-bold m-b-5"></label>
+                    <TextField class="input" [text]="disciplina.sala" editable="false"></TextField>
+                    <StackLayout class="hr-light"></StackLayout>
+                </StackLayout>
+
+                <!-- Status -->
+                <StackLayout class="input-field">
+                    <label text="Status" class="label font-weight-bold m-b-5"></label>
+                    <TextField class="input" [text]="disciplina.status" editable="false"></TextField>
+                    <StackLayout class="hr-light"></StackLayout>
+                </StackLayout>
+
+                <button text="Atualizar" class="btn btn-primary" [nsRouterLink]="['/update', disciplina.id]"></button>
+            </StackLayout>
 
         </StackLayout>
-
-    </StackLayout>
-</ScrollView>
+    </ScrollView>
+</StackLayout>
