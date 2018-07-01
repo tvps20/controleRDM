@@ -1,0 +1,12 @@
+.form-content {
+    background-color: white;
+    padding-top: 60px;
+    padding-left: 42px;
+    padding-right: 42px;
+    padding-bottom: 30px;
+    transform: scale(0.9, 0.9);
+}
+
+.page { 
+    background-color: teal;
+}
