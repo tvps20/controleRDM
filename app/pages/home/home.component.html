@@ -4,13 +4,15 @@
 
 
 <GridLayout rows="auto, *" sdkExampleTitle sdkToggleNavButton>
+    <TabView row="1" selectedIndex="0" androidOffscreenTabLimit="2" tabBackgroundColor="#006968" tabTextColor="white" androidSelectedTabHighlightColor="white" selectedTabTextColor="white">
+        <StackLayout *tabItem="{title: 'Inicio'}">
+            <GridLayout row="0" columns="*, auto">
+                <Label col="0" text="Previsão do CRE" class="m-15 h2 text-left"></Label>
+                <label col="1" text="9" class="m-15 h2 text-left"></label>
+            </GridLayout>
+            
+        </StackLayout>
 
-    <!-- <GridLayout row="0" columns="*, auto" style="background-color: #006968;">
-        <Label col="0" text="Previsão do CRE" class="m-15 h2 text-left" style="color: white"></Label>
-        <label col="1" text="9" class="m-15 h2 text-left" style="color: white"></label>
-    </GridLayout> -->
-
-    <TabView row="1" selectedIndex="0" androidOffscreenTabLimit="1" tabBackgroundColor="#006968" tabTextColor="white" androidSelectedTabHighlightColor="white" selectedTabTextColor="white">
         <StackLayout *tabItem="{title: 'Atuais'}">
             <GridLayout row="0" columns="*, auto">
                 <ListView  colSpan="2" col="0" [items]="disciplinas" class="list-group">     
@@ -26,6 +28,7 @@
                 
             </GridLayout>
         </StackLayout>
+
         <StackLayout *tabItem="{title: 'Histórico'}"> 
             <ListView [items]="disciplinas" class="list-group">     
                 <ng-template let-item="item">
