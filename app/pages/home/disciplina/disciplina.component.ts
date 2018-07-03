@@ -18,10 +18,12 @@ import { Status } from '~/shared/statusDisciplina';
 export class DisciplinaComponent implements OnInit {
     
     public disciplina: Disciplina;
+    public teste: Array<any>;
 
 
     constructor(private databaseService: DataBaseService, private nav: RouterExtensions, private modalService: ModalDialogService, private vcRef: ViewContainerRef){
         this.disciplina = new Disciplina('', undefined);
+        this.teste = [{nome: "seg/2 lab2"}, {nome: "ter/2 c202"}, {nome: "qua/2 18:00"}, {nome: "qui/20:00"}, {nome: "sex/2 c202"}, {nome: "seg/2 18:00 c202"}]
     }
     
     ngOnInit(): void {

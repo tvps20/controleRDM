@@ -52,12 +52,12 @@
                     <StackLayout class="hr-light"></StackLayout>
                 </StackLayout>
 
-                <!-- Sala -->
-                <StackLayout class="input-field">
-                    <label text="Sala" class="label font-weight-bold m-b-5"></label>
-                    <TextField class="input" [(ngModel)]="disciplina.sala"></TextField>
-                    <StackLayout class="hr-light"></StackLayout>
-                </StackLayout>
+                <!-- Lista de Hórarios -->
+                <ScrollView orientation="horizontal">
+                    <StackLayout orientation="horizontal" class="list-group m-y-15">
+                        <label class="list-group-item" *ngFor="let user of teste" [text]="user.nome"></label>
+                    </StackLayout>
+                </ScrollView>
 
                 <button text="Adicionar" class="btn btn-primary" (tap)="addDisciplina()"></button>
             </StackLayout>

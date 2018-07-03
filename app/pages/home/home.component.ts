@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import * as dialogs from 'ui/dialogs';
 import { Page } from 'ui/page';
+// Importanto pacote para notificações simples
+import * as Toast from 'nativescript-toast';
 
 import { DataBaseService } from '~/services/database.service';
 import { Disciplina } from '~/shared/models/disciplina.model';
+
 
 @Component({
     selector: 'home',
@@ -16,14 +19,12 @@ export class HomeComponent implements OnInit {
     public disciplinas: Array<Disciplina> = [];
     public icons: Map<string, string> = new Map<string, string>();
     
-    
     public constructor(private databaseService: DataBaseService, private page: Page){
         this.setIcons();
-        this.loadDisciplinas();
+        this.loadDisciplinas();        
     }
 
-    ngOnInit(): void { 
-        // Carrega novamente sempre que cair nessa pagina
+    ngOnInit(): void {
         this.page.on("navigatingTo", () => this.loadDisciplinas());
     }
     

@@ -1,5 +1,23 @@
-<StackLayout>
-    <ListPicker  [items]="dias" class="m-15 picker"></ListPicker>   
-    <TimePicker id="TimePicker" ></TimePicker>
-    <button class="btn btn-primary" text="ok"></button>
-</StackLayout>
+<ScrollView>
+    <StackLayout>
+        <label text="Quatidade de aulas/Dia" class="title"></label>
+        <DockLayout>
+            <ListPicker selectedIndex="1"  [items]="qtdAulas" class="m-l-15 picker"></ListPicker>
+            <ListPicker selectedIndex="1"  [items]="dias" class="m-r-15 picker"></ListPicker>
+        </DockLayout>
+            
+            <!-- Hora -->
+        <StackLayout class="input-field m-x-15">
+            <label text="Horário" class="label font-weight-bold m-x-15"></label>
+            <TextField class="input" keyboardType="datetime" ></TextField>
+        </StackLayout>
+
+            <!-- Sala -->
+        <StackLayout class="input-field m-x-15">
+            <label text="Sala" class="label font-weight-bold m-x-15"></label>
+            <TextField class="input"></TextField>
+        </StackLayout>
+        
+        <button class="btn btn-primary" text="Adicionar"></button>
+    </StackLayout>
+</ScrollView>
