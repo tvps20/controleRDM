@@ -1,10 +1,11 @@
+import { Horario } from "~/shared/models/horario.model";
+
 export class Disciplina {
     public id: number;
     public nome: string;
     public professor: string;
     public cargaHoraria: number;
-    public horario: string;
-    public sala: string;
+    public horario: Horario[];
     public isClosed: Boolean;
     public status: string;
     public primeiraNota: number;
