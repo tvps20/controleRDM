@@ -6,6 +6,7 @@ import { LISTVIEW_DIRECTIVES } from 'nativescript-telerik-ui/listview/angular';
 import { SIDEDRAWER_DIRECTIVES } from "nativescript-telerik-ui/sidedrawer/angular";
 import { TNSCheckBoxModule } from 'nativescript-checkbox/angular';
 
+
 // Import Modais
 import { HorarioModalComponent } from './modais/horarioModal.component'
 
@@ -21,7 +22,8 @@ import { DataBaseService } from "~/services/database.service";
 import { ModalDialogService } from 'nativescript-angular/modal-dialog' 
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
- import { NativeScriptFormsModule } from "nativescript-angular/forms";
+import { NativeScriptFormsModule } from "nativescript-angular/forms";
+import { ReactiveFormsModule } from '@angular/forms'
 
 // Uncomment and add to NgModule imports  if you need to use the HTTP wrapper
 // import { NativeScriptHttpModule } from "nativescript-angular/http";
@@ -34,6 +36,7 @@ import { ModalDialogService } from 'nativescript-angular/modal-dialog'
         NativeScriptModule,
         AppRoutingModule,
         NativeScriptFormsModule,
+        ReactiveFormsModule,
         TNSCheckBoxModule
     ],
     declarations: [

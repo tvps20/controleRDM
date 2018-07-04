@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 import { ModalDialogService, ModalDialogOptions } from 'nativescript-angular/modal-dialog'
 
@@ -11,6 +12,8 @@ import { Status } from '~/shared/statusDisciplina';
 import { Horario } from '~/shared/models/horario.model';
 
 
+
+
 @Component({
     selector: 'disciplina',
     moduleId: module.id,
@@ -18,15 +21,25 @@ import { Horario } from '~/shared/models/horario.model';
 })
 export class DisciplinaComponent implements OnInit {
     
+    public form: FormGroup;
     public disciplina: Disciplina;
-    public teste: Array<any>;
     public horarios: Array<Horario>
 
-    
-    constructor(private databaseService: DataBaseService, private nav: RouterExtensions, private modalService: ModalDialogService, private vcRef: ViewContainerRef){
+        
+    constructor(private databaseService: DataBaseService, private nav: RouterExtensions, private modalService: ModalDialogService, private vcRef: ViewContainerRef, private formBuilder: FormBuilder){
         this.disciplina = new Disciplina('', undefined);
-        this.teste = [{nome: "seg/2 lab2"}, {nome: "ter/2 c202"}, {nome: "qua/2 18:00"}, {nome: "qui/20:00"}, {nome: "sex/2 c202"}, {nome: "seg/2 18:00 c202"}]
         this.horarios = [];
+
+        this.form = this.formBuilder.group({
+            nome: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
+            professor: [null],
+            cargaHoraria: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(4)]],
+            primeiraNota: [null, [Validators.maxLength(2)]],
+            segundaNota: [null],
+            terceiraNota: [null],
+            quartaNota: [null],
+            notaFinal: [null],
+        })
     }
     
     ngOnInit(): void {
@@ -47,15 +60,34 @@ export class DisciplinaComponent implements OnInit {
     }
 
     public addDisciplina(){
-        this.disciplina.status = Status.Matriculado;
+        this.makeDisciplina();
         this.databaseService.insert(this.disciplina).then(res => {
             this.nav.navigate(['/home'], {clearHistory: true});
         })
     }
 
-    public setNewHorario(newHorario: Horario){
+    private setNewHorario(newHorario: Horario){
         if(newHorario){
             this.horarios.push(newHorario);
         }
     }
+
+    private makeDisciplina(){
+        this.disciplina.nome = this.form.value.nome;
+        this.disciplina.professor = this.form.value.professor;
+        this.disciplina.cargaHoraria = this.form.value.cargaHoraria;
+        this.disciplina.status = Status.Matriculado;
+    }
+
+    public notaConfirmationValidator(form: FormGroup){
+        let nota: number = form.get('primeiraNota').value + form.get('segundaNota').value + form.get('terceiraNota').value + form.get('quartaNota').value;
+
+        if(nota >= 16 && nota<= 27.9){
+            form.get('makeEnd').setErrors(null);
+        } else {
+            form.get('makeEnd').setErrors({'final': false})
+        }
+    }
+
+
 }
