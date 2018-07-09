@@ -9,20 +9,21 @@
                     <GridLayout columns="*,*" rows="*,*,auto,auto">
                         <label col="0" row="0" text="Unidade 1" class="label font-weight-bold m-b-5"></label>
                         <GridLayout col="0" row="1" columns="*,*" class="input-field">
-                            <TextField col="0" class="input" hint="1º Nota" formControlName='primeiraNota' minlength="3"></TextField>
-                            <TextField col="1" class="input" hint="2º Nota" formControlName='segundaNota'></TextField>
+                            <TextField col="0" class="input" hint="1º Nota" formControlName='primeiraNota' keyboardType="number"></TextField>
+                            <TextField col="1" class="input" hint="2º Nota" formControlName='segundaNota' keyboardType="number"></TextField>
                         </GridLayout>
 
                         <label col="1" row="0" text="Unidade 2" class="label font-weight-bold m-b-5"></label>
                         <GridLayout col="1" row="1" columns="*,*" class="input-field">
-                            <TextField col="0" class="input" hint="3º Nota" formControlName='terceiraNota'></TextField>
-                            <TextField col="1" class="input" hint="4º Nota" formControlName='quartaNota'></TextField>
+                            <TextField col="0" class="input" hint="3º Nota" formControlName='terceiraNota' keyboardType="number"></TextField>
+                            <TextField col="1" class="input" hint="4º Nota" formControlName='quartaNota' keyboardType="number"></TextField>
                         </GridLayout>
 
                         <label col="0" colSpan="2" row="2" text="Final" class="label font-weight-bold m-b-5"></label>
-                        <TextField col="0" colSpan="2" row="3" class="input" hint="Nota da Final" formControlName='notaFinal'></TextField>
+                        <TextField col="0" colSpan="2" row="3" class="input" hint="Nota da Final" formControlName='notaFinal'  keyboardType="number"></TextField>
                     </GridLayout>                  
 
+                    <!-- <label *ngIf="form.get('isEnd').errors.final" class="text-right text-danger" text="Nota não válida"></label> -->
                     
                 </StackLayout>
 
@@ -52,7 +53,7 @@
                     <TextField class="input" formControlName='cargaHoraria' keyboardType="number"></TextField>
                     <StackLayout class="hr-light"></StackLayout>
 
-                    <StackLayout *ngIf="form.get('cargaHoraria').invalid && form.get('nome').dirty">
+                    <StackLayout *ngIf="form.get('cargaHoraria').invalid && form.get('cargaHoraria').dirty">
                         <label *ngIf="form.get('cargaHoraria').errors.required" class="text-right text-danger" text="Campo Obrigatório"></label>
                         <label *ngIf="form.get('cargaHoraria').errors.minlength" class="text-right text-danger" text="Deve ter no mínimo 2 caracteres"></label>
                         <label *ngIf="form.get('cargaHoraria').errors.maxlength" class="text-right text-danger" text="Deve ter no máximo 4 caracteres"></label>

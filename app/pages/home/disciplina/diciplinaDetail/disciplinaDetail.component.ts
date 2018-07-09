@@ -12,8 +12,9 @@ import { DataBaseService } from '~/services/database.service';
 export class DisciplinaDetailComponent implements OnInit {
 
     public id: number;
-    public editIcons: string = String.fromCharCode(0xf044);
     public disciplina: Disciplina
+
+    public textField: string;
     
     constructor(private router: ActivatedRoute, private databaseService: DataBaseService){
         this.id = +this.router.snapshot.params["id"];

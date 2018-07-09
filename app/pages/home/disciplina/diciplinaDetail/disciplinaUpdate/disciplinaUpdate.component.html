@@ -9,18 +9,22 @@
                     <GridLayout columns="*,*" rows="*,*,auto,auto">
                         <label col="0" row="0" text="Unidade 1" class="label font-weight-bold m-b-5"></label>
                         <GridLayout col="0" row="1" columns="*,*" class="input-field">
-                            <TextField col="0" class="input" hint="1º Nota" [(ngModel)]="disciplina.primeiraNota"></TextField>
-                            <TextField col="1" class="input" hint="2º Nota" [(ngModel)]="disciplina.segundaNota"></TextField>
+                            <TextField col="0" class="input" hint="1º Nota" keyboardType="number" [(ngModel)]="disciplina.primeiraNota" #primeriaNota="ngModel" maxlength="3"></TextField>
+                            <TextField col="1" class="input" hint="2º Nota" keyboardType="number" [(ngModel)]="disciplina.segundaNota" maxlength="3"></TextField>
                         </GridLayout>
 
                         <label col="1" row="0" text="Unidade 2" class="label font-weight-bold m-b-5"></label>
                         <GridLayout col="1" row="1" columns="*,*" class="input-field">
-                            <TextField col="0" class="input" hint="3º Nota" [(ngModel)]="disciplina.terceiraNota"></TextField>
-                            <TextField col="1" class="input" hint="4º Nota" [(ngModel)]="disciplina.quartaNota"></TextField>
+                            <TextField col="0" class="input" hint="3º Nota" keyboardType="number" [(ngModel)]="disciplina.terceiraNota" maxlength="3"></TextField>
+                            <TextField col="1" class="input" hint="4º Nota" keyboardType="number" [(ngModel)]="disciplina.quartaNota" maxlength="3"></TextField>
                         </GridLayout>
 
                         <label col="0" colSpan="2" row="2" text="Final" class="label font-weight-bold m-b-5"></label>
-                        <TextField col="0" colSpan="2" row="3" class="input" hint="Nota da Final" [(ngModel)]="disciplina.notaFinal"></TextField>
+                        <TextField col="0" colSpan="2" row="3" class="input" hint="Nota da Final" keyboardType="number" [(ngModel)]="disciplina.notaFinal" maxlength="3"></TextField>
+
+                        <StackLayout>
+                            <label *ngIf="!primeriaNota.valid" text="Deve ter no máximo 2 caracteres" class="text-right text-danger"></label>
+                        </StackLayout>
                     </GridLayout>
                 </StackLayout>
 
@@ -34,8 +38,12 @@
                 <!-- Carga Horária -->
                 <StackLayout class="input-field">
                     <label text="Carga Horária" class="label font-weight-bold m-b-5"></label>
-                    <TextField class="input" [text]="disciplina.cargaHoraria"></TextField>
+                    <TextField class="input" [text]="disciplina.cargaHoraria" keyboardType="number" [(ngModel)]="textField" #element="ngModel" maxlength="3"></TextField>
                     <StackLayout class="hr-light"></StackLayout>
+
+                    <StackLayout>
+                        <label *ngIf="!element.valid" text="Campo Obrigatório" class="text-right text-danger"></label>
+                    </StackLayout>
                 </StackLayout>
 
                 <!-- Horário -->
@@ -55,10 +63,17 @@
                     <!-- Está Fechada? -->
                 <CheckBox #CB1 text="Fechar Disciplina" fillColor="#006968" class="checkBox" checked="false"></CheckBox>   
 
-                <button text="Atualizar" class="btn btn-primary"></button>
+                <button text="Atualizar" class="btn btn-primary" [isEnabled]="element.valid"></button>
 
             </StackLayout>
 
         </StackLayout>
     </ScrollView>
 </StackLayout>
+
+<!-- <StackLayout class="input-field">
+    <label text="Professor" class="label font-weight-bold m-b-5"></label>
+    <TextField class="input" [(ngModel)]="textField"  #professor="ngModel" name="professor"></TextField>
+    <label *ngIf="!professor.valid" text="Esse campo é obrigatorio"></label>
+    <StackLayout class="hr-light"></StackLayout>
+</StackLayout> -->

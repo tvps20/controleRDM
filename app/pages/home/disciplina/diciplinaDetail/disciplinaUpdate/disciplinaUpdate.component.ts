@@ -10,8 +10,17 @@ import { Disciplina } from '~/shared/models/disciplina.model';
 export class DisciplinaUpdateComponent {
         @ViewChild("CB1") FirstCheckBox: ElementRef;
         public disciplina: Disciplina;
+        public test: string = "n mudou";
     
     public constructor() {
         this.disciplina = new Disciplina('', undefined);
+    }
+
+    public certo(){
+        this.test ="mudou"
+    }
+
+    public errado(){
+        this.test = "falso";
     }
 }

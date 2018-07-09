@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import * as Toast from 'nativescript-toast';
 
 import { ModalDialogService, ModalDialogOptions } from 'nativescript-angular/modal-dialog'
 
@@ -34,11 +35,11 @@ export class DisciplinaComponent implements OnInit {
             nome: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
             professor: [null],
             cargaHoraria: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(4)]],
-            primeiraNota: [null, [Validators.maxLength(2)]],
+            primeiraNota: [null],
             segundaNota: [null],
             terceiraNota: [null],
             quartaNota: [null],
-            notaFinal: [null],
+            notaFinal: [null]
         })
     }
     
@@ -69,6 +70,7 @@ export class DisciplinaComponent implements OnInit {
     private setNewHorario(newHorario: Horario){
         if(newHorario){
             this.horarios.push(newHorario);
+            Toast.makeText("Horário adicionado").show();
         }
     }
 
@@ -79,15 +81,20 @@ export class DisciplinaComponent implements OnInit {
         this.disciplina.status = Status.Matriculado;
     }
 
-    public notaConfirmationValidator(form: FormGroup){
-        let nota: number = form.get('primeiraNota').value + form.get('segundaNota').value + form.get('terceiraNota').value + form.get('quartaNota').value;
+    public finalNotaValidator(form: FormGroup){
+        let somaNota: number = form.get('primeiraNota').value + form.get('segundaNota').value + form.get('terceiraNota').value + form.get('quartaNota').value;
 
-        if(nota >= 16 && nota<= 27.9){
-            form.get('makeEnd').setErrors(null);
+        if((somaNota <= 16) || (somaNota >= 27.9)){
+            form.get('isEnd').setErrors(null);
         } else {
-            form.get('makeEnd').setErrors({'final': false})
+            form.get('isEnd').setErrors({'final': true})
         }
     }
 
-
+    public notaValidator(control: FormGroup){
+        if(control.value < 0 || control.value > 10)
+            control.setErrors({'nota': true })
+        else
+            control.setErrors(null)
+    }
 }

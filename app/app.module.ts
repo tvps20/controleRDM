@@ -2,9 +2,11 @@ import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { AppRoutingModule } from "./app.routing";
 import { AppComponent } from "./app.component";
+import { TNSCheckBoxModule } from 'nativescript-checkbox/angular';
+
 import { LISTVIEW_DIRECTIVES } from 'nativescript-telerik-ui/listview/angular';
 import { SIDEDRAWER_DIRECTIVES } from "nativescript-telerik-ui/sidedrawer/angular";
-import { TNSCheckBoxModule } from 'nativescript-checkbox/angular';
+
 
 
 // Import Modais
@@ -23,7 +25,9 @@ import { ModalDialogService } from 'nativescript-angular/modal-dialog'
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
+
 import { ReactiveFormsModule } from '@angular/forms'
+
 
 // Uncomment and add to NgModule imports  if you need to use the HTTP wrapper
 // import { NativeScriptHttpModule } from "nativescript-angular/http";
