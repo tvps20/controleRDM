@@ -20,9 +20,13 @@
                         </GridLayout>
 
                         <label col="0" colSpan="2" row="2" text="Final" class="label font-weight-bold m-b-5"></label>
-                        <TextField col="0" colSpan="2" row="3" class="input" hint="Nota da Final" keyboardType="number" [(ngModel)]="disciplina.notaFinal" maxlength="3"></TextField>
+                        <TextField col="0" colSpan="2" row="3" class="input" hint="Nota Final"  keyboardType="number" [(ngModel)]="disciplina.notaFinal" maxlength="3"></TextField>
 
                     </GridLayout>
+
+                    <StackLayout>
+                        <label *ngIf="notaValorValidation()" text="Não Pode fazer Final" class="text-right text-danger"></label>
+                    </StackLayout>
                 </StackLayout>
 
                 <!-- Nome -->

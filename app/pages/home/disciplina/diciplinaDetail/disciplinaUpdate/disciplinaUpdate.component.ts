@@ -78,4 +78,17 @@ export class DisciplinaUpdateComponent {
             this.nav.navigate(['/home'], {clearHistory: true});
         })
     }
+
+    public notaValorValidation(): boolean {
+        let somaNota: number = (+this.disciplina.primeiraNota) + (+this.disciplina.segundaNota) + (+this.disciplina.terceiraNota) + (+this.disciplina.quartaNota);
+
+        console.log(somaNota)
+        if((somaNota >= 16) && (somaNota < 28)){
+            console.log("faz")
+            return true;
+        } else {
+            console.log("n faz")
+            return false;
+        }
+    }
 }

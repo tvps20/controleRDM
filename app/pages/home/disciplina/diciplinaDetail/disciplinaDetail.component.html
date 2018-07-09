@@ -44,27 +44,20 @@
                     <TextField class="input" [text]="disciplina.cargaHoraria" editable="false"></TextField>
                     <StackLayout class="hr-light"></StackLayout>
                 </StackLayout>
-
-                <!-- Horário -->
-                <StackLayout class="input-field">
-                    <label text="Horário" class="label font-weight-bold m-b-5"></label>
-                    <TextField class="input" [text]="disciplina.horario" editable="false"></TextField>
-                    <StackLayout class="hr-light"></StackLayout>
-                </StackLayout>
-
-                <!-- Sala -->
-                <StackLayout class="input-field">
-                    <label text="Sala" class="label font-weight-bold m-b-5"></label>
-                    <TextField class="input" [text]="disciplina.sala" editable="false"></TextField>
-                    <StackLayout class="hr-light"></StackLayout>
-                </StackLayout>
-
+                
                 <!-- Status -->
                 <StackLayout class="input-field">
                     <label text="Status" class="label font-weight-bold m-b-5"></label>
                     <TextField class="input" [text]="disciplina.status" editable="false"></TextField>
                     <StackLayout class="hr-light"></StackLayout>
                 </StackLayout>
+
+                <!-- Lista de Hórarios -->
+                <ScrollView orientation="horizontal">
+                    <StackLayout orientation="horizontal" class="list-group m-y-15">
+                        <label class="list-group-item" *ngFor="let horario of horarios" [text]="horario.makeHorario()"></label>
+                    </StackLayout>
+                </ScrollView>
 
                 <button  text="Modificar" class="btn btn-primary" [nsRouterLink]="['/update', disciplina.id]"></button>
             </StackLayout>
