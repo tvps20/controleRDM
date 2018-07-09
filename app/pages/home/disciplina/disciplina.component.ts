@@ -34,7 +34,7 @@ export class DisciplinaComponent implements OnInit {
         this.form = this.formBuilder.group({
             nome: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
             professor: [null],
-            cargaHoraria: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(4)]],
+            cargaHoraria: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(3)]],
             primeiraNota: [null],
             segundaNota: [null],
             terceiraNota: [null],
@@ -78,6 +78,11 @@ export class DisciplinaComponent implements OnInit {
         this.disciplina.nome = this.form.value.nome;
         this.disciplina.professor = this.form.value.professor;
         this.disciplina.cargaHoraria = this.form.value.cargaHoraria;
+        this.disciplina.primeiraNota = this.form.value.primeiraNota;
+        this.disciplina.segundaNota = this.form.value.segundaNota;
+        this.disciplina.terceiraNota = this.form.value.terceiraNota;
+        this.disciplina.quartaNota = this.form.value.quartaNota;
+        this.disciplina.notaFinal = this.form.value.notaFinal;
         this.disciplina.status = Status.Matriculado;
     }
 

@@ -1,5 +1,16 @@
-import { Component, ViewChild, ElementRef } from '@angular/core'
+import { Component, ViewChild, ElementRef, ViewContainerRef } from '@angular/core'
 import { Disciplina } from '~/shared/models/disciplina.model';
+import { ActivatedRoute } from "@angular/router"
+import * as Toast from 'nativescript-toast';
+
+import { ModalDialogService, ModalDialogOptions } from 'nativescript-angular/modal-dialog'
+
+import { DataBaseService } from '~/services/database.service';
+import { RouterExtensions } from 'nativescript-angular/router';
+
+import { HorarioModalComponent } from '~/modais/horarioModal.component';
+import { Horario } from '~/shared/models/horario.model';
+
 
 @Component({
     selector: 'disciplina-Update',
@@ -8,19 +19,42 @@ import { Disciplina } from '~/shared/models/disciplina.model';
     styleUrls: ['./disciplinaUpdate.component.css']
 })
 export class DisciplinaUpdateComponent {
+
+        public id: number;
         @ViewChild("CB1") FirstCheckBox: ElementRef;
         public disciplina: Disciplina;
-        public test: string = "n mudou";
+        public horarios: Array<Horario>
+
     
-    public constructor() {
-        this.disciplina = new Disciplina('', undefined);
+    public constructor(private router: ActivatedRoute, private databaseService: DataBaseService, private nav: RouterExtensions,  private modalService: ModalDialogService, private vcRef: ViewContainerRef,) {
+        this.id = +this.router.snapshot.params["id"];
+        this.horarios = [];
+        this.loadDisciplina();
     }
 
-    public certo(){
-        this.test ="mudou"
+    public loadDisciplina(){
+        this.databaseService.getDisciplina(this.id).then((res: Disciplina) => {
+            this.disciplina = res;
+        });
     }
 
-    public errado(){
-        this.test = "falso";
+    public showHorarioModal(){
+        let modalOptions: ModalDialogOptions = {
+            fullscreen: false,
+            // Contanier onde o modal vai ser carregado. (Injetando no mesmo contanier de disciplinaComponent)
+            viewContainerRef: this.vcRef,
+            //  context: {
+            //     preSelectedHorario: this.objetoHorario
+            // }
+        };
+
+        this.modalService.showModal(HorarioModalComponent, modalOptions).then(newHorario => this.setNewHorario(newHorario));
+    }
+
+    private setNewHorario(newHorario: Horario){
+        if(newHorario){
+            this.horarios.push(newHorario);
+            Toast.makeText("Horário adicionado").show();
+        }
     }
 }

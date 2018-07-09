@@ -108,8 +108,7 @@ export class DataBaseService {
                 });
             })              
         });
-    }
-    
+    }   
 }
 
 // TODO: Não mostra os dados quando inicia, so depois de adicionar...

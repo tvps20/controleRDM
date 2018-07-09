@@ -56,14 +56,14 @@
                     <StackLayout *ngIf="form.get('cargaHoraria').invalid && form.get('cargaHoraria').dirty">
                         <label *ngIf="form.get('cargaHoraria').errors.required" class="text-right text-danger" text="Campo Obrigatório"></label>
                         <label *ngIf="form.get('cargaHoraria').errors.minlength" class="text-right text-danger" text="Deve ter no mínimo 2 caracteres"></label>
-                        <label *ngIf="form.get('cargaHoraria').errors.maxlength" class="text-right text-danger" text="Deve ter no máximo 4 caracteres"></label>
+                        <label *ngIf="form.get('cargaHoraria').errors.maxlength" class="text-right text-danger" text="Deve ter no máximo 3 caracteres"></label>
                     </StackLayout>
                 </StackLayout>
 
                 <!-- Horário -->
                 <StackLayout class="input-field">
                     <label text="Horário" class="label font-weight-bold m-b-5"></label>
-                    <TextField class="input" editable="false" (tap)="showHorarioModal()"></TextField>
+                    <TextField class="input" hint="Toque aqui" editable="false" (tap)="showHorarioModal()"></TextField>
                     <StackLayout class="hr-light"></StackLayout>
                 </StackLayout>
 

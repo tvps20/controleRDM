@@ -9,7 +9,7 @@
                     <GridLayout columns="*,*" rows="*,*,auto,auto">
                         <label col="0" row="0" text="Unidade 1" class="label font-weight-bold m-b-5"></label>
                         <GridLayout col="0" row="1" columns="*,*" class="input-field">
-                            <TextField col="0" class="input" hint="1º Nota" keyboardType="number" [(ngModel)]="disciplina.primeiraNota" #primeriaNota="ngModel" maxlength="3"></TextField>
+                            <TextField col="0" class="input" hint="1º Nota" keyboardType="number" [(ngModel)]="disciplina.primeiraNota" maxlength="3"></TextField>
                             <TextField col="1" class="input" hint="2º Nota" keyboardType="number" [(ngModel)]="disciplina.segundaNota" maxlength="3"></TextField>
                         </GridLayout>
 
@@ -22,13 +22,17 @@
                         <label col="0" colSpan="2" row="2" text="Final" class="label font-weight-bold m-b-5"></label>
                         <TextField col="0" colSpan="2" row="3" class="input" hint="Nota da Final" keyboardType="number" [(ngModel)]="disciplina.notaFinal" maxlength="3"></TextField>
 
-                        <StackLayout>
-                            <label *ngIf="!primeriaNota.valid" text="Deve ter no máximo 2 caracteres" class="text-right text-danger"></label>
-                        </StackLayout>
                     </GridLayout>
                 </StackLayout>
 
-                <!-- Professor -->
+                <!-- Nome -->
+                <StackLayout class="input-field">
+                    <label text="Nome" class="label font-weight-bold m-b-5"></label>
+                    <TextField class="input" [text]="disciplina.nome"></TextField>
+                    <StackLayout class="hr-light"></StackLayout>
+                </StackLayout>
+
+                <!-- Nome -->
                 <StackLayout class="input-field">
                     <label text="Professor" class="label font-weight-bold m-b-5"></label>
                     <TextField class="input" [text]="disciplina.professor"></TextField>
@@ -38,7 +42,7 @@
                 <!-- Carga Horária -->
                 <StackLayout class="input-field">
                     <label text="Carga Horária" class="label font-weight-bold m-b-5"></label>
-                    <TextField class="input" [text]="disciplina.cargaHoraria" keyboardType="number" [(ngModel)]="textField" #element="ngModel" maxlength="3"></TextField>
+                    <TextField class="input" keyboardType="number" [(ngModel)]="disciplina.cargaHoraria" #element="ngModel" maxlength="3" required></TextField>
                     <StackLayout class="hr-light"></StackLayout>
 
                     <StackLayout>
@@ -49,18 +53,18 @@
                 <!-- Horário -->
                 <StackLayout class="input-field">
                     <label text="Horário" class="label font-weight-bold m-b-5"></label>
-                    <TextField class="input" [text]="disciplina.horario"></TextField>
+                    <TextField class="input" hint="Toque aqui" editable="false" (tap)="showHorarioModal()"></TextField>
                     <StackLayout class="hr-light"></StackLayout>
                 </StackLayout>
 
-                <!-- Sala -->
-                <StackLayout class="input-field">
-                    <label text="Sala" class="label font-weight-bold m-b-5"></label>
-                    <TextField class="input" [text]="disciplina.sala"></TextField>
-                    <StackLayout class="hr-light"></StackLayout>
-                </StackLayout>
+                <!-- Lista de Hórarios -->
+                <ScrollView orientation="horizontal">
+                    <StackLayout orientation="horizontal" class="list-group m-y-15">
+                        <label class="list-group-item" *ngFor="let horario of horarios" [text]="horario.makeHorario()"></label>
+                    </StackLayout>
+                </ScrollView>
 
-                    <!-- Está Fechada? -->
+                <!-- Está Fechada? -->
                 <CheckBox #CB1 text="Fechar Disciplina" fillColor="#006968" class="checkBox" checked="false"></CheckBox>   
 
                 <button text="Atualizar" class="btn btn-primary" [isEnabled]="element.valid"></button>
