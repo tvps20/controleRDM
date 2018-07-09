@@ -43,8 +43,19 @@ export class DisciplinaUpdateComponent {
             fullscreen: false,
             // Contanier onde o modal vai ser carregado. (Injetando no mesmo contanier de disciplinaComponent)
             viewContainerRef: this.vcRef,
-            //  context: {
-            //     preSelectedHorario: this.objetoHorario
+        };
+
+        this.modalService.showModal(HorarioModalComponent, modalOptions).then(newHorario => this.setNewHorario(newHorario));
+    }
+
+    public upDateHorarioModal(horario: Horario){
+        let modalOptions: ModalDialogOptions = {
+            fullscreen: false,
+            // Contanier onde o modal vai ser carregado. (Injetando no mesmo contanier de disciplinaComponent)
+            viewContainerRef: this.vcRef,
+            // Para Enviar os dados pra dentro do Modal
+            // context: {
+            //     preSelectedHorario: horario
             // }
         };
 
@@ -56,5 +67,15 @@ export class DisciplinaUpdateComponent {
             this.horarios.push(newHorario);
             Toast.makeText("Horário adicionado").show();
         }
+    }
+
+    public deleteHorario(){
+
+    }
+
+    public updateDisciplina(){
+        this.databaseService.update(this.disciplina).then(() => {
+            this.nav.navigate(['/home'], {clearHistory: true});
+        })
     }
 }

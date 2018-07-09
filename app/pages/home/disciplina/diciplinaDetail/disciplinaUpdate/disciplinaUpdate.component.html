@@ -28,14 +28,14 @@
                 <!-- Nome -->
                 <StackLayout class="input-field">
                     <label text="Nome" class="label font-weight-bold m-b-5"></label>
-                    <TextField class="input" [text]="disciplina.nome"></TextField>
+                    <TextField class="input" [(ngModel)]="disciplina.nome"></TextField>
                     <StackLayout class="hr-light"></StackLayout>
                 </StackLayout>
 
                 <!-- Nome -->
                 <StackLayout class="input-field">
                     <label text="Professor" class="label font-weight-bold m-b-5"></label>
-                    <TextField class="input" [text]="disciplina.professor"></TextField>
+                    <TextField class="input" [(ngModel)]="disciplina.professor"></TextField>
                     <StackLayout class="hr-light"></StackLayout>
                 </StackLayout>
 
@@ -67,7 +67,7 @@
                 <!-- Está Fechada? -->
                 <CheckBox #CB1 text="Fechar Disciplina" fillColor="#006968" class="checkBox" checked="false"></CheckBox>   
 
-                <button text="Atualizar" class="btn btn-primary" [isEnabled]="element.valid"></button>
+                <button text="Atualizar" class="btn btn-primary" [isEnabled]="element.valid" (tap)="updateDisciplina()"></button>
 
             </StackLayout>
 

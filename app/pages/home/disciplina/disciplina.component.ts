@@ -62,7 +62,7 @@ export class DisciplinaComponent implements OnInit {
 
     public addDisciplina(){
         this.makeDisciplina();
-        this.databaseService.insert(this.disciplina).then(res => {
+        this.databaseService.insert(this.disciplina).then(() => {
             this.nav.navigate(['/home'], {clearHistory: true});
         })
     }
