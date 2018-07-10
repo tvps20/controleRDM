@@ -3,60 +3,58 @@
 <StackLayout class="page">
     <ScrollView>
         <StackLayout class="form-content">
-            <StackLayout class="form" [formGroup]="form">   
+            <StackLayout class="form">   
                 <!-- Notas -->
                 <StackLayout style="text-align: center" class="m-10">
                     <GridLayout columns="*,*" rows="*,*,auto,auto">
                         <label col="0" row="0" text="Unidade 1" class="label font-weight-bold m-b-5"></label>
                         <GridLayout col="0" row="1" columns="*,*" class="input-field">
-                            <TextField col="0" class="input" hint="1º Nota" formControlName='primeiraNota' keyboardType="number"></TextField>
-                            <TextField col="1" class="input" hint="2º Nota" formControlName='segundaNota' keyboardType="number"></TextField>
+                            <TextField col="0" class="input" hint="1º Nota" keyboardType="number" [(ngModel)]="disciplina.primeiraNota" maxlength="3"></TextField>
+                            <TextField col="1" class="input" hint="2º Nota" keyboardType="number" [(ngModel)]="disciplina.segundaNota" maxlength="3"></TextField>
                         </GridLayout>
 
                         <label col="1" row="0" text="Unidade 2" class="label font-weight-bold m-b-5"></label>
                         <GridLayout col="1" row="1" columns="*,*" class="input-field">
-                            <TextField col="0" class="input" hint="3º Nota" formControlName='terceiraNota' keyboardType="number"></TextField>
-                            <TextField col="1" class="input" hint="4º Nota" formControlName='quartaNota' keyboardType="number"></TextField>
+                            <TextField col="0" class="input" hint="3º Nota" keyboardType="number" [(ngModel)]="disciplina.terceiraNota" maxlength="3"></TextField>
+                            <TextField col="1" class="input" hint="4º Nota" keyboardType="number" [(ngModel)]="disciplina.quartaNota" maxlength="3"></TextField>
                         </GridLayout>
 
                         <label col="0" colSpan="2" row="2" text="Final" class="label font-weight-bold m-b-5"></label>
-                        <TextField col="0" colSpan="2" row="3" class="input" hint="Nota da Final" formControlName='notaFinal'  keyboardType="number"></TextField>
-                    </GridLayout>                  
+                        <TextField col="0" colSpan="2" row="3" class="input" hint="Nota Final" keyboardType="number" [(ngModel)]="disciplina.notaFinal" maxlength="3"></TextField>
 
-                    <!-- <label *ngIf="form.get('isEnd').errors.final" class="text-right text-danger" text="Nota não válida"></label> -->
-                    
+                    </GridLayout>
+
+                    <StackLayout>
+                        <label *ngIf="notaValidator()" text="Essa nota não é válida" class="text-right text-danger"></label>
+                    </StackLayout>
                 </StackLayout>
 
-                <!-- name -->
+                <!-- Nome -->
                 <StackLayout class="input-field">
                     <label text="Nome" class="label font-weight-bold m-b-5"></label>
-                    <TextField class="input" formControlName='nome'></TextField>
+                    <TextField class="input" [(ngModel)]="disciplina.nome" #elementNome="ngModel" required></TextField>
                     <StackLayout class="hr-light"></StackLayout>
 
-                    <StackLayout *ngIf="form.get('nome').invalid && form.get('nome').dirty">
-                        <label *ngIf="form.get('nome').errors.required" class="text-right text-danger" text="Campo Obrigatório"></label>
-                        <label *ngIf="form.get('nome').errors.minlength" class="text-right text-danger" text="Deve ter no mínimo 2 caracteres"></label>
-                        <label *ngIf="form.get('nome').errors.maxlength" class="text-right text-danger" text="Deve ter no máximo 100 caracteres"></label>
+                    <StackLayout>
+                        <label *ngIf="!elementNome.valid && elementNome.dirty" text="Campo Obrigatório" class="text-right text-danger"></label>
                     </StackLayout>
                 </StackLayout>
 
                 <!-- Professor -->
                 <StackLayout class="input-field">
                     <label text="Professor" class="label font-weight-bold m-b-5"></label>
-                    <TextField class="input" formControlName='professor'></TextField>
+                    <TextField class="input"></TextField>
                     <StackLayout class="hr-light"></StackLayout>
                 </StackLayout>
 
                 <!-- Carga Horária -->
                 <StackLayout class="input-field">
                     <label text="Carga Horária" class="label font-weight-bold m-b-5"></label>
-                    <TextField class="input" formControlName='cargaHoraria' keyboardType="number"></TextField>
+                    <TextField class="input" keyboardType="number" [(ngModel)]="disciplina.cargaHoraria" #element="ngModel" maxlength="3" required></TextField>
                     <StackLayout class="hr-light"></StackLayout>
 
-                    <StackLayout *ngIf="form.get('cargaHoraria').invalid && form.get('cargaHoraria').dirty">
-                        <label *ngIf="form.get('cargaHoraria').errors.required" class="text-right text-danger" text="Campo Obrigatório"></label>
-                        <label *ngIf="form.get('cargaHoraria').errors.minlength" class="text-right text-danger" text="Deve ter no mínimo 2 caracteres"></label>
-                        <label *ngIf="form.get('cargaHoraria').errors.maxlength" class="text-right text-danger" text="Deve ter no máximo 3 caracteres"></label>
+                    <StackLayout>
+                        <label *ngIf="!element.valid && element.dirty" text="Campo Obrigatório" class="text-right text-danger"></label>
                     </StackLayout>
                 </StackLayout>
 
@@ -74,7 +72,7 @@
                     </StackLayout>
                 </ScrollView>
 
-                <button text="Adicionar" class="btn btn-primary" [isEnabled]="form.valid" (tap)="addDisciplina()"></button>
+                <button text="Adicionar" class="btn btn-primary" [isEnabled]="element.valid && elementNome.valid && !notaValorValidation() && !notaValidator()" (tap)="addDisciplina()"></button>
             </StackLayout>
 
         </StackLayout>

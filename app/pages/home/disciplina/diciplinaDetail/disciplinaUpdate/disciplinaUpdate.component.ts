@@ -79,12 +79,13 @@ export class DisciplinaUpdateComponent {
         })
     }
 
+    // Validators
     public notaValorValidation(){
         let somaNota: number = (+this.disciplina.primeiraNota) + (+this.disciplina.segundaNota) + (+this.disciplina.terceiraNota) + (+this.disciplina.quartaNota);
 
         if((somaNota >= 16) && (somaNota < 28) && (!this.disciplina.notaFinal))
             return true;
-        else if((somaNota < 16) || (somaNota >= 28) && (this.disciplina.notaFinal))
+        else if(((somaNota < 16) || (somaNota >= 28)) && (this.disciplina.notaFinal))
             return true;
         else 
             return false;     
@@ -103,6 +104,6 @@ export class DisciplinaUpdateComponent {
         else if ((+this.disciplina.notaFinal) < 0 || (+this.disciplina.notaFinal) > 10)
             return true;
         else
-           return false
+            return false
     }
 }

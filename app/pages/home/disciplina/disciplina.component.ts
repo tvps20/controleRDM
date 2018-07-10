@@ -22,25 +22,13 @@ import { Horario } from '~/shared/models/horario.model';
 })
 export class DisciplinaComponent implements OnInit {
     
-    public form: FormGroup;
     public disciplina: Disciplina;
     public horarios: Array<Horario>
 
         
-    constructor(private databaseService: DataBaseService, private nav: RouterExtensions, private modalService: ModalDialogService, private vcRef: ViewContainerRef, private formBuilder: FormBuilder){
+    constructor(private databaseService: DataBaseService, private nav: RouterExtensions, private modalService: ModalDialogService, private vcRef: ViewContainerRef){
         this.disciplina = new Disciplina('', undefined);
         this.horarios = [];
-
-        this.form = this.formBuilder.group({
-            nome: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
-            professor: [null],
-            cargaHoraria: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(3)]],
-            primeiraNota: [null],
-            segundaNota: [null],
-            terceiraNota: [null],
-            quartaNota: [null],
-            notaFinal: [null]
-        })
     }
     
     ngOnInit(): void {
@@ -61,7 +49,7 @@ export class DisciplinaComponent implements OnInit {
     }
 
     public addDisciplina(){
-        this.makeDisciplina();
+        this.disciplina.status = Status.Matriculado;
         this.databaseService.insert(this.disciplina).then(() => {
             this.nav.navigate(['/home'], {clearHistory: true});
         })
@@ -73,33 +61,34 @@ export class DisciplinaComponent implements OnInit {
             Toast.makeText("Horário adicionado").show();
         }
     }
+    
+    
+    // Validators
+    public notaValorValidation(){
+        let somaNota: number = (+this.disciplina.primeiraNota) + (+this.disciplina.segundaNota) + (+this.disciplina.terceiraNota) + (+this.disciplina.quartaNota);
 
-    private makeDisciplina(){
-        this.disciplina.nome = this.form.value.nome;
-        this.disciplina.professor = this.form.value.professor;
-        this.disciplina.cargaHoraria = this.form.value.cargaHoraria;
-        this.disciplina.primeiraNota = this.form.value.primeiraNota;
-        this.disciplina.segundaNota = this.form.value.segundaNota;
-        this.disciplina.terceiraNota = this.form.value.terceiraNota;
-        this.disciplina.quartaNota = this.form.value.quartaNota;
-        this.disciplina.notaFinal = this.form.value.notaFinal;
-        this.disciplina.status = Status.Matriculado;
+        if((somaNota >= 16) && (somaNota < 28) && (!this.disciplina.notaFinal))
+            return true;
+        else if(((somaNota < 16) || (somaNota >= 28)) && (this.disciplina.notaFinal))
+            return true;    
+        else 
+            return false;    
     }
 
-    public finalNotaValidator(form: FormGroup){
-        let somaNota: number = form.get('primeiraNota').value + form.get('segundaNota').value + form.get('terceiraNota').value + form.get('quartaNota').value;
+    public notaValidator(){
 
-        if((somaNota <= 16) || (somaNota >= 27.9)){
-            form.get('isEnd').setErrors(null);
-        } else {
-            form.get('isEnd').setErrors({'final': true})
-        }
-    }
-
-    public notaValidator(control: FormGroup){
-        if(control.value < 0 || control.value > 10)
-            control.setErrors({'nota': true })
+        if((+this.disciplina.primeiraNota) < 0 || (+this.disciplina.primeiraNota) > 10)
+            return true;
+        else if ((+this.disciplina.segundaNota) < 0 || (+this.disciplina.segundaNota) > 10)
+            return true;
+        else if ((+this.disciplina.terceiraNota) < 0 || (+this.disciplina.terceiraNota) > 10)
+            return true;
+        else if ((+this.disciplina.quartaNota) < 0 || (+this.disciplina.quartaNota) > 10)
+            return true;
+        else if ((+this.disciplina.notaFinal) < 0 || (+this.disciplina.notaFinal) > 10)
+            return true;
         else
-            control.setErrors(null)
+            return false
     }
+
 }
