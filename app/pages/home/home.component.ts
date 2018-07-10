@@ -17,7 +17,8 @@ import { DisciplinaService } from '~/services/disciplina.service';
 })
 export class HomeComponent implements OnInit {
 
-    public disciplinas: Array<Disciplina> = [];
+    public disciplinasAbertas: Array<Disciplina> = [];
+    public disciplinasFechadas: Array<Disciplina> = [];
     public icons: Map<string, string> = new Map<string, string>();
     
     public constructor(private databaseService: DataBaseService, private page: Page){
@@ -42,8 +43,22 @@ export class HomeComponent implements OnInit {
     }
 
     private loadDisciplinas(){
+
+        this.disciplinasAbertas = [];
+        this.disciplinasFechadas = [];
+
         this.databaseService.getAll().then((res: Array<Disciplina>) => {
-            this.disciplinas = res;
+            res.forEach(disciplina => {
+
+                let { isClosed } = disciplina;
+
+                if (isClosed.toString() === "true") {
+                    this.disciplinasFechadas.push(disciplina);
+                } else {
+                    this.disciplinasAbertas.push(disciplina);                    
+                }
+                
+            })
         });
     }
 
@@ -52,5 +67,13 @@ export class HomeComponent implements OnInit {
         this.icons.set('aprovado', String.fromCharCode(0xf087));
         this.icons.set('reprovado', String.fromCharCode(0xf088));
         this.icons.set('reprovadoCheio', String.fromCharCode(0xf165));     
+    }
+
+    public getIcon({ isClosed }) {
+        if (isClosed === "true") {
+            return this.icons.get('aprovado')
+        } else if (isClosed === "false") {
+            return this.icons.get('reprovadoCheio');
+        }
     }
 }

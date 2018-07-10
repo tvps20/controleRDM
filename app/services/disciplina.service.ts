@@ -22,7 +22,6 @@ export class DisciplinaService {
     var media: number = this.mediaAritimetrica(disciplina);
     var mediaFinal = ((media*0.6) + (disciplina.notaFinal*0.4));
 
-    console.log((10*0.6))
     return parseFloat(mediaFinal.toFixed(2));
   }
 

@@ -13,7 +13,7 @@
 
         <StackLayout *tabItem="{title: 'Pagando'}">
             <GridLayout row="0" columns="*, auto">
-                <ListView  colSpan="2" col="0" [items]="disciplinas" class="list-group">     
+                <ListView  colSpan="2" col="0" [items]="disciplinasAbertas" class="list-group">     
                     <ng-template let-item="item">
                         <GridLayout columns="35px, *" class="list-group-item">
                             <label col="0" [text]="icons.get('trash')" class="fa" (tap)="deleteDisciplina(item)"></label>
@@ -28,12 +28,12 @@
         </StackLayout>
 
         <StackLayout *tabItem="{title: 'Histórico'}"> 
-            <ListView [items]="disciplinas" class="list-group">     
+            <ListView [items]="disciplinasFechadas" class="list-group">     
                 <ng-template let-item="item">
                     <GridLayout columns="35px, *, auto" class="list-group-item">
                         <label col="0" [text]="icons.get('trash')" class="fa"></label>
                         <Label col="1" [text]='item.nome'></Label>
-                        <label col="2" [text]="item.isClosed ? icons.get('aprovado') : icons.get('reprovadoCheio')" class="fa"></label>
+                        <label col="2" [text]="getIcon(item)" class="fa"></label>
                     </GridLayout> 
                 </ng-template>
             </ListView>
