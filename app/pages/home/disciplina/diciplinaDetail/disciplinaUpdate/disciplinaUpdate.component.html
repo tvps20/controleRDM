@@ -73,7 +73,7 @@
                 </ScrollView>
 
                 <!-- Está Fechada? -->
-                <CheckBox #CB1 text="Fechar Disciplina" fillColor="#006968" class="checkBox" checked="false"></CheckBox>   
+                <CheckBox #CB1 text="Fechar Disciplina" fillColor="#006968" class="checkBox" [(ngModel)]="disciplina.isClosed"></CheckBox>   
 
                 <button text="Atualizar" class="btn btn-primary" [isEnabled]="element.valid && elementNome.valid && !notaValorValidation() && !notaValidator()" (tap)="updateDisciplina()"></button>
 

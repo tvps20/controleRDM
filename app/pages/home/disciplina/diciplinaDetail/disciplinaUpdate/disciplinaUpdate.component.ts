@@ -74,6 +74,7 @@ export class DisciplinaUpdateComponent {
     }
 
     public updateDisciplina(){
+        console.log(this.disciplina);
         this.databaseService.update(this.disciplina).then(() => {
             this.nav.navigate(['/home'], {clearHistory: true});
         })

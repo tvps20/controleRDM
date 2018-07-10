@@ -18,7 +18,10 @@ import { DisciplinaComponent } from "./pages/home/disciplina/disciplina.componen
 import { DisciplinaDetailComponent } from "./pages/home/disciplina/diciplinaDetail/disciplinaDetail.component";
 import { DisciplinaUpdateComponent } from './pages/home/disciplina/diciplinaDetail/disciplinaUpdate/disciplinaUpdate.component';
 import { SobreComponent } from "./pages/sobre/sobre.component";
+
+// Services
 import { DataBaseService } from "~/services/database.service";
+import { DisciplinaService } from "./services/disciplina.service"
 
 // importando o serviço para usar os modais
 import { ModalDialogService } from 'nativescript-angular/modal-dialog' 
@@ -26,7 +29,7 @@ import { ModalDialogService } from 'nativescript-angular/modal-dialog'
 // Uncomment and add to NgModule imports if you need to use two-way binding
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 
-import { ReactiveFormsModule } from '@angular/forms'
+//import { ReactiveFormsModule } from '@angular/forms'
 
 
 // Uncomment and add to NgModule imports  if you need to use the HTTP wrapper
@@ -40,7 +43,6 @@ import { ReactiveFormsModule } from '@angular/forms'
         NativeScriptModule,
         AppRoutingModule,
         NativeScriptFormsModule,
-        ReactiveFormsModule,
         TNSCheckBoxModule
     ],
     declarations: [
@@ -56,6 +58,7 @@ import { ReactiveFormsModule } from '@angular/forms'
     ],
     providers: [
         DataBaseService,
+        DisciplinaService,
         ModalDialogService
     ],
     schemas: [

@@ -6,6 +6,7 @@ import * as Toast from 'nativescript-toast';
 
 import { DataBaseService } from '~/services/database.service';
 import { Disciplina } from '~/shared/models/disciplina.model';
+import { DisciplinaService } from '~/services/disciplina.service';
 
 
 @Component({
@@ -19,12 +20,13 @@ export class HomeComponent implements OnInit {
     public disciplinas: Array<Disciplina> = [];
     public icons: Map<string, string> = new Map<string, string>();
     
-    public constructor(private databaseService: DataBaseService, private page: Page){
+    public constructor(private databaseService: DataBaseService, private page: Page, private disciplinaService: DisciplinaService){
         this.setIcons();
         this.loadDisciplinas();        
     }
 
     ngOnInit(): void {
+        console.log(this.disciplinaService.mediaAritimetrica(this.disciplinas[1]));
         this.page.on("navigatingTo", () => this.loadDisciplinas());
     }
     
