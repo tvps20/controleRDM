@@ -20,20 +20,24 @@
                         </GridLayout>
 
                         <label col="0" colSpan="2" row="2" text="Final" class="label font-weight-bold m-b-5"></label>
-                        <TextField col="0" colSpan="2" row="3" class="input" hint="Nota Final"  keyboardType="number" [(ngModel)]="disciplina.notaFinal" maxlength="3"></TextField>
+                        <TextField col="0" colSpan="2" row="3" class="input" hint="Nota Final" keyboardType="number" [(ngModel)]="disciplina.notaFinal" maxlength="3"></TextField>
 
                     </GridLayout>
 
                     <StackLayout>
-                        <label *ngIf="notaValorValidation()" text="Não Pode fazer Final" class="text-right text-danger"></label>
+                        <label *ngIf="notaValidator()" text="Essa nota não é válida" class="text-right text-danger"></label>
                     </StackLayout>
                 </StackLayout>
 
                 <!-- Nome -->
                 <StackLayout class="input-field">
                     <label text="Nome" class="label font-weight-bold m-b-5"></label>
-                    <TextField class="input" [(ngModel)]="disciplina.nome"></TextField>
+                    <TextField class="input" [(ngModel)]="disciplina.nome" #elementNome="ngModel" required></TextField>
                     <StackLayout class="hr-light"></StackLayout>
+
+                    <StackLayout>
+                        <label *ngIf="!elementNome.valid" text="Campo Obrigatório" class="text-right text-danger"></label>
+                    </StackLayout>
                 </StackLayout>
 
                 <!-- Nome -->
@@ -71,7 +75,7 @@
                 <!-- Está Fechada? -->
                 <CheckBox #CB1 text="Fechar Disciplina" fillColor="#006968" class="checkBox" checked="false"></CheckBox>   
 
-                <button text="Atualizar" class="btn btn-primary" [isEnabled]="element.valid" (tap)="updateDisciplina()"></button>
+                <button text="Atualizar" class="btn btn-primary" [isEnabled]="element.valid && elementNome.valid && !notaValorValidation() && !notaValidator()" (tap)="updateDisciplina()"></button>
 
             </StackLayout>
 

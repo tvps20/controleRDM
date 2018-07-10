@@ -79,16 +79,30 @@ export class DisciplinaUpdateComponent {
         })
     }
 
-    public notaValorValidation(): boolean {
+    public notaValorValidation(){
         let somaNota: number = (+this.disciplina.primeiraNota) + (+this.disciplina.segundaNota) + (+this.disciplina.terceiraNota) + (+this.disciplina.quartaNota);
 
-        console.log(somaNota)
-        if((somaNota >= 16) && (somaNota < 28)){
-            console.log("faz")
+        if((somaNota >= 16) && (somaNota < 28) && (!this.disciplina.notaFinal))
             return true;
-        } else {
-            console.log("n faz")
-            return false;
-        }
+        else if((somaNota < 16) || (somaNota >= 28) && (this.disciplina.notaFinal))
+            return true;
+        else 
+            return false;     
+    }
+
+    public notaValidator(){
+
+        if((+this.disciplina.primeiraNota) < 0 || (+this.disciplina.primeiraNota) > 10)
+            return true;
+        else if ((+this.disciplina.segundaNota) < 0 || (+this.disciplina.segundaNota) > 10)
+            return true;
+        else if ((+this.disciplina.terceiraNota) < 0 || (+this.disciplina.terceiraNota) > 10)
+            return true;
+        else if ((+this.disciplina.quartaNota) < 0 || (+this.disciplina.quartaNota) > 10)
+            return true;
+        else if ((+this.disciplina.notaFinal) < 0 || (+this.disciplina.notaFinal) > 10)
+            return true;
+        else
+           return false
     }
 }

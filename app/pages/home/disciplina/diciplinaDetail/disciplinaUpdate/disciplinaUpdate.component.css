@@ -6,3 +6,8 @@
     font-size: 50px;
     margin-top: 15px;
 }
+
+.input[notaValorValidation] {
+    border-left-color: #a94442; 
+    border-left-width: 3;
+}
