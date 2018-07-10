@@ -20,13 +20,12 @@ export class HomeComponent implements OnInit {
     public disciplinas: Array<Disciplina> = [];
     public icons: Map<string, string> = new Map<string, string>();
     
-    public constructor(private databaseService: DataBaseService, private page: Page, private disciplinaService: DisciplinaService){
+    public constructor(private databaseService: DataBaseService, private page: Page){
         this.setIcons();
         this.loadDisciplinas();        
     }
 
     ngOnInit(): void {
-        console.log(this.disciplinaService.mediaAritimetrica(this.disciplinas[1]));
         this.page.on("navigatingTo", () => this.loadDisciplinas());
     }
     
