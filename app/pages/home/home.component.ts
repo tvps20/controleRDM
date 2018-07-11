@@ -75,6 +75,10 @@ export class HomeComponent implements OnInit {
         return this.disciplinaService.calculoCRE(this.disciplinasFechadas);
     }
 
+    public previsaoCre(){
+        return this.disciplinaService.calculoPrecisaoCRE(this.disciplinasAbertas, this.disciplinasFechadas);
+    }
+
     // public getIcon({ isClosed }) {
     //     if (isClosed === "true") {
     //         return this.icons.get('aprovado')

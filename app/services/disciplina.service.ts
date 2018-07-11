@@ -25,19 +25,38 @@ export class DisciplinaService {
     return parseFloat(mediaFinal.toFixed(2));
   }
 
-  public calculoCRE(listaDeDisciplinas: Array<Disciplina>){
+  public calculoCRE(listaDeDisciplinasFechadas: Array<Disciplina>){
     let nota: number = 0;
     let totalCargaHoraria: number = 0;
     
-    listaDeDisciplinas.forEach(element => {
+    listaDeDisciplinasFechadas.forEach(element => {
       nota += this.calcularMedia(element) * element.cargaHoraria;
-      totalCargaHoraria += element.cargaHoraria;
-      console.log(element)  
+      totalCargaHoraria += element.cargaHoraria; 
     });
 
     let cre = nota/totalCargaHoraria
-    
+
     return parseFloat(cre.toFixed(2));
+  }
+
+  public calculoPrecisaoCRE(listaDeDisciplinasAbertas: Array<Disciplina>, listaDeDisciplinasFechadas: Array<Disciplina>){
+    let nota: number = 0;
+    let totalCargaHoraria: number = 0;
+
+    listaDeDisciplinasAbertas.forEach(element => {
+      nota += this.calcularMedia(element) * element.cargaHoraria;
+      totalCargaHoraria += element.cargaHoraria; 
+    });
+    
+    listaDeDisciplinasFechadas.forEach(element => {
+      nota += this.calcularMedia(element) * element.cargaHoraria;
+      totalCargaHoraria += element.cargaHoraria;
+
+    });
+    
+    let previsaCre = nota/totalCargaHoraria
+
+    return parseFloat(previsaCre.toFixed(2));
   }
 
 }

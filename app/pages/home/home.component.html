@@ -3,12 +3,16 @@
 </ActionBar>
 
 <GridLayout rows="auto, *" sdkExampleTitle sdkToggleNavButton>
-    <TabView row="1" selectedIndex="1" androidOffscreenTabLimit="2" tabBackgroundColor="#006968" tabTextColor="white" androidSelectedTabHighlightColor="white" selectedTabTextColor="white">
+    <TabView row="1" selectedIndex="0" androidOffscreenTabLimit="2" tabBackgroundColor="#006968" tabTextColor="white" androidSelectedTabHighlightColor="white" selectedTabTextColor="white">
         <StackLayout *tabItem="{title: 'Inicio'}">
-            <GridLayout row="0" columns="*, auto">
-                <Label col="0" text="Previsão do CRE" class="m-15 h2 text-left"></Label>
-                <label col="1" [text]="calcularCre()" class="m-15 h2 text-left"></label>
-            </GridLayout>  
+            <GridLayout row="0" rows="auto,auto" columns="*, auto">
+                <Label col="0" row="0" text="Previsao do CRE" class="m-15 h2 text-left"></Label>
+                <label col="1" row="0" [text]="previsaoCre()" class="m-15 h2 text-left"></label>
+
+                <Label col="0" row="1" text="CRE Atual" class="m-15 h3 text-left"></Label>
+                <label col="1" row="1" [text]="calcularCre()" class="m-15 h3 text-left"></label>
+            </GridLayout> 
+         
         </StackLayout>
 
         <StackLayout *tabItem="{title: 'Pagando'}">
