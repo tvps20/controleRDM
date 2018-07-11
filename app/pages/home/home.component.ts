@@ -31,13 +31,11 @@ export class HomeComponent implements OnInit {
     }
     
     public deleteDisciplina(disciplina: Disciplina){
-        dialogs.confirm(`Deseja realmente excluir a disciplina "${disciplina.nome}"`)
+        dialogs.confirm({title: "Excluir", message: `Deseja realmente excluir a disciplina "${disciplina.nome}"`, okButtonText: "Sim", cancelButtonText: "Cancelar",})
             .then(result => {
                 if(result) {
                     this.databaseService.delete(disciplina.id);
                     this.loadDisciplinas();
-                } else {
-                    alert("Ocorreu um erro ao tentar remover, tente novamente.")
                 }
         })
     }
