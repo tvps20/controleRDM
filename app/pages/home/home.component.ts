@@ -73,6 +73,10 @@ export class HomeComponent implements OnInit {
         return this.disciplinaService.calcularMedia(disciplina);
     }
 
+    public calcularCre(){
+        return this.disciplinaService.calculoCRE(this.disciplinasFechadas);
+    }
+
     // public getIcon({ isClosed }) {
     //     if (isClosed === "true") {
     //         return this.icons.get('aprovado')

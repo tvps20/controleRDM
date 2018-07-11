@@ -76,7 +76,6 @@ export class DisciplinaUpdateComponent {
     }
 
     public updateDisciplina(){
-        this.disciplina.ajustarNotas();
         this.verificaStatus(this.disciplina);
         this.databaseService.update(this.disciplina).then(() => {
             //this.nav.navigateByUrl("disciplina/"+ this.disciplina.id);

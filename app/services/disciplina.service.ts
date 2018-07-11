@@ -25,4 +25,22 @@ export class DisciplinaService {
     return parseFloat(mediaFinal.toFixed(2));
   }
 
+  public calculoCRE(listaDeDisciplinas: Array<Disciplina>){
+    let nota: number;
+    let totalCargaHoraria: number;
+
+    console.log(listaDeDisciplinas)
+    
+    listaDeDisciplinas.forEach(element => {
+      nota += element.primeiraNota * element.cargaHoraria;
+      totalCargaHoraria += (element.cargaHoraria);
+    });
+
+    console.log(nota)
+    console.log(totalCargaHoraria)
+    // let cre = nota/totalCargaHoraria
+
+    // return parseFloat(cre.toFixed(2));
+  }
+
 }

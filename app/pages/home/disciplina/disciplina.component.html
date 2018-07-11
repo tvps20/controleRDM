@@ -9,18 +9,18 @@
                     <GridLayout columns="*,*" rows="*,*,auto,auto">
                         <label col="0" row="0" text="Unidade 1" class="label font-weight-bold m-b-5"></label>
                         <GridLayout col="0" row="1" columns="*,*" class="input-field">
-                            <TextField col="0" class="input" hint="1º Nota" keyboardType="number" [(ngModel)]="disciplina.primeiraNota" maxlength="3"></TextField>
-                            <TextField col="1" class="input" hint="2º Nota" keyboardType="number" [(ngModel)]="disciplina.segundaNota" maxlength="3"></TextField>
+                            <TextField col="0" class="input" hint="1º Nota" keyboardType="number" [(ngModel)]="disciplina.primeiraNota" maxlength="4"></TextField>
+                            <TextField col="1" class="input" hint="2º Nota" keyboardType="number" [(ngModel)]="disciplina.segundaNota" maxlength="4"></TextField>
                         </GridLayout>
 
                         <label col="1" row="0" text="Unidade 2" class="label font-weight-bold m-b-5"></label>
                         <GridLayout col="1" row="1" columns="*,*" class="input-field">
-                            <TextField col="0" class="input" hint="3º Nota" keyboardType="number" [(ngModel)]="disciplina.terceiraNota" maxlength="3"></TextField>
-                            <TextField col="1" class="input" hint="4º Nota" keyboardType="number" [(ngModel)]="disciplina.quartaNota" maxlength="3"></TextField>
+                            <TextField col="0" class="input" hint="3º Nota" keyboardType="number" [(ngModel)]="disciplina.terceiraNota" maxlength="4"></TextField>
+                            <TextField col="1" class="input" hint="4º Nota" keyboardType="number" [(ngModel)]="disciplina.quartaNota" maxlength="4"></TextField>
                         </GridLayout>
 
                         <label col="0" colSpan="2" row="2" text="Final" class="label font-weight-bold m-b-5"></label>
-                        <TextField col="0" colSpan="2" row="3" class="input" hint="Nota Final" keyboardType="number" [(ngModel)]="disciplina.notaFinal" maxlength="3"></TextField>
+                        <TextField col="0" colSpan="2" row="3" class="input" hint="Nota Final" keyboardType="number" [(ngModel)]="disciplina.notaFinal" maxlength="4"></TextField>
 
                     </GridLayout>
 
@@ -50,7 +50,7 @@
                 <!-- Carga Horária -->
                 <StackLayout class="input-field">
                     <label text="Carga Horária" class="label font-weight-bold m-b-5"></label>
-                    <TextField class="input" keyboardType="number" [(ngModel)]="disciplina.cargaHoraria" #element="ngModel" maxlength="3" required></TextField>
+                    <TextField class="input" keyboardType="number" [(ngModel)]="disciplina.cargaHoraria" #element="ngModel" maxlength="4" required></TextField>
                     <StackLayout class="hr-light"></StackLayout>
 
                     <StackLayout>

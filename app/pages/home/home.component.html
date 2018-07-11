@@ -7,7 +7,7 @@
         <StackLayout *tabItem="{title: 'Inicio'}">
             <GridLayout row="0" columns="*, auto">
                 <Label col="0" text="Previsão do CRE" class="m-15 h2 text-left"></Label>
-                <label col="1" text="9" class="m-15 h2 text-left"></label>
+                <label col="1" [text]="calcularCre()" class="m-15 h2 text-left"></label>
             </GridLayout>  
         </StackLayout>
 
@@ -30,10 +30,10 @@
         <StackLayout *tabItem="{title: 'Histórico'}"> 
             <ListView [items]="disciplinasFechadas" class="list-group">     
                 <ng-template let-item="item">
-                    <GridLayout columns="35px, *, 50px, auto" class="list-group-item">
-                        <label col="0" [text]="icons.get('trash')" class="fa" (tap)="deleteDisciplina(item)"></label>
-                        <Label col="1" [text]='item.nome'></Label>
-                        <label col="2" [text]="calcularNota(item)"></label>
+                    <GridLayout columns="*, 60px, 60px, auto" class="list-group-item" (tap)="deleteDisciplina(item)">
+                        <label col="0" [text]='item.nome'></label>
+                        <Label col="1" [text]="item.cargaHoraria + 'CH'" style="text-align: center"></Label>
+                        <label col="2" [text]="calcularNota(item)" style="text-align: center"></label>
                         <label *ngIf="item.status === 'AP'" col="3" [text]="item.status" class="statusAP"></label>
                         <label *ngIf="item.status === 'RE'" col="3" [text]="item.status" class="statusRE"></label>
                     </GridLayout> 
