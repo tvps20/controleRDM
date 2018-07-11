@@ -14,3 +14,21 @@ ActionBar{
     border-color: transparent;
     border-width: 1;
 }
+
+.statusAP {
+    background-color: #2ecc71;
+    border-radius: 5%;
+    color: white;
+    padding: 7px;
+    width: 75px;
+    text-align: center;
+}
+
+.statusRE {
+    background-color: #c0392b;
+    border-radius: 5%;
+    color: white;
+    padding: 7px;
+    width: 75px;
+    text-align: center;
+}

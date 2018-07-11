@@ -68,7 +68,7 @@ export class DisciplinaComponent implements OnInit {
         let somaNota: number = (+this.disciplina.primeiraNota) + (+this.disciplina.segundaNota) + (+this.disciplina.terceiraNota) + (+this.disciplina.quartaNota);
 
         if((somaNota >= 16) && (somaNota < 28) && (!this.disciplina.notaFinal))
-            return true;
+            return false;
         else if(((somaNota < 16) || (somaNota >= 28)) && (this.disciplina.notaFinal))
             return true;    
         else 

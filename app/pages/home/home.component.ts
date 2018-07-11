@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
     public disciplinasFechadas: Array<Disciplina> = [];
     public icons: Map<string, string> = new Map<string, string>();
     
-    public constructor(private databaseService: DataBaseService, private page: Page){
+    public constructor(private databaseService: DataBaseService, private page: Page, private disciplinaService: DisciplinaService){
         this.setIcons();
         this.loadDisciplinas();        
     }
@@ -69,11 +69,15 @@ export class HomeComponent implements OnInit {
         this.icons.set('reprovadoCheio', String.fromCharCode(0xf165));     
     }
 
-    public getIcon({ isClosed }) {
-        if (isClosed === "true") {
-            return this.icons.get('aprovado')
-        } else if (isClosed === "false") {
-            return this.icons.get('reprovadoCheio');
-        }
+    public calcularNota(disciplina: Disciplina){
+        return this.disciplinaService.calcularMedia(disciplina);
     }
+
+    // public getIcon({ isClosed }) {
+    //     if (isClosed === "true") {
+    //         return this.icons.get('aprovado')
+    //     } else if (isClosed === "false") {
+    //         return this.icons.get('reprovadoCheio');
+    //     }
+    // }
 }

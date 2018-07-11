@@ -2,14 +2,16 @@ import { Component, ViewChild, ElementRef, ViewContainerRef } from '@angular/cor
 import { Disciplina } from '~/shared/models/disciplina.model';
 import { ActivatedRoute } from "@angular/router"
 import * as Toast from 'nativescript-toast';
+import { RouterExtensions } from 'nativescript-angular/router';
 
 import { ModalDialogService, ModalDialogOptions } from 'nativescript-angular/modal-dialog'
 
 import { DataBaseService } from '~/services/database.service';
-import { RouterExtensions } from 'nativescript-angular/router';
+import { DisciplinaService } from '~/services/disciplina.service';
 
 import { HorarioModalComponent } from '~/modais/horarioModal.component';
 import { Horario } from '~/shared/models/horario.model';
+import { Status } from '~/shared/statusDisciplina';
 
 
 @Component({
@@ -26,7 +28,7 @@ export class DisciplinaUpdateComponent {
         public horarios: Array<Horario>
 
     
-    public constructor(private router: ActivatedRoute, private databaseService: DataBaseService, private nav: RouterExtensions,  private modalService: ModalDialogService, private vcRef: ViewContainerRef,) {
+    public constructor(private router: ActivatedRoute, private databaseService: DataBaseService, private nav: RouterExtensions,  private modalService: ModalDialogService, private vcRef: ViewContainerRef, private disciplinaService: DisciplinaService) {
         this.id = +this.router.snapshot.params["id"];
         this.horarios = [];
         this.loadDisciplina();
@@ -55,7 +57,7 @@ export class DisciplinaUpdateComponent {
             viewContainerRef: this.vcRef,
             // Para Enviar os dados pra dentro do Modal
             // context: {
-            //     preSelectedHorario: horario
+            //     preSelectedHorario: objeto do tipo horário
             // }
         };
 
@@ -74,7 +76,8 @@ export class DisciplinaUpdateComponent {
     }
 
     public updateDisciplina(){
-        console.log(this.disciplina);
+        this.disciplina.ajustarNotas();
+        this.verificaStatus(this.disciplina);
         this.databaseService.update(this.disciplina).then(() => {
             //this.nav.navigateByUrl("disciplina/"+ this.disciplina.id);
             //this.nav.navigate(['disciplina', this.disciplina.id], {clearHistory: true});
@@ -83,12 +86,22 @@ export class DisciplinaUpdateComponent {
         })
     }
 
+    public verificaStatus(disciplina: Disciplina){
+        if(disciplina.isClosed){
+            var nota = this.disciplinaService.calcularMedia(this.disciplina);
+            if(nota >= 5)
+                this.disciplina.status = Status.Aprovado
+            else   
+                this.disciplina.status = Status.Reprovado
+        }
+    }
+
     // Validators
     public notaValorValidation(){
         let somaNota: number = (+this.disciplina.primeiraNota) + (+this.disciplina.segundaNota) + (+this.disciplina.terceiraNota) + (+this.disciplina.quartaNota);
 
         if((somaNota >= 16) && (somaNota < 28) && (!this.disciplina.notaFinal))
-            return true;
+            return false;
         else if(((somaNota < 16) || (somaNota >= 28)) && (this.disciplina.notaFinal))
             return true;
         else 

@@ -30,10 +30,12 @@
         <StackLayout *tabItem="{title: 'Histórico'}"> 
             <ListView [items]="disciplinasFechadas" class="list-group">     
                 <ng-template let-item="item">
-                    <GridLayout columns="35px, *, auto" class="list-group-item">
-                        <label col="0" [text]="icons.get('trash')" class="fa"></label>
+                    <GridLayout columns="35px, *, 50px, auto" class="list-group-item">
+                        <label col="0" [text]="icons.get('trash')" class="fa" (tap)="deleteDisciplina(item)"></label>
                         <Label col="1" [text]='item.nome'></Label>
-                        <label col="2" [text]="getIcon(item)" class="fa"></label>
+                        <label col="2" [text]="calcularNota(item)"></label>
+                        <label *ngIf="item.status === 'AP'" col="3" [text]="item.status" class="statusAP"></label>
+                        <label *ngIf="item.status === 'RE'" col="3" [text]="item.status" class="statusRE"></label>
                     </GridLayout> 
                 </ng-template>
             </ListView>
