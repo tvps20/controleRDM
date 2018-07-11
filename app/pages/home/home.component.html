@@ -32,8 +32,8 @@
                 <ng-template let-item="item">
                     <GridLayout columns="*, 60px, 60px, auto" class="list-group-item" (tap)="deleteDisciplina(item)">
                         <label col="0" [text]='item.nome'></label>
-                        <Label col="1" [text]="item.cargaHoraria + 'CH'" style="text-align: center"></Label>
-                        <label col="2" [text]="calcularNota(item)" style="text-align: center"></label>
+                        <Label col="1" [text]="item.cargaHoraria + 'CH'" style="text-align: center" class="cargaHoraria"></Label>
+                        <label col="2" [text]="calcularNota(item)" style="text-align: center" class="nota"></label>
                         <label *ngIf="item.status === 'AP'" col="3" [text]="item.status" class="statusAP"></label>
                         <label *ngIf="item.status === 'RE'" col="3" [text]="item.status" class="statusRE"></label>
                     </GridLayout> 

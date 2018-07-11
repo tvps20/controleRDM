@@ -20,27 +20,24 @@ export class DisciplinaService {
 
   public mediaFinal(disciplina: Disciplina){
     var media: number = this.mediaAritimetrica(disciplina);
-    var mediaFinal = ((media*0.6) + (disciplina.notaFinal*0.4));
+    var mediaFinal = ((media*0.6) + (+disciplina.notaFinal*0.4));
 
     return parseFloat(mediaFinal.toFixed(2));
   }
 
   public calculoCRE(listaDeDisciplinas: Array<Disciplina>){
-    let nota: number;
-    let totalCargaHoraria: number;
-
-    console.log(listaDeDisciplinas)
+    let nota: number = 0;
+    let totalCargaHoraria: number = 0;
     
     listaDeDisciplinas.forEach(element => {
-      nota += element.primeiraNota * element.cargaHoraria;
-      totalCargaHoraria += (element.cargaHoraria);
+      nota += this.calcularMedia(element) * element.cargaHoraria;
+      totalCargaHoraria += element.cargaHoraria;
+      console.log(element)  
     });
 
-    console.log(nota)
-    console.log(totalCargaHoraria)
-    // let cre = nota/totalCargaHoraria
-
-    // return parseFloat(cre.toFixed(2));
+    let cre = nota/totalCargaHoraria
+    
+    return parseFloat(cre.toFixed(2));
   }
 
 }

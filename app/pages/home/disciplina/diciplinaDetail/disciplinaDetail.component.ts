@@ -23,17 +23,18 @@ export class DisciplinaDetailComponent implements OnInit{
     
     constructor(private router: ActivatedRoute, private databaseService: DataBaseService, private disciplinaService: DisciplinaService, private page: Page){
         this.id = +this.router.snapshot.params["id"];
-        this.loadDisciplina();
-        
+        this.loadDisciplina();     
     }
 
     ngOnInit(): void {
-        this.page.on("navigatingTo", () =>  { this.loadDisciplina(); });
+        this.page.on("navigatingTo", () =>  { this.loadDisciplina(); });  
     }
     
     public loadDisciplina(){
         this.databaseService.getDisciplina(this.id).then((res: Disciplina) => {
             this.disciplina = res;
+            this.disciplina.ajustarNotas();
+            //this.disciplina.terceiraNota = +this.disciplina.terceiraNota.toFixed(2)
             this.media = this.disciplinaService.calcularMedia(this.disciplina);
         });
     }

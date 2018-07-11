@@ -19,4 +19,17 @@ export class Disciplina {
         this.cargaHoraria = cargaHoraria;
         this.isClosed = false;
     }
+
+    public ajustarNotas(){
+        if(this.primeiraNota)
+            this.primeiraNota = +this.primeiraNota.toFixed(2); 
+        if(this.segundaNota)
+            this.segundaNota = +this.segundaNota.toFixed(2);
+        if(this.terceiraNota)
+            this.terceiraNota = +this.terceiraNota.toFixed(2);
+        if(this.quartaNota)
+            this.quartaNota = +this.quartaNota.toFixed(2);
+        if(this.notaFinal)
+            this.notaFinal = +this.notaFinal.toFixed(2);  
+    }
 }

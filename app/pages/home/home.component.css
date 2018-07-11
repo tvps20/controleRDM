@@ -32,15 +32,36 @@ ActionBar{
     padding: 7px;
     width: 75px;
     text-align: center;
+    font-weight: bold;
 }
 
-.statusMT {
+.cargaHoraria {
+    background-color: #3498db;
+    border-radius: 5%;
+    color: white;
+    padding: 7px;
+    width: 150px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.nota{
+    background-color: #95a5a6;
+    border-radius: 5%;
+    color: white;
+    padding: 7px;
+    width: 100px;
+    text-align: center;
+    font-weight: bold;
+}
+/* .statusMT {
     background-color: #3498db;
     border-radius: 5%;
     color: white;
     padding: 7px;
     width: 75px;
     text-align: center;
+    font-weight: bold;
 }
 
 .statusDP {
@@ -50,4 +71,5 @@ ActionBar{
     padding: 7px;
     width: 75px;
     text-align: center;
-}
+    font-weight: bold;
+} */
