@@ -59,4 +59,52 @@ export class DisciplinaService {
     return parseFloat(previsaCre.toFixed(2));
   }
 
+  public previsaoDeNota(disciplina: Disciplina){
+    let somaNotas = (+disciplina.primeiraNota) + (+disciplina.segundaNota) + (+disciplina.terceiraNota) + (+disciplina.quartaNota);
+    let countNotas = this.verificaNotas(disciplina);
+    
+    if(countNotas < 4){
+      return (28 - somaNotas)
+    } else if (countNotas == 4){
+      if(somaNotas >= 28){
+        // Aprovado
+        return 0
+      } else {
+        if(disciplina.notaFinal){
+          let media: number = this.calcularMedia(disciplina)
+          
+          if(media >= 5 ){
+            // Aprovado
+            return 0
+          }
+          else {
+            // Reprovado
+            return -1
+          }
+        } else {
+          let mediaParcial = (this.mediaAritimetrica(disciplina) * 6)
+          let total = 50 - mediaParcial;
+          
+          return parseFloat((total/4).toFixed(2));
+        }
+      }
+    }
+
+  }
+
+  private verificaNotas(disciplina: Disciplina){
+    let countNota: number = 0;
+
+    if(disciplina.primeiraNota)
+      countNota++
+    if(disciplina.segundaNota)
+      countNota++
+    if(disciplina.terceiraNota)
+      countNota++
+    if(disciplina.quartaNota)
+      countNota++
+
+    return countNota;
+  }
+
 }

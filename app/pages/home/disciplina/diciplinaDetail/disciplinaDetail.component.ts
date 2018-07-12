@@ -27,15 +27,29 @@ export class DisciplinaDetailComponent implements OnInit{
     }
 
     ngOnInit(): void {
-        this.page.on("navigatingTo", () =>  { this.loadDisciplina(); });  
+        this.page.on("navigatingTo", () =>  { this.loadDisciplina(); }); 
+        this.previsaoNota();
+        this.disciplina.ajustarNotas(); 
     }
     
     public loadDisciplina(){
         this.databaseService.getDisciplina(this.id).then((res: Disciplina) => {
             this.disciplina = res;
-            this.disciplina.ajustarNotas();
-            //this.disciplina.terceiraNota = +this.disciplina.terceiraNota.toFixed(2)
             this.media = this.disciplinaService.calcularMedia(this.disciplina);
+            this.previsaoNota();
+            this.disciplina.ajustarNotas();       
         });
     }
+
+    public previsaoNota(){
+        let notaPrevisao = this.disciplinaService.previsaoDeNota(this.disciplina)
+
+        if(notaPrevisao == 0)
+            return "Você esta Aprovado Aprovado nessa disciplina.";
+        else if(notaPrevisao == -1)
+            return false;
+        else    
+            return "Você precisa somar " + notaPrevisao + " pontos para passar.";
+    }
+
 }

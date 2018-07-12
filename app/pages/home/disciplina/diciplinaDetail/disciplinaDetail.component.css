@@ -11,8 +11,6 @@
 }
 
 .quadroNota {
-  border: 10px solid teal;
-  border-style: outset;
   margin-top: 15px;
   font-size: 20px;
 }

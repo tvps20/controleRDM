@@ -31,6 +31,11 @@
                     </GridLayout>
                 </StackLayout>
 
+                <StackLayout class="m-y-15">
+                    <label *ngIf="previsaoNota()" [text]="previsaoNota()" class="text-primary"></label>
+                    <label *ngIf="previsaoNota() === false" [text]="'Você esta repovado nessa disciplina.'" class="text-danger"></label>
+                </StackLayout>
+
                 <!-- Professor -->
                 <StackLayout class="input-field">
                     <label text="Professor" class="label font-weight-bold m-b-5"></label>
