@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import * as dialogs from 'ui/dialogs';
 import * as Toast from 'nativescript-toast';
 
 import { ModalDialogService, ModalDialogOptions } from 'nativescript-angular/modal-dialog'
@@ -12,6 +11,7 @@ import { Disciplina } from '~/shared/models/disciplina.model';
 import { DataBaseService } from '~/services/database.service';
 import { Status } from '~/shared/statusDisciplina';
 import { Horario } from '~/shared/models/horario.model';
+import { DisciplinaService } from '~/services/disciplina.service';
 
 
 
@@ -28,7 +28,7 @@ export class DisciplinaComponent implements OnInit {
     private countHorario: number
 
         
-    constructor(private databaseService: DataBaseService, private nav: RouterExtensions, private modalService: ModalDialogService, private vcRef: ViewContainerRef){
+    constructor(private databaseService: DataBaseService, private nav: RouterExtensions, private modalService: ModalDialogService, private vcRef: ViewContainerRef, private disciplinaService: DisciplinaService){
         this.disciplina = new Disciplina('', undefined);
         this.horarios = [];
         this.countHorario = 0;
@@ -72,17 +72,7 @@ export class DisciplinaComponent implements OnInit {
     }
 
     public deleteHorario(horario: Horario){
-        dialogs.confirm({title: "Excluir", message: "Deseja realmente excluir este horario?", okButtonText: "Sim", cancelButtonText: "Cancelar",}).then(result => {
-            if(result) {
-                for (var i = 0; i < this.horarios.length; i++) {
-                    if (this.horarios[i].id === horario.id) {
-                        this.horarios.splice(i, 1);
-                        Toast.makeText("Horário Deletado").show();
-                        break;
-                    }
-                }
-            }
-        })
+        this.disciplinaService.deleteHorario(horario, this.horarios);
     }
     
     // Validators

@@ -1,9 +1,15 @@
 import { Injectable } from "@angular/core";
+import * as dialogs from 'ui/dialogs';
+import * as Toast from 'nativescript-toast';
+
 import { Disciplina } from "~/shared/models/disciplina.model";
+import { Horario } from "~/shared/models/horario.model";
 
 
 @Injectable()
 export class DisciplinaService {
+
+  private countHorario: number = 0;
 
   public calcularMedia(disciplina: Disciplina){
     if(disciplina.notaFinal)
@@ -117,4 +123,25 @@ export class DisciplinaService {
     return countNota;
   }
 
+  public setNewHorario(newHorario: Horario, horarios: Array<Horario>){
+    if(newHorario){
+        newHorario.id = ++this.countHorario;
+        horarios.push(newHorario);
+        Toast.makeText("Horário adicionado").show();
+    }
+}
+
+  public deleteHorario(horario: Horario, horarios: Array<Horario>){
+    dialogs.confirm({title: "Excluir", message: "Deseja realmente excluir este horario?" + horario.id, okButtonText: "Sim", cancelButtonText: "Cancelar",}).then(result => {
+        if(result) {
+            for (var i = 0; i < horarios.length; i++) {
+                if (horarios[i].id === horario.id) {
+                    horarios.splice(i, 1);
+                    Toast.makeText("Horário Deletado").show();
+                    break;
+                }
+            }
+        }
+    })
+  }
 }

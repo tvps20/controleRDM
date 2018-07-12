@@ -26,12 +26,14 @@ export class DisciplinaUpdateComponent {
         @ViewChild("CB1") FirstCheckBox: ElementRef;
         public disciplina: Disciplina;
         public horarios: Array<Horario>
+        private countHorario = 0;
 
     
     public constructor(private router: ActivatedRoute, private databaseService: DataBaseService, private nav: RouterExtensions,  private modalService: ModalDialogService, private vcRef: ViewContainerRef, private disciplinaService: DisciplinaService) {
         this.id = +this.router.snapshot.params["id"];
         this.horarios = [];
         this.loadDisciplina();
+        this.countHorario = 0;
     }
 
     public loadDisciplina(){
@@ -50,6 +52,7 @@ export class DisciplinaUpdateComponent {
         this.modalService.showModal(HorarioModalComponent, modalOptions).then(newHorario => this.setNewHorario(newHorario));
     }
 
+
     public upDateHorarioModal(horario: Horario){
         let modalOptions: ModalDialogOptions = {
             fullscreen: false,
@@ -65,14 +68,11 @@ export class DisciplinaUpdateComponent {
     }
 
     private setNewHorario(newHorario: Horario){
-        if(newHorario){
-            this.horarios.push(newHorario);
-            Toast.makeText("Horário adicionado").show();
-        }
+        this.disciplinaService.setNewHorario(newHorario, this.horarios);
     }
 
-    public deleteHorario(){
-
+    public deleteHorario(horario: Horario){
+        this.disciplinaService.deleteHorario(horario, this.horarios);
     }
 
     public updateDisciplina(){
