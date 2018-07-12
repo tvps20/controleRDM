@@ -79,6 +79,10 @@ export class HomeComponent implements OnInit {
         return this.disciplinaService.calculoPrecisaoCRE(this.disciplinasAbertas, this.disciplinasFechadas);
     }
 
+    public chAcumulada(){
+        return this.disciplinaService.calcularChAcumulada(this.disciplinasFechadas);
+    }
+
     // public getIcon({ isClosed }) {
     //     if (isClosed === "true") {
     //         return this.icons.get('aprovado')

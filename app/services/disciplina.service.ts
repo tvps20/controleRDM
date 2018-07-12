@@ -59,6 +59,16 @@ export class DisciplinaService {
     return parseFloat(previsaCre.toFixed(2));
   }
 
+  public calcularChAcumulada(listaDeDisciplinasFechadas: Array<Disciplina>){
+    let totalCargaHoraria: number = 0;
+
+    listaDeDisciplinasFechadas.forEach(element => {
+      totalCargaHoraria += element.cargaHoraria;
+    });
+
+    return totalCargaHoraria;
+  }
+
   public previsaoDeNota(disciplina: Disciplina){
     let somaNotas = (+disciplina.primeiraNota) + (+disciplina.segundaNota) + (+disciplina.terceiraNota) + (+disciplina.quartaNota);
     let countNotas = this.verificaNotas(disciplina);
