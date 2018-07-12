@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import * as dialogs from 'ui/dialogs';
 import * as Toast from 'nativescript-toast';
 
 import { ModalDialogService, ModalDialogOptions } from 'nativescript-angular/modal-dialog'
@@ -24,11 +25,13 @@ export class DisciplinaComponent implements OnInit {
     
     public disciplina: Disciplina;
     public horarios: Array<Horario>
+    private countHorario: number
 
         
     constructor(private databaseService: DataBaseService, private nav: RouterExtensions, private modalService: ModalDialogService, private vcRef: ViewContainerRef){
         this.disciplina = new Disciplina('', undefined);
         this.horarios = [];
+        this.countHorario = 0;
     }
     
     ngOnInit(): void {
@@ -51,19 +54,36 @@ export class DisciplinaComponent implements OnInit {
     public addDisciplina(){
         this.disciplina.status = Status.Matriculado;
         this.databaseService.insert(this.disciplina).then(() => {
-            this.databaseService.insertHorario(this.horarios[0]).then(() => {
-                this.nav.navigate(['/home'], {clearHistory: true});
-            }) 
+            this.horarios.forEach(element => {
+                this.databaseService.insertHorario(element)                
+            });
+            
+            Toast.makeText("Disciplina Adicionada").show();
+            this.nav.navigate(['/home'], {clearHistory: true});
         })
     }
 
     private setNewHorario(newHorario: Horario){
-        if(newHorario){
+        if(newHorario){          
+            newHorario.id = ++this.countHorario;
             this.horarios.push(newHorario);
             Toast.makeText("Horário adicionado").show();
         }
     }
-    
+
+    public deleteHorario(horario: Horario){
+        dialogs.confirm({title: "Excluir", message: "Deseja realmente excluir este horario?", okButtonText: "Sim", cancelButtonText: "Cancelar",}).then(result => {
+            if(result) {
+                for (var i = 0; i < this.horarios.length; i++) {
+                    if (this.horarios[i].id === horario.id) {
+                        this.horarios.splice(i, 1);
+                        Toast.makeText("Horário Deletado").show();
+                        break;
+                    }
+                }
+            }
+        })
+    }
     
     // Validators
     public notaValorValidation(){

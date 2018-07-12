@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
     }
     
     public deleteDisciplina(disciplina: Disciplina){
-        dialogs.confirm({title: "Excluir", message: `Deseja realmente excluir a disciplina "${disciplina.nome}"`, okButtonText: "Sim", cancelButtonText: "Cancelar",})
+        dialogs.confirm({title: "Excluir", message: `Deseja realmente excluir a disciplina "${disciplina.nome}"?`, okButtonText: "Sim", cancelButtonText: "Cancelar",})
             .then(result => {
                 if(result) {
                     this.databaseService.delete(disciplina.id);

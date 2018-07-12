@@ -68,7 +68,7 @@
                 <!-- Lista de Hórarios -->
                 <ScrollView orientation="horizontal">
                     <StackLayout orientation="horizontal" class="list-group m-y-15">
-                        <label class="list-group-item" *ngFor="let horario of horarios" [text]="horario.makeHorario()"></label>
+                        <label class="list-group-item" *ngFor="let horario of horarios" [text]="horario.makeHorario()" (tap)="deleteHorario(horario)"></label>
                     </StackLayout>
                 </ScrollView>
 
