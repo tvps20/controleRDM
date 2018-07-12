@@ -5,14 +5,29 @@
 <GridLayout rows="auto, *" sdkExampleTitle sdkToggleNavButton>
     <TabView row="1" selectedIndex="0" androidOffscreenTabLimit="2" tabBackgroundColor="#006968" tabTextColor="white" androidSelectedTabHighlightColor="white" selectedTabTextColor="white">
         <StackLayout *tabItem="{title: 'Inicio'}">
-            <GridLayout row="0" rows="auto,auto" columns="*, auto">
-                <Label col="0" row="0" text="Previsao do CRE" class="m-15 h2 text-left"></Label>
-                <label col="1" row="0" [text]="previsaoCre()" class="m-15 h2 text-left"></label>
+            <GridLayout rows="auto, auto">
+                <GridLayout row="0" columns="*, auto" class="PrevisaoCre">
+                    <Label col="0"  text="Previsao do CRE" class="m-15 h2 text-left"></Label>
+                    <label col="1" [text]="previsaoCre()" class="m-15 h2 text-left"></label>
+                </GridLayout>
 
-                <Label col="0" row="1" text="CRE Atual" class="m-15 h3 text-left"></Label>
-                <label col="1" row="1" [text]="calcularCre()" class="m-15 h3 text-left"></label>
-            </GridLayout> 
-         
+                <GridLayout row="1" columns="*, *">
+                    <GridLayout col="0" rows="*,*" class="cre">
+                        <Label col="0" row="0" text="CRE Atual" class="m-15 h3 text-left"></Label>
+                        <label col="0" row="1" [text]="calcularCre()" class="m-15 h3 text-left"></label>
+                    </GridLayout>
+                    <GridLayout col="1" rows="auto,auto" class="cargaHorariaStatus">
+                        <Label col="0" row="0" text="CH Acumulada" class="m-15 h3 text-left"></Label>
+                        <label col="0" row="1" text="0" class="m-15 h3 text-left"></label>
+                    </GridLayout>    
+                </GridLayout> 
+            </GridLayout>
+
+            <StackLayout class="tabelaHorarios">
+                <label text="Aulas de Hoje" style="color: white;" class="h3"></label>
+                <label text="Quinta-Feira" style="color: white; margin-left: 10px;" class="h1"></label>
+                <label text="Não há Aulas" class="tabelaHorarios-item"></label>
+            </StackLayout>
         </StackLayout>
 
         <StackLayout *tabItem="{title: 'Pagando'}">

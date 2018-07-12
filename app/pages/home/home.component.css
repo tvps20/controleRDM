@@ -26,6 +26,62 @@ ActionBar{
     margin-bottom: 10px;
 }
 
+.PrevisaoCre {
+    background-color: #8e44ad;
+    border-radius: 5%; 
+    margin: 20px;
+    padding-bottom: 30px;
+}
+
+.PrevisaoCre label {
+    color: white;
+    font-weight: bold;    
+}
+
+.cargaHorariaStatus{
+    background-color: #3498db;
+    border-radius: 5%; 
+    margin: 20px;
+    padding-bottom: 30px;
+}
+
+.cargaHorariaStatus label {
+    color: white;
+    font-weight: bold;  
+    text-align: center; 
+    font-size: 20px;
+}
+
+.cre {
+    background-color: #34495e;
+    border-radius: 5%; 
+    margin: 20px;   
+}
+
+.cre label {
+    color: white;
+    font-weight: bold;  
+    text-align: center;  
+    font-size: 20px;
+}
+
+.tabelaHorarios {
+    background-color: #00BFA5;
+    border-radius: 5%; 
+    margin: 20px; 
+    padding: 40px;  
+}
+
+.tabelaHorarios-item {
+    background-color: #1DE9B6;
+    border-radius: 5%; 
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 20px; 
+    padding: 40px; 
+}
+
 .statusRE {
     background-color: #c0392b;
     border-radius: 5%;
@@ -56,4 +112,8 @@ ActionBar{
     width: 75px;
     text-align: center;
     font-weight: bold;
+
+    border-style:solid;
+    border-width:10px;
+    border-color:red;
 } */
