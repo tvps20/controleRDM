@@ -33,3 +33,13 @@ refer to http://docs.nativescript.org/ui/theme.
 .page { 
     background-color: teal;
 }
+
+.cargaHoraria {
+    background-color: #3498db;
+    border-radius: 5%;
+    color: white;
+    padding: 7px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}

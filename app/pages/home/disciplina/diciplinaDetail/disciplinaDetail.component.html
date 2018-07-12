@@ -12,22 +12,22 @@
                 </GridLayout>
 
                 <!-- Notas -->
-                <StackLayout style="text-align: center" class="m-10">
+                <StackLayout style="text-align: center" class="quadroNota">
                     <GridLayout columns="*,*" rows="*,*,auto,auto">   
-                        <label col="0" row="0" text="Unidade 1"></label>
-                        <GridLayout col="0" row="1" columns="*,*" style="border-radius: 10%;" class="bg-primary m-10">
+                        <label col="0" row="0" text="Unidade 1" class="h3"></label>
+                        <GridLayout col="0" row="1" columns="*,*" style="border-radius: 10%;" class="bg-primary m-x-5">
                             <label col="0" [text]="disciplina.primeiraNota"></label>
                             <label col="1" [text]="disciplina.segundaNota"></label>
                         </GridLayout>
 
-                        <label col="1" row="0" text="Unidade 2"></label>
-                        <GridLayout col="1" row="1" columns="*,*" style="border-radius: 10%;" class="bg-primary m-10">
+                        <label col="1" row="0" text="Unidade 2" class="h3"></label>
+                        <GridLayout col="1" row="1" columns="*,*" style="border-radius: 10%;" class="bg-primary m-x-5">
                             <label col="0" [text]="disciplina.terceiraNota"></label>
                             <label col="1" [text]="disciplina.quartaNota"></label>
                         </GridLayout>
 
-                        <label col="0" colSpan="2" row="2" text="Final"></label>
-                        <label col="0" colSpan="2" row="3" [text]="disciplina.notaFinal" style="border-radius: 10%; width: 350px;" class="bg-primary m-5"></label>  
+                        <label col="0" colSpan="2" row="2" text="Final" class="h3"></label>
+                        <label col="0" colSpan="2" row="3" [text]="disciplina.notaFinal" style="border-radius: 10%; width: 350px;" class="bg-primary m-"></label>  
                     </GridLayout>
                 </StackLayout>
 
@@ -40,17 +40,18 @@
 
                 <!-- Carga Horária -->
                 <StackLayout class="input-field">
-                    <label text="Carga Horária" class="label font-weight-bold m-b-5"></label>
-                    <TextField class="input" [text]="disciplina.cargaHoraria" editable="false"></TextField>
+                    <GridLayout rows="auto, *" columns="auto, auto">
+                        <label row="0" col="0" colSpan="2" text="Carga Horária" class="label font-weight-bold m-b-5"></label>
+                        <label row="1" col="0" class="cargaHoraria" [text]="disciplina.cargaHoraria + 'CH'"></label>
+                    </GridLayout>
                     <StackLayout class="hr-light"></StackLayout>
                 </StackLayout>
                 
                 <!-- Status -->
                 <StackLayout class="input-field">
-                    <GridLayout rows="auto, *" columns="40px, auto">
+                    <GridLayout rows="auto, *" columns="auto, auto">
                         <label row="0" col="0" colSpan="2" text="Status" class="label font-weight-bold m-b-5"></label>
                         <label row="1" col="0" class="statusMT" [text]="disciplina.status"></label>
-                        <TextField row="1" col="1" text='Matriculado' class="input" editable="false"></TextField>
                     </GridLayout>
                     <StackLayout class="hr-light"></StackLayout>
                 </StackLayout>

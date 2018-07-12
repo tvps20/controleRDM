@@ -23,6 +23,7 @@ ActionBar{
     width: 75px;
     text-align: center;
     font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .statusRE {
@@ -33,15 +34,7 @@ ActionBar{
     width: 75px;
     text-align: center;
     font-weight: bold;
-}
-
-.cargaHoraria {
-    background-color: #3498db;
-    border-radius: 5%;
-    color: white;
-    padding: 7px;
-    text-align: center;
-    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .nota{
@@ -52,6 +45,7 @@ ActionBar{
     width: 100px;
     text-align: center;
     font-weight: bold;
+    margin-bottom: 10px;
 }
 
 /* .statusDP {
