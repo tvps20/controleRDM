@@ -19,10 +19,11 @@
             <GridLayout row="0" columns="*, auto">
                 <ListView  colSpan="2" col="0" [items]="disciplinasAbertas" class="list-group">     
                     <ng-template let-item="item">
-                        <GridLayout columns="35px, *, auto" class="list-group-item">
+                        <GridLayout columns="35px, *, 75, auto" class="list-group-item">
                             <label col="0" [text]="icons.get('trash')" class="fa" (tap)="deleteDisciplina(item)"></label>
                             <Label col="1" [text]='item.nome' [nsRouterLink]="['/disciplina', item.id]"></Label>
-                            <Label col="2" [text]='calcularNota(item)' class="nota" [nsRouterLink]="['/disciplina', item.id]"></Label>
+                            <Label col="2" [text]="item.cargaHoraria + 'CH'" style="text-align: center" class="cargaHoraria"></Label>
+                            <Label col="3" [text]='calcularNota(item)' class="nota" [nsRouterLink]="['/disciplina', item.id]"></Label>
                         </GridLayout> 
                     </ng-template>
                 </ListView>

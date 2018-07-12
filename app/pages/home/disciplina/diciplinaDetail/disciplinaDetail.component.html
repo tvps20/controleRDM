@@ -47,8 +47,11 @@
                 
                 <!-- Status -->
                 <StackLayout class="input-field">
-                    <label text="Status" class="label font-weight-bold m-b-5"></label>
-                    <TextField class="input" [text]="disciplina.status + '- Matriculado'" editable="false"></TextField>
+                    <GridLayout rows="auto, *" columns="40px, auto">
+                        <label row="0" col="0" colSpan="2" text="Status" class="label font-weight-bold m-b-5"></label>
+                        <label row="1" col="0" class="statusMT" [text]="disciplina.status"></label>
+                        <TextField row="1" col="1" text='Matriculado' class="input" editable="false"></TextField>
+                    </GridLayout>
                     <StackLayout class="hr-light"></StackLayout>
                 </StackLayout>
 

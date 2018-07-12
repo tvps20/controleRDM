@@ -11,7 +11,7 @@ import { DisciplinaService } from '~/services/disciplina.service';
     selector: 'disciplina-Detail',
     moduleId: module.id,
     templateUrl: './disciplinaDetail.component.html',
-    styleUrls: []
+    styleUrls: ['./disciplinaDetail.component.css']
 })
 export class DisciplinaDetailComponent implements OnInit{
     
