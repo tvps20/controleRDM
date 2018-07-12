@@ -1,6 +1,6 @@
 export class Horario {
     public id: number;
-    public sala: number;
+    public sala: string;
     public dia: string;
     public hora: string;
     public qtdAulas: number;

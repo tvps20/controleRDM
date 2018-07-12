@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Disciplina } from "~/shared/models/disciplina.model";
+import { Horario } from "~/shared/models/horario.model";
+import { resolveDefinition } from "../../node_modules/@angular/core/src/view/util";
 
 var Sqlite = require("nativescript-sqlite");
 
@@ -10,6 +12,7 @@ export class DataBaseService {
         return new Promise((resolve, reject) => {
             return (new Sqlite("controleCRE.db")).then(db => {
                 db.execSQL("CREATE TABLE IF NOT EXISTS disciplinas (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT, professor TEXT, cargaHoraria INTEGER, isClosed NUMERIC, status STRING, primeiraNota REAL, segundaNota REAL, terceiraNota REAL, quartaNota REAL, notaFinal REAL)").then(id => {
+                    db.execSQL("CREATE TABLE IF NOT EXISTS horarios (id INTEGER PRIMARY KEY AUTOINCREMENT, sala TEXT, dia TEXT, hora TEXT, qtdAulas INTEGER, idDisciplina INTEGER)")
                     resolve(db);
                 }, error => {
                     console.log("[DATABASE] - ERROR CREATE TABLE!", error);
@@ -22,6 +25,7 @@ export class DataBaseService {
         }) 
     }
 
+    // Rotinas para as disciplinas
     public insert(disciplina: Disciplina){
         return new Promise((resolve, reject) => {
             this.createDB().then((res: any) => {
@@ -123,6 +127,103 @@ export class DataBaseService {
             })              
         });
     }   
+
+
+    // Rotinas para os horários
+    public insertHorario(horario: Horario){
+        return new Promise((resolve, reject) => {
+            this.createDB().then((res: any) => {
+                res.execSQL("INSERT INTO horarios (sala, dia, hora, qtdAulas, idDisciplina) VALUES (?, ?, ?, ?, ?)", [horario.sala, horario.dia, horario.hora, horario.qtdAulas, horario.idDisciplina]).then( id => {
+                    console.log("INSERT horario RESULT: ", id);
+                    resolve(true);
+                }, error => {
+                    console.log("[DATABASE] - INSERT horario FAILED!", error);
+                    reject(false);
+                })
+            })
+        })
+    }
+
+    public updateHorario(horario: Horario){
+        return new Promise((resolve, reject) => {
+            this.createDB().then((res: any) => {
+                res.execSQL("UPDATE horarios SET sala = ?, dia = ?, hora = ?, qtdAulas = ?, idDisciplina = ?  WHERE id = ?", [horario.sala, horario.dia, horario.hora, horario.qtdAulas, horario.idDisciplina, horario.id]).then(() => {
+                    console.log("UPDATE horario RESULT: ", horario.id);
+                    resolve(true);
+                }, error => {
+                    console.log("[DATABASE] - UPDATE horario FAILED!", error);
+                    reject(false);
+                })               
+            })
+        })
+    }
+
+    public deleteHorario(id: number){
+        return new Promise((resolve, reject) => {
+            this.createDB().then((res: any) => {
+                res.execSQL("DELETE FROM horarios WHERE id=" + id).then(id => {
+                    console.log("DELETE horario RESULT: ", id);
+                    resolve(true);
+                }, error => {
+                    console.log("[DATABASE] - DELETE horario FAILED!", error);
+                    reject(false);
+                })
+            })
+        })
+    }
+
+    // Retorna um objeto do tipo Horario
+    public getAllHorariosDisciplina(idDisciplina: number){
+        return new Promise((resolve, reject) => {
+            this.createDB().then((res: any) => {
+                return res.all("SELECT * FROM horarios WHERE idDisciplina=?", [idDisciplina]).then(rows => {
+                    let results: Horario[] = [];
+                    for(let row in rows){
+                        let result: Horario = new Horario(2, undefined);
+
+                        result.id = rows[row][0];
+                        result.sala = rows[row][1];
+                        result.dia = rows[row][2];
+                        result.hora = rows[row][3];
+                        result.qtdAulas = rows[row][4];
+                        result.idDisciplina = rows[row][5];
+
+                        results.push(result);
+                    }
+                    resolve(results);
+                }, error => {
+                    console.log("[DATABASE] - SELECT ERROR!");
+                    reject(error);
+                });
+            })              
+        });
+    }
+
+    public getAllHorarioDia(dia: string){
+        return new Promise((resolve, reject) => {
+            this.createDB().then((res: any) => {
+                return res.all("SELECT * FROM horarios WHERE dia=?", [dia]).then(rows => {
+                    let results: Horario[] = [];
+                    for(let row in rows){
+                        let result: Horario = new Horario(2, undefined);
+
+                        result.id = rows[row][0];
+                        result.sala = rows[row][1];
+                        result.dia = rows[row][2];
+                        result.hora = rows[row][3];
+                        result.qtdAulas = rows[row][4];
+                        result.idDisciplina = rows[row][5];
+
+                        results.push(result);
+                    }
+                    resolve(results);
+                }, error => {
+                    console.log("[DATABASE] - SELECT ERROR!");
+                    reject(error);
+                });
+            })              
+        });
+    }
 }
 
 // TODO: Não mostra os dados quando inicia, so depois de adicionar...

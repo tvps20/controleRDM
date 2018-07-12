@@ -51,7 +51,9 @@ export class DisciplinaComponent implements OnInit {
     public addDisciplina(){
         this.disciplina.status = Status.Matriculado;
         this.databaseService.insert(this.disciplina).then(() => {
-            this.nav.navigate(['/home'], {clearHistory: true});
+            this.databaseService.insertHorario(this.horarios[0]).then(() => {
+                this.nav.navigate(['/home'], {clearHistory: true});
+            }) 
         })
     }
 
