@@ -7,19 +7,19 @@
                 <!-- Notas -->
                 <StackLayout style="text-align: center; font-size: 25px" class="h1">
                     <GridLayout columns="*,*" rows="*,*,auto,auto">
-                        <label col="0" row="0" text="Unidade 1" class="label font-weight-bold h3 m-b-5"></label>
+                        <label col="0" row="0" text="Unidade 1" class="label font-weight-bold h3"></label>
                         <GridLayout col="0" row="1" columns="*,*" class="input-field">
                             <TextField col="0" class="input" hint="1º Nota" keyboardType="number" [(ngModel)]="disciplina.primeiraNota" maxlength="4"></TextField>
                             <TextField col="1" class="input" hint="2º Nota" keyboardType="number" [(ngModel)]="disciplina.segundaNota" maxlength="4"></TextField>
                         </GridLayout>
 
-                        <label col="1" row="0" text="Unidade 2" class="label font-weight-bold h3 m-b-5"></label>
+                        <label col="1" row="0" text="Unidade 2" class="label font-weight-bold h3"></label>
                         <GridLayout col="1" row="1" columns="*,*" class="input-field">
                             <TextField col="0" class="input" hint="3º Nota" keyboardType="number" [(ngModel)]="disciplina.terceiraNota" maxlength="4"></TextField>
                             <TextField col="1" class="input" hint="4º Nota" keyboardType="number" [(ngModel)]="disciplina.quartaNota" maxlength="4"></TextField>
                         </GridLayout>
 
-                        <label col="0" colSpan="2" row="2" text="Final" class="label font-weight-bold h3 m-b-5"></label>
+                        <label col="0" colSpan="2" row="2" text="Final" class="label font-weight-bold h3"></label>
                         <TextField col="0" colSpan="2" row="3" class="input" hint="Nota Final" keyboardType="number" [(ngModel)]="disciplina.notaFinal" maxlength="4"></TextField>
 
                     </GridLayout>
@@ -30,7 +30,7 @@
                 </StackLayout>
 
                 <!-- Nome -->
-                <StackLayout class="input-field">
+                <StackLayout class="input-field" style="margin-top: -50px;">
                     <label text="Nome" class="label font-weight-bold m-b-5"></label>
                     <TextField class="input" [(ngModel)]="disciplina.nome" #elementNome="ngModel" required></TextField>
                     <StackLayout class="hr-light"></StackLayout>

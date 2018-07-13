@@ -3,6 +3,7 @@ import { ModalDialogParams } from 'nativescript-angular/modal-dialog';
 import { Page } from 'ui/page';
 import { ListPicker } from 'ui/list-picker';
 
+import { Dias } from  '~/shared/statusDisciplina'
 // Models
 import { Horario } from '~/shared/models/horario.model';
 
@@ -16,7 +17,7 @@ export class HorarioModalComponent implements OnInit {
 
     public listPicker: ListPicker;
     public qtdAulas: number[] = [1, 2, 3, 4, 5, 6];
-    public dias: string[] = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex'];
+    public dias: string[] = [Dias.Segunda, Dias.Terca, Dias.Quarta, Dias.Quinta, Dias.Sexta];
 
     public horario: Horario
 

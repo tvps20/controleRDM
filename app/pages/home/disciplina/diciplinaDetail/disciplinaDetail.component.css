@@ -1,25 +1,43 @@
-.statusMT {
-  background-color: #757575;
-  border-radius: 5%;
-  color: white;
-  padding: 7px;
-  text-align: center;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.professor {
-  background-color: #BDBDBD;
-  border-radius: 5%;
-  color: white;
-  padding: 7px;
-  text-align: center;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
 .quadroNota {
   margin-top: 15px;
   font-size: 20px;
+  font-weight: bold;
 }
+
+.bg-primary {
+  background-color: #3f51b5;
+}
+
+.professor {
+  border-radius: 5%;
+  /* color: white; */
+  padding: 7px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.cargaHoraria {
+  width: 200px;
+}
+
+.statusMT {
+  border-radius: 5%;
+  /* color: white; */
+  padding: 7px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.list-group-item {
+  background-color: #40c4ff;
+  border-radius: 5%;
+  padding: 10px;
+  font-weight: bold;
+  color: white;
+  margin-right: 10px;
+}
+
+
 

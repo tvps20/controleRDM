@@ -35,35 +35,46 @@ export class DisciplinaService {
   public calculoCRE(listaDeDisciplinasFechadas: Array<Disciplina>){
     let nota: number = 0;
     let totalCargaHoraria: number = 0;
+
+    if(!this.haveDisciplina(listaDeDisciplinasFechadas)){
     
-    listaDeDisciplinasFechadas.forEach(element => {
-      nota += this.calcularMedia(element) * element.cargaHoraria;
-      totalCargaHoraria += element.cargaHoraria; 
-    });
+      listaDeDisciplinasFechadas.forEach(element => {
+        nota += this.calcularMedia(element) * element.cargaHoraria;
+        totalCargaHoraria += element.cargaHoraria; 
+      });
 
-    let cre = nota/totalCargaHoraria
+      let cre = nota/totalCargaHoraria
 
-    return parseFloat(cre.toFixed(2));
+      return parseFloat(cre.toFixed(2));
+
+    } else {
+      return 0;
+    }
   }
 
   public calculoPrecisaoCRE(listaDeDisciplinasAbertas: Array<Disciplina>, listaDeDisciplinasFechadas: Array<Disciplina>){
     let nota: number = 0;
     let totalCargaHoraria: number = 0;
 
-    listaDeDisciplinasAbertas.forEach(element => {
-      nota += this.calcularMedia(element) * element.cargaHoraria;
-      totalCargaHoraria += element.cargaHoraria; 
-    });
-    
-    listaDeDisciplinasFechadas.forEach(element => {
-      nota += this.calcularMedia(element) * element.cargaHoraria;
-      totalCargaHoraria += element.cargaHoraria;
+    if(!this.haveDisciplina(listaDeDisciplinasAbertas)){
+      listaDeDisciplinasAbertas.forEach(element => {
+        nota += this.calcularMedia(element) * element.cargaHoraria;
+        totalCargaHoraria += element.cargaHoraria; 
+      });
+      
+      listaDeDisciplinasFechadas.forEach(element => {
+        nota += this.calcularMedia(element) * element.cargaHoraria;
+        totalCargaHoraria += element.cargaHoraria;
 
-    });
-    
-    let previsaCre = nota/totalCargaHoraria
+      });
+      
+      let previsaCre = nota/totalCargaHoraria
 
-    return parseFloat(previsaCre.toFixed(2));
+      return parseFloat(previsaCre.toFixed(2));
+
+    } else {
+      return 0;
+    }
   }
 
   public calcularChAcumulada(listaDeDisciplinasFechadas: Array<Disciplina>){
@@ -82,7 +93,7 @@ export class DisciplinaService {
     let countNotas = this.verificaNotas(disciplina);
     
     if(countNotas < 4 && somaNotas <= 28){
-      return (28 - somaNotas)
+      return (28 - somaNotas).toFixed(2);
     } else if(countNotas < 4 && somaNotas >= 28){
       // Aprovado
       return 0
@@ -159,5 +170,13 @@ export class DisciplinaService {
     } else {
         return false;
     }
+  }
+
+  public haveDisciplina(disciplinas: Array<Disciplina>){
+    if(disciplinas.length <= 0){
+        return true
+    } else {
+        return false;
+  }
 }
 }

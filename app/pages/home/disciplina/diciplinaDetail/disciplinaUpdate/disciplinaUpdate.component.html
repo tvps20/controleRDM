@@ -5,23 +5,22 @@
         <StackLayout class="form-content">
             <StackLayout class="form">
                 <!-- Notas -->
-                <StackLayout style="text-align: center; font-size: 25px" class="m-10">
+                <StackLayout style="text-align: center; font-size: 25px;">
                     <GridLayout columns="*,*" rows="*,*,auto,auto">
-                        <label col="0" row="0" text="Unidade 1" class="label font-weight-bold h3 m-b-5"></label>
+                        <label col="0" row="0" text="Unidade 1" class="label font-weight-bold h3"></label>
                         <GridLayout col="0" row="1" columns="*,*" class="input-field">
                             <TextField col="0" class="input" hint="1º Nota" keyboardType="number" [(ngModel)]="disciplina.primeiraNota" maxlength="4"></TextField>
                             <TextField col="1" class="input" hint="2º Nota" keyboardType="number" [(ngModel)]="disciplina.segundaNota" maxlength="4"></TextField>
                         </GridLayout>
 
-                        <label col="1" row="0" text="Unidade 2" class="label font-weight-bold h3 m-b-5"></label>
+                        <label col="1" row="0" text="Unidade 2" class="label font-weight-bold h3"></label>
                         <GridLayout col="1" row="1" columns="*,*" class="input-field">
                             <TextField col="0" class="input" hint="3º Nota" keyboardType="number" [(ngModel)]="disciplina.terceiraNota" maxlength="4"></TextField>
                             <TextField col="1" class="input" hint="4º Nota" keyboardType="number" [(ngModel)]="disciplina.quartaNota" maxlength="4"></TextField>
                         </GridLayout>
 
-                        <label col="0" colSpan="2" row="2" text="Final" class="label font-weight-bold h3 m-b-5"></label>
+                        <label col="0" colSpan="2" row="2" text="Final" class="label font-weight-bold h3"></label>
                         <TextField col="0" colSpan="2" row="3" class="input" hint="Nota Final" keyboardType="number" [(ngModel)]="disciplina.notaFinal" maxlength="4"></TextField>
-
                     </GridLayout>
 
                     <StackLayout style="font-size: 15px;">
@@ -30,7 +29,7 @@
                 </StackLayout>
 
                 <!-- Nome -->
-                <StackLayout class="input-field">
+                <StackLayout class="input-field" style="margin-top: -50px;">
                     <label text="Nome" class="label font-weight-bold m-b-5"></label>
                     <TextField class="input" [(ngModel)]="disciplina.nome" #elementNome="ngModel" required></TextField>
                     <StackLayout class="hr-light"></StackLayout>
@@ -58,11 +57,19 @@
                     </StackLayout>
                 </StackLayout>
 
+                <!-- Está Fechada? -->
+                <StackLayout>
+                    <GridLayout class="input-field" rows="*, *">
+                        <CheckBox #CB1 row="0" text="Fechar Disciplina" fillColor="#006968" class="checkBox" [(ngModel)]="disciplina.isClosed"></CheckBox> 
+                        <label row="1" textWrap="true" text="   Uma disciplina fechada não poderá mais ser modificada." style="font-size: 15px; margin: -20px 75px 20px 60px;" class="text-muted"></label >  
+                    </GridLayout>
+                    <StackLayout class="hr-light"></StackLayout>
+                </StackLayout>
+
                 <!-- Horário -->
                 <StackLayout class="input-field">
                     <label text="Horário" class="label font-weight-bold m-b-5"></label>
                     <TextField class="input" hint="Toque aqui" editable="false" (tap)="showHorarioModal()"></TextField>
-                    <StackLayout class="hr-light"></StackLayout>
                 </StackLayout>
 
                 <!-- Lista de Hórarios -->
@@ -71,9 +78,6 @@
                         <label class="list-group-item" *ngFor="let horario of horarios" [text]="horario.makeHorario()" (tap)="deleteHorario(horario)"></label>
                     </StackLayout>
                 </ScrollView>
-
-                <!-- Está Fechada? -->
-                <CheckBox #CB1 text="Fechar Disciplina" fillColor="#006968" class="checkBox" [(ngModel)]="disciplina.isClosed"></CheckBox>   
 
                 <button text="Atualizar" class="btn btn-primary" [isEnabled]="element.valid && elementNome.valid && !notaValorValidation() && !notaValidator()" (tap)="updateDisciplina()"></button>
 

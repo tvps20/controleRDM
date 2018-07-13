@@ -11,3 +11,13 @@
     border-left-color: #a94442; 
     border-left-width: 3;
 }
+
+.list-group-item {
+    background-color: #40c4ff;
+    border-radius: 5%;
+    padding: 10px;
+    font-weight: bold;
+    color: white;
+    margin-right: 10px;
+  }
+  

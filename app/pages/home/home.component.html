@@ -1,4 +1,4 @@
-<ActionBar title="Disciplinas" class="action-bar">
+<ActionBar title="Controle do CRE" class="action-bar">
     <ActionItem text="Sobre" ios.position="right" nsRouterLink="/sobre" android.position="popup"></ActionItem>
 </ActionBar>
 
@@ -28,18 +28,20 @@
                 <label [text]="dias[dia]" style="color: white; margin-left: 10px;" class="h1"></label>
                 <label *ngIf="haveHorario()" text="Não há Aulas" class="tabelaHorarios-item"></label>
 
-                <ListView  colSpan="2" col="0" [items]="horarios" class="list-group">     
+                <ListView  colSpan="2" col="0" [items]="horarios" class="list-group" separatorColor="transparent">     
                     <ng-template let-item="item">
-                        <GridLayout columns="*, *" class="tabelaHorarios-item">
-                            <label col="0" [text]="item.nomeDisciplina"></label>
-                            <label col="1" [text]="item.makeHorario()"></label>
-                        </GridLayout> 
+                        <StackLayout style="padding-bottom: 15px;">
+                            <GridLayout columns="*, *" class="tabelaHorarios-item">
+                                <label col="0" [text]="item.nomeDisciplina"></label>
+                                <label col="1" [text]="item.makeHorario()"></label>
+                            </GridLayout>
+                        </StackLayout>             
                     </ng-template>
-                </ListView>
+                </ListView>        
             </StackLayout>
         </StackLayout>
 
-        <StackLayout *tabItem="{title: 'Pagando'}">
+        <StackLayout *tabItem="{title: 'Disciplinas'}">
             <GridLayout row="0" columns="*, auto">
                 <ListView  colSpan="2" col="0" [items]="disciplinasAbertas" class="list-group">     
                     <ng-template let-item="item">
