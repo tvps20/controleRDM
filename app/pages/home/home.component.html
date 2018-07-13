@@ -3,7 +3,7 @@
 </ActionBar>
 
 <GridLayout rows="auto, *" sdkExampleTitle sdkToggleNavButton>
-    <TabView row="1" selectedIndex="0" androidOffscreenTabLimit="2" tabBackgroundColor="#006968" tabTextColor="white" androidSelectedTabHighlightColor="white" selectedTabTextColor="white">
+    <TabView row="1" [selectedIndex]="index" androidOffscreenTabLimit="2" tabBackgroundColor="#006968" tabTextColor="white" androidSelectedTabHighlightColor="white" selectedTabTextColor="white">
         <StackLayout *tabItem="{title: 'Inicio'}">
             <GridLayout rows="auto, auto">
                 <GridLayout row="0" columns="*, auto" class="PrevisaoCre">
@@ -26,15 +26,13 @@
             <StackLayout class="tabelaHorarios">
                 <label text="Aulas de Hoje" style="color: white;" class="h3"></label>
                 <label [text]="dias[dia]" style="color: white; margin-left: 10px;" class="h1"></label>
-                <label *ngIf="!haveHorario()" text="Não há Aulas" class="tabelaHorarios-item"></label>
+                <label *ngIf="haveHorario()" text="Não há Aulas" class="tabelaHorarios-item"></label>
 
                 <ListView  colSpan="2" col="0" [items]="horarios" class="list-group">     
                     <ng-template let-item="item">
                         <GridLayout columns="*, *" class="tabelaHorarios-item">
                             <label col="0" [text]="item.nomeDisciplina"></label>
                             <label col="1" [text]="item.makeHorario()"></label>
-                            <!-- <label col="2" [text]="item.sala"></label>
-                            <label col="3" [text]="item.hora"></label> -->
                         </GridLayout> 
                     </ng-template>
                 </ListView>

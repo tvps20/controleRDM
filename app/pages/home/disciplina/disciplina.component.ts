@@ -6,6 +6,7 @@ import { Disciplina } from '~/shared/models/disciplina.model';
 import { DataBaseService } from '~/services/database.service';
 import { Status } from '~/shared/statusDisciplina';
 import { Horario } from '~/shared/models/horario.model';
+import { DisciplinaService } from '~/services/disciplina.service';
 
 
 @Component({
@@ -36,7 +37,7 @@ export class DisciplinaComponent implements OnInit {
             });
             
             Toast.makeText("Disciplina Adicionada").show();
-            this.nav.navigate(['/home'], {clearHistory: true});
+            this.nav.navigate(['/home', 1], {clearHistory: true});
         })
     }
     

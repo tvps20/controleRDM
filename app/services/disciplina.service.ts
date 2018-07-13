@@ -4,6 +4,7 @@ import * as Toast from 'nativescript-toast';
 
 import { Disciplina } from "~/shared/models/disciplina.model";
 import { Horario } from "~/shared/models/horario.model";
+import { Status } from '~/shared/statusDisciplina';
 
 
 @Injectable()
@@ -69,7 +70,8 @@ export class DisciplinaService {
     let totalCargaHoraria: number = 0;
 
     listaDeDisciplinasFechadas.forEach(element => {
-      totalCargaHoraria += element.cargaHoraria;
+      if(element.status != Status.Reprovado)
+        totalCargaHoraria += element.cargaHoraria;
     });
 
     return totalCargaHoraria;
@@ -150,4 +152,12 @@ export class DisciplinaService {
         }
     })
   }
+
+  public haveHorario(horarios: Array<Horario>){
+    if(horarios.length <= 0){
+        return true
+    } else {
+        return false;
+    }
+}
 }

@@ -33,6 +33,10 @@ export class DisciplinaDetailComponent implements OnInit{
         this.previsaoNota();
         this.disciplina.ajustarNotas(); 
     }
+
+    public haveHorario(){
+        return this.disciplinaService.haveHorario(this.horarios);
+    }
     
     public loadDisciplina(){
         this.databaseService.getDisciplina(this.id).then((res: Disciplina) => {
@@ -59,9 +63,7 @@ export class DisciplinaDetailComponent implements OnInit{
                 return "Você precisa somar " + notaPrevisao + " pontos para passar.";
             else
                 return "Você precisa somar " + notaPrevisao + " ponto para passar.";
-        }
-
-            
+        }           
     }
 
 }

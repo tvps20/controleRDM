@@ -12,6 +12,7 @@ import { SobreComponent } from "./pages/sobre/sobre.component";
 const routes: Routes = [
     { path: "", redirectTo: "home", pathMatch: "full" },
     { path: "home", component: HomeComponent },
+    { path: "home/:index", component: HomeComponent },
     { path: "disciplina", component: DisciplinaComponent },
     { path: "disciplina/:id", component: DisciplinaDetailComponent },
     { path: "update/:id", component: DisciplinaUpdateComponent },

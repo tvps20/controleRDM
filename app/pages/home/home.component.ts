@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as dialogs from 'ui/dialogs';
 import { Page } from 'ui/page';
+import { ActivatedRoute } from "@angular/router"
 // Importanto pacote para notificações simples
 import * as Toast from 'nativescript-toast';
 
@@ -26,14 +27,18 @@ export class HomeComponent implements OnInit {
     public icons: Map<string, string> = new Map<string, string>();
     public data: Date;
     public dia: number;
+    public index: number;
     
-    public constructor(private databaseService: DataBaseService, private page: Page, private disciplinaService: DisciplinaService){
+    public constructor(private router: ActivatedRoute, private databaseService: DataBaseService, private page: Page, private disciplinaService: DisciplinaService){
+        this.index = 0;
         this.data = new Date();
         this.dia = this.data.getDay();
-        this.horarios = [];      
+        this.horarios = [];   
+        this.index = 0;   
     }
 
     ngOnInit(): void {
+        this.index = +this.router.snapshot.params["index"];
         this.setIcons();
         this.loadDisciplinas();  
         this.page.on("navigatingTo", () => this.loadDisciplinas());
@@ -43,6 +48,7 @@ export class HomeComponent implements OnInit {
         dialogs.confirm({title: "Apagar", message: `Deseja realmente excluir a disciplina "${disciplina.nome}"?`, okButtonText: "Sim", cancelButtonText: "Cancelar",})
             .then(result => {
                 if(result) {
+                    this.databaseService.deleteHorarios(disciplina.id);
                     this.databaseService.delete(disciplina.id);
                     Toast.makeText("Disciplina Apagada").show();
                     this.loadDisciplinas();
@@ -68,7 +74,6 @@ export class HomeComponent implements OnInit {
                 
                 this.databaseService.getAllHorarioDia(this.abreviarDia(this.dias[this.dia])).then((horarios: Array<Horario>) => {
                     this.horarios = horarios;
-                    console.log(this.horarios)
                 })
 
             })
@@ -76,11 +81,7 @@ export class HomeComponent implements OnInit {
     }
 
     public haveHorario(){
-        if(this.horarios.length <= 0){
-            return true
-        } else {
-            return false;
-        }
+        return this.disciplinaService.haveHorario(this.horarios);
     }
 
     private abreviarDia(dia: string): string {
