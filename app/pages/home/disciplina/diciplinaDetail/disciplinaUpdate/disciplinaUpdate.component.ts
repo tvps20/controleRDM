@@ -35,8 +35,11 @@ export class DisciplinaUpdateComponent {
     }
 
     public loadDisciplina(){
-        this.databaseService.getDisciplina(this.id).then((res: Disciplina) => {
+        this.databaseService.getDisciplina(this.id).then((res: Disciplina) => {        
             this.disciplina = res;
+            this.databaseService.getAllHorariosDisciplina(this.disciplina.id).then((horarios: Array<Horario>) => {
+                this.horarios = horarios;
+            })
         });
     }
 
@@ -73,12 +76,20 @@ export class DisciplinaUpdateComponent {
         this.disciplinaService.deleteHorario(horario, this.horarios);
     }
 
+    public deleteHorariosBd(idDisciplina: number){
+        this.databaseService.deleteHorarios(idDisciplina);
+    }
+
     public updateDisciplina(){
         this.verificaStatus(this.disciplina);
         this.databaseService.update(this.disciplina).then(() => {
-            //this.nav.navigateByUrl("disciplina/"+ this.disciplina.id);
-            //this.nav.navigate(['disciplina', this.disciplina.id], {clearHistory: true});
-            //this.nav.back();
+            this.deleteHorariosBd(this.disciplina.id);
+
+            this.horarios.forEach(element => {
+                element.idDisciplina = this.disciplina.id;
+                this.databaseService.insertHorario(element)                
+            });
+
             this.nav.backToPreviousPage();
         })
     }

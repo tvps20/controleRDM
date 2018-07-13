@@ -6,6 +6,7 @@ import { Disciplina } from '~/shared/models/disciplina.model';
 
 import { DataBaseService } from '~/services/database.service';
 import { DisciplinaService } from '~/services/disciplina.service';
+import { Horario } from '~/shared/models/horario.model';
 
 @Component({
     selector: 'disciplina-Detail',
@@ -18,11 +19,12 @@ export class DisciplinaDetailComponent implements OnInit{
     public id: number;
     public disciplina: Disciplina
     public media: number;
+    public horarios: Array<Horario>
 
-    public textField: string;
     
     constructor(private router: ActivatedRoute, private databaseService: DataBaseService, private disciplinaService: DisciplinaService, private page: Page){
         this.id = +this.router.snapshot.params["id"];
+        this.horarios = [];
         this.loadDisciplina();     
     }
 
@@ -37,7 +39,11 @@ export class DisciplinaDetailComponent implements OnInit{
             this.disciplina = res;
             this.media = this.disciplinaService.calcularMedia(this.disciplina);
             this.previsaoNota();
-            this.disciplina.ajustarNotas();       
+            this.disciplina.ajustarNotas();   
+
+            this.databaseService.getAllHorariosDisciplina(this.disciplina.id).then((horarios: Array<Horario>) => {
+                this.horarios = horarios;
+            })       
         });
     }
 

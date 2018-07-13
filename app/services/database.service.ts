@@ -158,10 +158,10 @@ export class DataBaseService {
         })
     }
 
-    public deleteHorario(id: number){
+    public deleteHorarios(idDisciplina: number){
         return new Promise((resolve, reject) => {
             this.createDB().then((res: any) => {
-                res.execSQL("DELETE FROM horarios WHERE id=" + id).then(id => {
+                res.execSQL("DELETE FROM horarios WHERE idDisciplina=" + idDisciplina).then(id => {
                     console.log("DELETE horario RESULT: ", id);
                     resolve(true);
                 }, error => {

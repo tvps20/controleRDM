@@ -58,8 +58,9 @@
                     <StackLayout class="hr-light"></StackLayout>
                 </StackLayout>
 
-                <!-- Lista de Hórarios -->
+               <!-- Lista de Hórarios -->
                 <ScrollView orientation="horizontal">
+                    <label text="Horários" class="label font-weight-bold m-b-5"></label>
                     <StackLayout orientation="horizontal" class="list-group m-y-15">
                         <label class="list-group-item" *ngFor="let horario of horarios" [text]="horario.makeHorario()"></label>
                     </StackLayout>

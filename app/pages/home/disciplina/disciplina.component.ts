@@ -1,19 +1,11 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import * as Toast from 'nativescript-toast';
-
-import { ModalDialogService, ModalDialogOptions } from 'nativescript-angular/modal-dialog'
-
-import { HorarioModalComponent } from '../../../modais/horarioModal.component'
 
 import { Disciplina } from '~/shared/models/disciplina.model';
 import { DataBaseService } from '~/services/database.service';
 import { Status } from '~/shared/statusDisciplina';
 import { Horario } from '~/shared/models/horario.model';
-import { DisciplinaService } from '~/services/disciplina.service';
-
-
 
 
 @Component({
@@ -27,26 +19,13 @@ export class DisciplinaComponent implements OnInit {
     public horarios: Array<Horario>
 
         
-    constructor(private databaseService: DataBaseService, private nav: RouterExtensions, private modalService: ModalDialogService, private vcRef: ViewContainerRef, private disciplinaService: DisciplinaService){
+    constructor(private databaseService: DataBaseService, private nav: RouterExtensions){
         this.disciplina = new Disciplina('', undefined);
         this.horarios = [];
     }
     
     ngOnInit(): void {
         
-    }
-
-    public showHorarioModal(){
-        let modalOptions: ModalDialogOptions = {
-            fullscreen: false,
-            // Contanier onde o modal vai ser carregado. (Injetando no mesmo contanier de disciplinaComponent)
-            viewContainerRef: this.vcRef,
-            // context: {
-            //     preSelectedHorario: this.objetoHorario
-            // }
-        };
-
-        this.modalService.showModal(HorarioModalComponent, modalOptions).then(newHorario => this.setNewHorario(newHorario));
     }
 
     public addDisciplina(){
@@ -59,14 +38,6 @@ export class DisciplinaComponent implements OnInit {
             Toast.makeText("Disciplina Adicionada").show();
             this.nav.navigate(['/home'], {clearHistory: true});
         })
-    }
-
-    private setNewHorario(newHorario: Horario){
-        this.disciplinaService.setNewHorario(newHorario, this.horarios);
-    }
-
-    public deleteHorario(horario: Horario){
-        this.disciplinaService.deleteHorario(horario, this.horarios);
     }
     
     // Validators

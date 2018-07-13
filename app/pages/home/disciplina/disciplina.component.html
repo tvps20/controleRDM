@@ -60,17 +60,10 @@
 
                 <!-- Horário -->
                 <StackLayout class="input-field">
-                    <label text="Horário" class="label font-weight-bold m-b-5"></label>
-                    <TextField class="input" hint="Toque aqui" editable="false" (tap)="showHorarioModal()"></TextField>
+                    <label text="Horários" class="label font-weight-bold m-b-5"></label>
+                    <TextField class="input" hint="Adicione os horários quando for modificar." editable="false"></TextField>
                     <StackLayout class="hr-light"></StackLayout>
                 </StackLayout>
-
-                <!-- Lista de Hórarios -->
-                <ScrollView orientation="horizontal">
-                    <StackLayout orientation="horizontal" class="list-group m-y-15">
-                        <label class="list-group-item" *ngFor="let horario of horarios" [text]="horario.makeHorario()" (tap)="deleteHorario(horario)"></label>
-                    </StackLayout>
-                </ScrollView>
 
                 <button text="Adicionar" class="btn btn-primary" [isEnabled]="element.valid && elementNome.valid && !notaValorValidation() && !notaValidator()" (tap)="addDisciplina()"></button>
             </StackLayout>
