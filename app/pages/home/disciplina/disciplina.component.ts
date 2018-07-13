@@ -25,13 +25,11 @@ export class DisciplinaComponent implements OnInit {
     
     public disciplina: Disciplina;
     public horarios: Array<Horario>
-    private countHorario: number
 
         
     constructor(private databaseService: DataBaseService, private nav: RouterExtensions, private modalService: ModalDialogService, private vcRef: ViewContainerRef, private disciplinaService: DisciplinaService){
         this.disciplina = new Disciplina('', undefined);
         this.horarios = [];
-        this.countHorario = 0;
     }
     
     ngOnInit(): void {
@@ -64,11 +62,7 @@ export class DisciplinaComponent implements OnInit {
     }
 
     private setNewHorario(newHorario: Horario){
-        if(newHorario){          
-            newHorario.id = ++this.countHorario;
-            this.horarios.push(newHorario);
-            Toast.makeText("Horário adicionado").show();
-        }
+        this.disciplinaService.setNewHorario(newHorario, this.horarios);
     }
 
     public deleteHorario(horario: Horario){

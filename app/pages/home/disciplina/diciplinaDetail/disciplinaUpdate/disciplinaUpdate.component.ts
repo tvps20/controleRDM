@@ -26,14 +26,12 @@ export class DisciplinaUpdateComponent {
         @ViewChild("CB1") FirstCheckBox: ElementRef;
         public disciplina: Disciplina;
         public horarios: Array<Horario>
-        private countHorario = 0;
 
     
     public constructor(private router: ActivatedRoute, private databaseService: DataBaseService, private nav: RouterExtensions,  private modalService: ModalDialogService, private vcRef: ViewContainerRef, private disciplinaService: DisciplinaService) {
         this.id = +this.router.snapshot.params["id"];
         this.horarios = [];
         this.loadDisciplina();
-        this.countHorario = 0;
     }
 
     public loadDisciplina(){
