@@ -79,12 +79,18 @@ export class DisciplinaService {
     let somaNotas = (+disciplina.primeiraNota) + (+disciplina.segundaNota) + (+disciplina.terceiraNota) + (+disciplina.quartaNota);
     let countNotas = this.verificaNotas(disciplina);
     
-    if(countNotas < 4){
+    if(countNotas < 4 && somaNotas <= 28){
       return (28 - somaNotas)
-    } else if (countNotas == 4){
+    } else if(countNotas < 4 && somaNotas >= 28){
+      // Aprovado
+      return 0
+    } else if(countNotas == 4){
       if(somaNotas >= 28){
         // Aprovado
         return 0
+      } else if(somaNotas < 16){
+        // Reprovado
+        return -1
       } else {
         if(disciplina.notaFinal){
           let media: number = this.calcularMedia(disciplina)

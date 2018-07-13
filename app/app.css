@@ -43,3 +43,23 @@ refer to http://docs.nativescript.org/ui/theme.
     font-weight: bold;
     margin-bottom: 10px;
 }
+
+.statusRE {
+    background-color: #c0392b;
+    border-radius: 5%;
+    color: white;
+    padding: 7px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.statusAP {
+    background-color: #2ecc71;
+    border-radius: 5%;
+    color: white;
+    padding: 7px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}

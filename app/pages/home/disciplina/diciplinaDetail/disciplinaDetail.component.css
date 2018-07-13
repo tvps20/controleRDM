@@ -1,10 +1,8 @@
 .statusMT {
-  background-color: #2980b9;
+  background-color: #BDBDBD;
   border-radius: 5%;
   color: white;
   padding: 7px;
-  width: 75px;
-  height: 65px;
   text-align: center;
   font-weight: bold;
   margin-bottom: 10px;
@@ -14,3 +12,4 @@
   margin-top: 15px;
   font-size: 20px;
 }
+

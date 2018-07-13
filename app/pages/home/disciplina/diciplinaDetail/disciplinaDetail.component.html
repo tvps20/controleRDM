@@ -31,11 +31,6 @@
                     </GridLayout>
                 </StackLayout>
 
-                <StackLayout class="m-y-15">
-                    <label *ngIf="previsaoNota()" [text]="previsaoNota()" class="text-primary"></label>
-                    <label *ngIf="previsaoNota() === false" [text]="'Você esta repovado nessa disciplina.'" class="text-danger"></label>
-                </StackLayout>
-
                 <!-- Professor -->
                 <StackLayout class="input-field">
                     <label text="Professor" class="label font-weight-bold m-b-5"></label>
@@ -45,18 +40,20 @@
 
                 <!-- Carga Horária -->
                 <StackLayout class="input-field">
-                    <GridLayout rows="auto, *" columns="auto, auto">
-                        <label row="0" col="0" colSpan="2" text="Carga Horária" class="label font-weight-bold m-b-5"></label>
-                        <label row="1" col="0" class="cargaHoraria" [text]="disciplina.cargaHoraria + 'CH'"></label>
+                    <GridLayout rows="auto, *">
+                        <label row="0" colSpan="2" text="Carga Horária" class="label font-weight-bold m-b-5"></label>
+                        <label row="1" class="cargaHoraria" [text]="disciplina.cargaHoraria + 'CH'"></label>
                     </GridLayout>
                     <StackLayout class="hr-light"></StackLayout>
                 </StackLayout>
                 
                 <!-- Status -->
                 <StackLayout class="input-field">
-                    <GridLayout rows="auto, *" columns="auto, auto">
-                        <label row="0" col="0" colSpan="2" text="Status" class="label font-weight-bold m-b-5"></label>
-                        <label row="1" col="0" class="statusMT" [text]="disciplina.status"></label>
+                    <GridLayout rows="auto, *">
+                        <label row="0" text="Status" class="label font-weight-bold m-b-5"></label>
+                        <label row="1" *ngIf="previsaoNota() === 0" text="Aprovado" class="statusAP"></label>
+                        <label row="1" *ngIf="previsaoNota()" [text]="previsaoNota()" class="statusMT"></label>
+                        <label row="1" *ngIf="previsaoNota() === false" [text]="'Você esta repovado nessa disciplina.'" class="statusRE"></label>
                     </GridLayout>
                     <StackLayout class="hr-light"></StackLayout>
                 </StackLayout>

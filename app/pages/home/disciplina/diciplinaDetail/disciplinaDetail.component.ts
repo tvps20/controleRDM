@@ -45,11 +45,17 @@ export class DisciplinaDetailComponent implements OnInit{
         let notaPrevisao = this.disciplinaService.previsaoDeNota(this.disciplina)
 
         if(notaPrevisao == 0)
-            return "Você esta Aprovado Aprovado nessa disciplina.";
+            return 0;
         else if(notaPrevisao == -1)
             return false;
-        else    
-            return "Você precisa somar " + notaPrevisao + " pontos para passar.";
+        else {
+            if(notaPrevisao != 1)
+                return "Você precisa somar " + notaPrevisao + " pontos para passar.";
+            else
+                return "Você precisa somar " + notaPrevisao + " ponto para passar.";
+        }
+
+            
     }
 
 }
