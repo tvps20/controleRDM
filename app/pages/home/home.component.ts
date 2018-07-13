@@ -68,10 +68,19 @@ export class HomeComponent implements OnInit {
                 
                 this.databaseService.getAllHorarioDia(this.abreviarDia(this.dias[this.dia])).then((horarios: Array<Horario>) => {
                     this.horarios = horarios;
+                    console.log(this.horarios)
                 })
 
             })
         });
+    }
+
+    public haveHorario(){
+        if(this.horarios.length <= 0){
+            return true
+        } else {
+            return false;
+        }
     }
 
     private abreviarDia(dia: string): string {

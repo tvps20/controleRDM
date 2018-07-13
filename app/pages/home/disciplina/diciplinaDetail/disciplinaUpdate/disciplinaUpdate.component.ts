@@ -81,27 +81,44 @@ export class DisciplinaUpdateComponent {
     }
 
     public updateDisciplina(){
-        this.verificaStatus(this.disciplina);
-        this.databaseService.update(this.disciplina).then(() => {
-            this.deleteHorariosBd(this.disciplina.id);
+        if(this.verificaStatus(this.disciplina)){
+            this.databaseService.deleteHorarios(this.disciplina.id);
+            this.databaseService.update(this.disciplina).then(() => {
+                this.deleteHorariosBd(this.disciplina.id);
 
-            this.horarios.forEach(element => {
-                element.idDisciplina = this.disciplina.id;
-                this.databaseService.insertHorario(element)                
-            });
+                Toast.makeText("Disciplina Atualizada").show();
+                this.nav.navigate(['/home'], {clearHistory: true});
+            })
+            
+        } else {
+            this.databaseService.update(this.disciplina).then(() => {
+                this.deleteHorariosBd(this.disciplina.id);
 
-            Toast.makeText("Disciplina Atualizada").show();
-            this.nav.backToPreviousPage();
-        })
+                this.horarios.forEach(element => {
+                    element.idDisciplina = this.disciplina.id;
+                    element.nomeDisciplina = this.disciplina.nome;
+                    this.databaseService.insertHorario(element);               
+                });
+
+                Toast.makeText("Disciplina Atualizada").show();
+                this.nav.backToPreviousPage();
+            })
+        }
     }
 
     public verificaStatus(disciplina: Disciplina){
         if(disciplina.isClosed){
             var nota = this.disciplinaService.calcularMedia(this.disciplina);
-            if(nota >= 5)
-                this.disciplina.status = Status.Aprovado
-            else   
+            if(nota >= 5){
+                this.disciplina.status = Status.Aprovado;
+                return true;
+            }
+            else{   
                 this.disciplina.status = Status.Reprovado
+                return true;
+            }
+        } else {
+            return false;
         }
     }
 

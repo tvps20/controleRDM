@@ -12,7 +12,7 @@ export class DataBaseService {
         return new Promise((resolve, reject) => {
             return (new Sqlite("controleCRE.db")).then(db => {
                 db.execSQL("CREATE TABLE IF NOT EXISTS disciplinas (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT, professor TEXT, cargaHoraria INTEGER, isClosed NUMERIC, status STRING, primeiraNota REAL, segundaNota REAL, terceiraNota REAL, quartaNota REAL, notaFinal REAL)").then(id => {
-                    db.execSQL("CREATE TABLE IF NOT EXISTS horarios (id INTEGER PRIMARY KEY AUTOINCREMENT, sala TEXT, dia TEXT, hora TEXT, qtdAulas INTEGER, idDisciplina INTEGER)")
+                    db.execSQL("CREATE TABLE IF NOT EXISTS horarios (id INTEGER PRIMARY KEY AUTOINCREMENT, sala TEXT, dia TEXT, hora TEXT, qtdAulas INTEGER, idDisciplina INTEGER, nomeDisciplina TEXT)")
                     resolve(db);
                 }, error => {
                     console.log("[DATABASE] - ERROR CREATE TABLE!", error);
