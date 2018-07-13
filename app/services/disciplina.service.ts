@@ -138,7 +138,7 @@ export class DisciplinaService {
 }
 
   public deleteHorario(horario: Horario, horarios: Array<Horario>){
-    dialogs.confirm({title: "Excluir", message: "Deseja realmente excluir este horario?" + horario.id, okButtonText: "Sim", cancelButtonText: "Cancelar",}).then(result => {
+    dialogs.confirm({title: "Excluir", message: "Deseja realmente excluir este horario?", okButtonText: "Sim", cancelButtonText: "Cancelar",}).then(result => {
         if(result) {
             for (var i = 0; i < horarios.length; i++) {
                 if (horarios[i].id === horario.id) {
