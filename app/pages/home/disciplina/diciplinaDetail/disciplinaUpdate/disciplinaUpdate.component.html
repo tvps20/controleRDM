@@ -57,15 +57,6 @@
                     </StackLayout>
                 </StackLayout>
 
-                <!-- Está Fechada? -->
-                <StackLayout>
-                    <GridLayout class="input-field" rows="*, *">
-                        <CheckBox #CB1 row="0" text="Fechar Disciplina" fillColor="#006968" class="checkBox" [(ngModel)]="disciplina.isClosed"></CheckBox> 
-                        <label row="1" textWrap="true" text="   Uma disciplina fechada não poderá mais ser modificada." style="font-size: 15px; margin: -20px 75px 20px 60px;" class="text-muted"></label >  
-                    </GridLayout>
-                    <StackLayout class="hr-light"></StackLayout>
-                </StackLayout>
-
                 <!-- Horário -->
                 <StackLayout class="input-field">
                     <label text="Horário" class="label font-weight-bold m-b-5"></label>
@@ -73,11 +64,20 @@
                 </StackLayout>
 
                 <!-- Lista de Hórarios -->
-                <ScrollView orientation="horizontal">
-                    <StackLayout orientation="horizontal" class="list-group m-y-15">
-                        <label class="list-group-item" *ngFor="let horario of horarios" [text]="horario.makeHorario()" (tap)="deleteHorario(horario)"></label>
-                    </StackLayout>
-                </ScrollView>
+                <StackLayout>
+                    <ScrollView orientation="horizontal">
+                        <StackLayout orientation="horizontal" class="list-group m-y-15">
+                            <label class="list-group-item" *ngFor="let horario of horarios" [text]="horario.makeHorario()" (tap)="deleteHorario(horario)"></label>
+                        </StackLayout>
+                    </ScrollView>
+                    <StackLayout class="hr-light"></StackLayout>
+                </StackLayout>
+                
+                <!-- Está Fechada? -->
+                <GridLayout class="input-field" rows="*, *">
+                    <CheckBox #CB1 row="0" text="Fechar Disciplina" fillColor="#006968" class="checkBox" [(ngModel)]="disciplina.isClosed"></CheckBox> 
+                    <label row="1" textWrap="true" text="Uma disciplina fechada não poderá mais ser modificada." style="font-size: 15px; margin: -5px 25px 20px 15px;" class="text-muted"></label >  
+                </GridLayout>
 
                 <button text="Atualizar" class="btn btn-primary" [isEnabled]="element.valid && elementNome.valid && !notaValorValidation() && !notaValidator()" (tap)="updateDisciplina()"></button>
 
