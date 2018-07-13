@@ -76,7 +76,7 @@ export class DisciplinaUpdateComponent {
         this.disciplinaService.deleteHorario(horario, this.horarios);
     }
 
-    public deleteHorariosBd(idDisciplina: number){
+    private deleteHorariosBd(idDisciplina: number){
         this.databaseService.deleteHorarios(idDisciplina);
     }
 
@@ -90,6 +90,7 @@ export class DisciplinaUpdateComponent {
                 this.databaseService.insertHorario(element)                
             });
 
+            Toast.makeText("Disciplina Atualizada").show();
             this.nav.backToPreviousPage();
         })
     }

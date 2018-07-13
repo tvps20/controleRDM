@@ -138,12 +138,12 @@ export class DisciplinaService {
 }
 
   public deleteHorario(horario: Horario, horarios: Array<Horario>){
-    dialogs.confirm({title: "Excluir", message: "Deseja realmente excluir este horario?", okButtonText: "Sim", cancelButtonText: "Cancelar",}).then(result => {
+    dialogs.confirm({title: "Apagar", message: "Deseja realmente excluir este horario?", okButtonText: "Sim", cancelButtonText: "Cancelar",}).then(result => {
         if(result) {
             for (var i = 0; i < horarios.length; i++) {
                 if (horarios[i].id === horario.id) {
                     horarios.splice(i, 1);
-                    Toast.makeText("Horário Deletado").show();
+                    Toast.makeText("Horário Apagado").show();
                     break;
                 }
             }

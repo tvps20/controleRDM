@@ -133,7 +133,7 @@ export class DataBaseService {
     public insertHorario(horario: Horario){
         return new Promise((resolve, reject) => {
             this.createDB().then((res: any) => {
-                res.execSQL("INSERT INTO horarios (sala, dia, hora, qtdAulas, idDisciplina) VALUES (?, ?, ?, ?, ?)", [horario.sala, horario.dia, horario.hora, horario.qtdAulas, horario.idDisciplina]).then( id => {
+                res.execSQL("INSERT INTO horarios (sala, dia, hora, qtdAulas, idDisciplina, nomeDisciplina) VALUES (?, ?, ?, ?, ?, ?)", [horario.sala, horario.dia, horario.hora, horario.qtdAulas, horario.idDisciplina, horario.nomeDisciplina]).then( id => {
                     console.log("INSERT horario RESULT: ", id);
                     resolve(true);
                 }, error => {
@@ -144,19 +144,6 @@ export class DataBaseService {
         })
     }
 
-    public updateHorario(horario: Horario){
-        return new Promise((resolve, reject) => {
-            this.createDB().then((res: any) => {
-                res.execSQL("UPDATE horarios SET sala = ?, dia = ?, hora = ?, qtdAulas = ?, idDisciplina = ?  WHERE id = ?", [horario.sala, horario.dia, horario.hora, horario.qtdAulas, horario.idDisciplina, horario.id]).then(() => {
-                    console.log("UPDATE horario RESULT: ", horario.id);
-                    resolve(true);
-                }, error => {
-                    console.log("[DATABASE] - UPDATE horario FAILED!", error);
-                    reject(false);
-                })               
-            })
-        })
-    }
 
     public deleteHorarios(idDisciplina: number){
         return new Promise((resolve, reject) => {
@@ -187,6 +174,7 @@ export class DataBaseService {
                         result.hora = rows[row][3];
                         result.qtdAulas = rows[row][4];
                         result.idDisciplina = rows[row][5];
+                        result.nomeDisciplina = rows[row][6];
 
                         results.push(result);
                     }
@@ -213,6 +201,7 @@ export class DataBaseService {
                         result.hora = rows[row][3];
                         result.qtdAulas = rows[row][4];
                         result.idDisciplina = rows[row][5];
+                        result.nomeDisciplina = rows[row][6];
 
                         results.push(result);
                     }

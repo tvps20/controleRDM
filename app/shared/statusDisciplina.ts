@@ -4,3 +4,13 @@ export enum Status {
     Reprovado = 'RE',
     Despensada = 'DP'
 }
+
+export enum Dias{
+    Domingo = 'Dom',
+    Segunda = 'Seg',
+    Terca = 'Ter',
+    Quarta = 'Qua',
+    Quinta = 'Qui',
+    Sexta = 'Sex',
+    Sabado = 'Sab'
+}

@@ -25,8 +25,16 @@
 
             <StackLayout class="tabelaHorarios">
                 <label text="Aulas de Hoje" style="color: white;" class="h3"></label>
-                <label text="Quinta-Feira" style="color: white; margin-left: 10px;" class="h1"></label>
-                <label text="Não há Aulas" class="tabelaHorarios-item"></label>
+                <label [text]="dias[dia]" style="color: white; margin-left: 10px;" class="h1"></label>
+                <label *ngIf="horarios" text="Não há Aulas" class="tabelaHorarios-item"></label>
+
+                <ListView  colSpan="2" col="0" [items]="horarios" class="list-group">     
+                    <ng-template let-item="item">
+                        <GridLayout columns="35px, *, 70px, 55px" class="tabelaHorarios-item">
+                            <label col="0" [text]="item.dia"></label>
+                        </GridLayout> 
+                    </ng-template>
+                </ListView>
             </StackLayout>
         </StackLayout>
 

@@ -7,6 +7,8 @@ import * as Toast from 'nativescript-toast';
 import { DataBaseService } from '~/services/database.service';
 import { Disciplina } from '~/shared/models/disciplina.model';
 import { DisciplinaService } from '~/services/disciplina.service';
+import { Dias } from '~/shared/statusDisciplina';
+import { Horario } from '~/shared/models/horario.model';
 
 
 @Component({
@@ -19,22 +21,30 @@ export class HomeComponent implements OnInit {
 
     public disciplinasAbertas: Array<Disciplina> = [];
     public disciplinasFechadas: Array<Disciplina> = [];
+    public dias: Array<string> = ['Domingo', 'Segunda-Feira', 'Terça-Feira', 'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira', 'Sabado'];
+    public horarios: Array<Horario>
     public icons: Map<string, string> = new Map<string, string>();
+    public data: Date;
+    public dia: number;
     
     public constructor(private databaseService: DataBaseService, private page: Page, private disciplinaService: DisciplinaService){
-        this.setIcons();
-        this.loadDisciplinas();        
+        this.data = new Date();
+        this.dia = this.data.getDay();
+        this.horarios = [];      
     }
 
     ngOnInit(): void {
+        this.setIcons();
+        this.loadDisciplinas();  
         this.page.on("navigatingTo", () => this.loadDisciplinas());
     }
     
     public deleteDisciplina(disciplina: Disciplina){
-        dialogs.confirm({title: "Excluir", message: `Deseja realmente excluir a disciplina "${disciplina.nome}"?`, okButtonText: "Sim", cancelButtonText: "Cancelar",})
+        dialogs.confirm({title: "Apagar", message: `Deseja realmente excluir a disciplina "${disciplina.nome}"?`, okButtonText: "Sim", cancelButtonText: "Cancelar",})
             .then(result => {
                 if(result) {
                     this.databaseService.delete(disciplina.id);
+                    Toast.makeText("Disciplina Apagada").show();
                     this.loadDisciplinas();
                 }
         })
@@ -56,8 +66,29 @@ export class HomeComponent implements OnInit {
                     this.disciplinasAbertas.push(disciplina);                    
                 }
                 
+                this.databaseService.getAllHorarioDia(this.abreviarDia(this.dias[this.dia])).then((horarios: Array<Horario>) => {
+                    this.horarios = horarios;
+                })
+
             })
         });
+    }
+
+    private abreviarDia(dia: string): string {
+        if(dia === 'Domingo')
+            return Dias.Domingo;
+        else if(dia === 'Segunda-Feira')
+            return Dias.Segunda;
+        else if(dia === 'Terça-Feira')
+            return Dias.Terca;
+        else if(dia === 'Quarta-Feira')
+            return Dias.Quarta;
+        else if(dia === 'Quinta-Feira')
+            return Dias.Quinta;
+        else if(dia === 'Sexta-Feira')
+            return Dias.Sexta;
+        else
+            return Dias.Sabado;
     }
 
     private setIcons() {

@@ -59,12 +59,14 @@
                 </StackLayout>
 
                <!-- Lista de Hórarios -->
-                <ScrollView orientation="horizontal">
+                <StackLayout class="input-field">
                     <label text="Horários" class="label font-weight-bold m-b-5"></label>
-                    <StackLayout orientation="horizontal" class="list-group m-y-15">
-                        <label class="list-group-item" *ngFor="let horario of horarios" [text]="horario.makeHorario()"></label>
-                    </StackLayout>
-                </ScrollView>
+                    <ScrollView orientation="horizontal">                       
+                        <StackLayout orientation="horizontal" class="list-group m-y-15">
+                            <label class="list-group-item" *ngFor="let horario of horarios" [text]="horario.makeHorario()"></label>
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
 
                 <button  text="Modificar" class="btn btn-primary" [nsRouterLink]="['/update', disciplina.id]"></button>
             </StackLayout>

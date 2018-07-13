@@ -5,6 +5,7 @@ export class Horario {
     public hora: string;
     public qtdAulas: number;
     public idDisciplina: number;
+    public nomeDisciplina: string;
 
     public constructor(qtdAulas: number, dia: string){
         this.qtdAulas = qtdAulas;
