@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
 import * as Toast from 'nativescript-toast';
 
-import { Disciplina } from '~/shared/models/disciplina.model';
+import { ValidatorService } from '~/services/validator.service';
 import { DataBaseService } from '~/services/database.service';
-import { Status } from '~/shared/statusDisciplina';
+
+import { Disciplina } from '~/shared/models/disciplina.model';
 import { Horario } from '~/shared/models/horario.model';
-import { DisciplinaService } from '~/services/disciplina.service';
+import { Status } from '~/shared/statusDisciplina';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class DisciplinaComponent implements OnInit {
     public horarios: Array<Horario>
 
         
-    constructor(private databaseService: DataBaseService, private nav: RouterExtensions){
+    constructor(private databaseService: DataBaseService, private nav: RouterExtensions, private validatorService: ValidatorService){
         this.disciplina = new Disciplina('', undefined);
         this.horarios = [];
     }
@@ -43,30 +44,15 @@ export class DisciplinaComponent implements OnInit {
     
     // Validators
     public notaValorValidation(){
-        let somaNota: number = (+this.disciplina.primeiraNota) + (+this.disciplina.segundaNota) + (+this.disciplina.terceiraNota) + (+this.disciplina.quartaNota);
-
-        if((somaNota >= 16) && (somaNota < 28) && (!this.disciplina.notaFinal))
-            return false;
-        else if(((somaNota < 16) || (somaNota >= 28)) && (this.disciplina.notaFinal))
-            return true;    
-        else 
-            return false;    
+        return this.validatorService.notaValorValidator(this.disciplina);  
     }
 
     public notaValidator(){
+        return this.validatorService.notaValidator(this.disciplina);
+    }
 
-        if((+this.disciplina.primeiraNota) < 0 || (+this.disciplina.primeiraNota) > 10)
-            return true;
-        else if ((+this.disciplina.segundaNota) < 0 || (+this.disciplina.segundaNota) > 10)
-            return true;
-        else if ((+this.disciplina.terceiraNota) < 0 || (+this.disciplina.terceiraNota) > 10)
-            return true;
-        else if ((+this.disciplina.quartaNota) < 0 || (+this.disciplina.quartaNota) > 10)
-            return true;
-        else if ((+this.disciplina.notaFinal) < 0 || (+this.disciplina.notaFinal) > 10)
-            return true;
-        else
-            return false
+    public cargaHorariaValidator(){
+        return this.validatorService.cargaHorariaValidator(this.disciplina);
     }
 
 }

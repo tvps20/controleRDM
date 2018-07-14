@@ -55,6 +55,7 @@
 
                     <StackLayout>
                         <label *ngIf="!element.valid && element.dirty" text="Campo Obrigatório" class="text-right text-danger"></label>
+                        <label *ngIf="cargaHorariaValidator()" text="Minimo de 2 caracteres" class="text-right text-danger"></label>
                     </StackLayout>
                 </StackLayout>
 
@@ -65,7 +66,7 @@
                     <StackLayout class="hr-light"></StackLayout>
                 </StackLayout>
 
-                <button text="Adicionar" class="btn btn-primary" [isEnabled]="element.valid && elementNome.valid && !notaValorValidation() && !notaValidator()" (tap)="addDisciplina()"></button>
+                <button text="Adicionar" class="btn btn-primary" [isEnabled]="element.valid && elementNome.valid && !cargaHorariaValidator() && !notaValorValidation() && !notaValidator()" (tap)="addDisciplina()"></button>
             </StackLayout>
 
         </StackLayout>

@@ -25,10 +25,10 @@ export class DisciplinaDetailComponent implements OnInit{
     constructor(private router: ActivatedRoute, private databaseService: DataBaseService, private disciplinaService: DisciplinaService, private page: Page){
         this.id = +this.router.snapshot.params["id"];
         this.horarios = [];   
+        this.loadDisciplina(); 
     }
 
-    ngOnInit(): void {
-        this.loadDisciplina(); 
+    ngOnInit(): void {        
         this.page.on("navigatingTo", () =>  { this.loadDisciplina(); }); 
         this.previsaoNota();
         this.disciplina.ajustarNotas(); 

@@ -4,41 +4,45 @@
 
 <GridLayout rows="auto, *" sdkExampleTitle sdkToggleNavButton>
     <TabView row="1" [selectedIndex]="index" androidOffscreenTabLimit="2" tabBackgroundColor="#006968" tabTextColor="white" androidSelectedTabHighlightColor="white" selectedTabTextColor="white">
-        <StackLayout *tabItem="{title: 'Inicio'}">
-            <GridLayout rows="auto, auto">
-                <GridLayout row="0" columns="*, auto" class="PrevisaoCre">
-                    <Label col="0"  text="Previsao do CRE" class="m-15 h2 text-left"></Label>
-                    <label col="1" [text]="previsaoCre()" class="m-15 h2 text-left"></label>
-                </GridLayout>
+        <StackLayout *tabItem="{title: 'Inicio'}">~
+            <ScrollView>
+                <StackLayout>
+                    <GridLayout rows="auto, auto">
+                        <GridLayout row="0" columns="*, auto" class="PrevisaoCre">
+                            <Label col="0"  text="Previsao do CRE" class="m-15 h2 text-left"></Label>
+                            <label col="1" [text]="previsaoCre()" class="m-15 h2 text-left"></label>
+                        </GridLayout>
 
-                <GridLayout row="1" columns="*, *">
-                    <GridLayout col="0" rows="*,*" class="cre">
-                        <Label col="0" row="0" text="CRE Atual" class="m-15 h3 text-left"></Label>
-                        <label col="0" row="1" [text]="calcularCre()" class="m-15 h3 text-left"></label>
-                    </GridLayout>
-                    <GridLayout col="1" rows="auto,auto" class="cargaHorariaStatus">
-                        <Label col="0" row="0" text="CH Acumulada" class="m-15 h3 text-left"></Label>
-                        <label col="0" row="1" [text]="chAcumulada()" class="m-15 h3 text-left"></label>
-                    </GridLayout>    
-                </GridLayout> 
-            </GridLayout>
-
-            <StackLayout class="tabelaHorarios">
-                <label text="Aulas de Hoje" style="color: white;" class="h3"></label>
-                <label [text]="dias[dia]" style="color: white; margin-left: 10px;" class="h1"></label>
-                <label *ngIf="haveHorario()" text="Não há Aulas" class="tabelaHorarios-item"></label>
-
-                <ListView  colSpan="2" col="0" [items]="horarios" class="list-group" separatorColor="transparent">     
-                    <ng-template let-item="item">
-                        <StackLayout style="padding-bottom: 15px;">
-                            <GridLayout columns="*, *" class="tabelaHorarios-item">
-                                <label col="0" [text]="item.nomeDisciplina"></label>
-                                <label col="1" [text]="item.makeHorario()"></label>
+                        <GridLayout row="1" columns="*, *">
+                            <GridLayout col="0" rows="*,*" class="cre">
+                                <Label col="0" row="0" text="CRE Atual" class="m-15 h3 text-left"></Label>
+                                <label col="0" row="1" [text]="calcularCre()" class="m-15 h3 text-left"></label>
                             </GridLayout>
-                        </StackLayout>             
-                    </ng-template>
-                </ListView>        
-            </StackLayout>
+                            <GridLayout col="1" rows="auto,auto" class="cargaHorariaStatus">
+                                <Label col="0" row="0" text="CH Acumulada" class="m-15 h3 text-left"></Label>
+                                <label col="0" row="1" [text]="chAcumulada()" class="m-15 h3 text-left"></label>
+                            </GridLayout>    
+                        </GridLayout> 
+                    </GridLayout>
+
+                    <StackLayout class="tabelaHorarios">
+                        <label text="Aulas de Hoje" style="color: white;" class="h3"></label>
+                        <label [text]="dias[dia]" style="color: white; margin-left: 10px;" class="h1"></label>
+                        <label *ngIf="haveHorario()" text="Não há Aulas" class="tabelaHorarios-item"></label>
+
+                        <ListView  colSpan="2" col="0" [items]="horarios" class="list-group" separatorColor="transparent">     
+                            <ng-template let-item="item">
+                                <StackLayout style="padding-bottom: 15px;">
+                                    <GridLayout columns="*, *" class="tabelaHorarios-item">
+                                        <label col="0" [text]="item.nomeDisciplina"></label>
+                                        <label col="1" [text]="item.makeHorario()"></label>
+                                    </GridLayout>
+                                </StackLayout>             
+                            </ng-template>
+                        </ListView>        
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
         </StackLayout>
 
         <StackLayout *tabItem="{title: 'Disciplinas'}">

@@ -8,10 +8,12 @@ import { ModalDialogService, ModalDialogOptions } from 'nativescript-angular/mod
 
 import { DataBaseService } from '~/services/database.service';
 import { DisciplinaService } from '~/services/disciplina.service';
+import { ValidatorService } from '~/services/validator.service';
 
 import { HorarioModalComponent } from '~/modais/horarioModal.component';
 import { Horario } from '~/shared/models/horario.model';
 import { Status } from '~/shared/statusDisciplina';
+
 
 
 @Component({
@@ -28,7 +30,7 @@ export class DisciplinaUpdateComponent {
         public horarios: Array<Horario>
 
     
-    public constructor(private router: ActivatedRoute, private databaseService: DataBaseService, private nav: RouterExtensions,  private modalService: ModalDialogService, private vcRef: ViewContainerRef, private disciplinaService: DisciplinaService) {
+    public constructor(private router: ActivatedRoute, private databaseService: DataBaseService, private nav: RouterExtensions,  private modalService: ModalDialogService, private vcRef: ViewContainerRef, private disciplinaService: DisciplinaService, private validatorService: ValidatorService) {
         this.id = +this.router.snapshot.params["id"];
         this.horarios = [];
         this.loadDisciplina();
@@ -87,7 +89,7 @@ export class DisciplinaUpdateComponent {
                 this.deleteHorariosBd(this.disciplina.id);
 
                 Toast.makeText("Disciplina Atualizada").show();
-                this.nav.navigate(['/home'], {clearHistory: true});
+                this.nav.navigate(['/home', 1], {clearHistory: true});
             })
             
         } else {
@@ -124,29 +126,14 @@ export class DisciplinaUpdateComponent {
 
     // Validators
     public notaValorValidation(){
-        let somaNota: number = (+this.disciplina.primeiraNota) + (+this.disciplina.segundaNota) + (+this.disciplina.terceiraNota) + (+this.disciplina.quartaNota);
-
-        if((somaNota >= 16) && (somaNota < 28) && (!this.disciplina.notaFinal))
-            return false;
-        else if(((somaNota < 16) || (somaNota >= 28)) && (this.disciplina.notaFinal))
-            return true;
-        else 
-            return false;     
+        return this.validatorService.notaValorValidator(this.disciplina);  
     }
 
     public notaValidator(){
+        return this.validatorService.notaValidator(this.disciplina);
+    }
 
-        if((+this.disciplina.primeiraNota) < 0 || (+this.disciplina.primeiraNota) > 10)
-            return true;
-        else if ((+this.disciplina.segundaNota) < 0 || (+this.disciplina.segundaNota) > 10)
-            return true;
-        else if ((+this.disciplina.terceiraNota) < 0 || (+this.disciplina.terceiraNota) > 10)
-            return true;
-        else if ((+this.disciplina.quartaNota) < 0 || (+this.disciplina.quartaNota) > 10)
-            return true;
-        else if ((+this.disciplina.notaFinal) < 0 || (+this.disciplina.notaFinal) > 10)
-            return true;
-        else
-            return false
+    public cargaHorariaValidator(){
+        return this.validatorService.cargaHorariaValidator(this.disciplina);
     }
 }

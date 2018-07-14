@@ -54,6 +54,7 @@
 
                     <StackLayout>
                         <label *ngIf="!element.valid" text="Campo Obrigatório" class="text-right text-danger"></label>
+                        <label *ngIf="cargaHorariaValidator()" text="Minimo de 2 caracteres" class="text-right text-danger"></label>
                     </StackLayout>
                 </StackLayout>
 
@@ -67,7 +68,7 @@
                 <StackLayout>
                     <ScrollView orientation="horizontal">
                         <StackLayout orientation="horizontal" class="list-group m-y-15">
-                            <label class="list-group-item" *ngFor="let horario of horarios" [text]="horario.makeHorario()" (tap)="deleteHorario(horario)"></label>
+                            <label class="list-group-horario" *ngFor="let horario of horarios" [text]="horario.makeHorario()" (tap)="deleteHorario(horario)"></label>
                         </StackLayout>
                     </ScrollView>
                     <StackLayout class="hr-light"></StackLayout>
@@ -79,7 +80,7 @@
                     <label row="1" textWrap="true" text="Uma disciplina fechada não poderá mais ser modificada." style="font-size: 15px; margin: -5px 25px 20px 15px;" class="text-muted"></label >  
                 </GridLayout>
 
-                <button text="Atualizar" class="btn btn-primary" [isEnabled]="element.valid && elementNome.valid && !notaValorValidation() && !notaValidator()" (tap)="updateDisciplina()"></button>
+                <button text="Atualizar" class="btn btn-primary" [isEnabled]="element.valid && elementNome.valid && !cargaHorariaValidator() && !notaValorValidation() && !notaValidator()" (tap)="updateDisciplina()"></button>
 
             </StackLayout>
 

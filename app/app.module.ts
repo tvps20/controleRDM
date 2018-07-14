@@ -4,11 +4,6 @@ import { AppRoutingModule } from "./app.routing";
 import { AppComponent } from "./app.component";
 import { TNSCheckBoxModule } from 'nativescript-checkbox/angular';
 
-import { LISTVIEW_DIRECTIVES } from 'nativescript-telerik-ui/listview/angular';
-import { SIDEDRAWER_DIRECTIVES } from "nativescript-telerik-ui/sidedrawer/angular";
-
-
-
 // Import Modais
 import { HorarioModalComponent } from './modais/horarioModal.component'
 
@@ -21,7 +16,8 @@ import { SobreComponent } from "./pages/sobre/sobre.component";
 
 // Services
 import { DataBaseService } from "~/services/database.service";
-import { DisciplinaService } from "./services/disciplina.service"
+import { DisciplinaService } from "./services/disciplina.service";
+import { ValidatorService } from "./services/validator.service";
 
 // importando o serviço para usar os modais
 import { ModalDialogService } from 'nativescript-angular/modal-dialog' 
@@ -47,8 +43,6 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
     ],
     declarations: [
         AppComponent,
-        LISTVIEW_DIRECTIVES,
-        SIDEDRAWER_DIRECTIVES,
         HorarioModalComponent,
         HomeComponent,
         DisciplinaComponent,
@@ -59,6 +53,7 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
     providers: [
         DataBaseService,
         DisciplinaService,
+        ValidatorService,
         ModalDialogService
     ],
     schemas: [
