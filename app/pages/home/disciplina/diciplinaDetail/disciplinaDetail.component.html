@@ -61,7 +61,7 @@
                <!-- Lista de Hórarios -->
                 <StackLayout class="input-field">                    
                     <label text="Horários" class="label font-weight-bold m-b-5"></label>
-                    <label *ngIf="haveHorario()" text="Nenhum horário cadastrado." style="text-align: center;" class="tabelaHorarios-item"></label>
+                    <label *ngIf="haveHorario()" text="Nenhum horário cadastrado." style="text-align: center;" class="text-muted"></label>
                     <ScrollView orientation="horizontal">                       
                         <StackLayout orientation="horizontal" class="list-group m-y-15">
                             <label class="list-group-horario" *ngFor="let horario of horarios" [text]="horario.makeHorario()"></label>

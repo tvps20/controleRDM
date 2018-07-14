@@ -61,16 +61,17 @@
                 <!-- Horário -->
                 <StackLayout class="input-field">
                     <label text="Horário" class="label font-weight-bold m-b-5"></label>
-                    <TextField class="input" hint="Toque aqui" editable="false" (tap)="showHorarioModal()"></TextField>
+                    <TextField class="input m-l-15" hint="Toque aqui" editable="false" (tap)="showHorarioModal()"></TextField>
                 </StackLayout>
 
                 <!-- Lista de Hórarios -->
                 <StackLayout>
                     <ScrollView orientation="horizontal">
-                        <StackLayout orientation="horizontal" class="list-group m-y-15">
+                        <StackLayout orientation="horizontal" style="margin-left: 35px;" class="list-group m-y-15">
                             <label class="list-group-horario" *ngFor="let horario of horarios" [text]="horario.makeHorario()" (tap)="deleteHorario(horario)"></label>
                         </StackLayout>
                     </ScrollView>
+                    <label *ngIf="!haveHorario()" row="1" textWrap="true" text="Toque em um horário para excluir." style="font-size: 15px; margin: -5px 25px 20px 35px;" class="text-muted"></label >
                     <StackLayout class="hr-light"></StackLayout>
                 </StackLayout>
                 
@@ -87,10 +88,3 @@
         </StackLayout>
     </ScrollView>
 </StackLayout>
-
-<!-- <StackLayout class="input-field">
-    <label text="Professor" class="label font-weight-bold m-b-5"></label>
-    <TextField class="input" [(ngModel)]="textField"  #professor="ngModel" name="professor"></TextField>
-    <label *ngIf="!professor.valid" text="Esse campo é obrigatorio"></label>
-    <StackLayout class="hr-light"></StackLayout>
-</StackLayout> -->

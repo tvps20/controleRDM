@@ -66,12 +66,14 @@
                 </StackLayout>
     
                 <!-- Lista de Hórarios -->
-                <ScrollView orientation="horizontal">
-                    <StackLayout orientation="horizontal" class="list-group m-y-15">
-                        <label class="list-group-horario" *ngFor="let horario of horarios" [text]="horario.makeHorario()" (tap)="deleteHorario(horario)"></label>
-                    </StackLayout>
-                </ScrollView>
-
+                <StackLayout>
+                    <ScrollView orientation="horizontal">
+                        <StackLayout orientation="horizontal" style="margin-left: 35px;" class="list-group m-y-15">
+                            <label class="list-group-horario" *ngFor="let horario of horarios" [text]="horario.makeHorario()" (tap)="deleteHorario(horario)"></label>
+                        </StackLayout>               
+                    </ScrollView>
+                    <label *ngIf="!haveHorario()" row="1" textWrap="true" text="Toque em um horário para excluir." style="font-size: 15px; margin: -5px 25px 20px 35px;" class="text-muted"></label >
+                </StackLayout>
 
                 <button text="Adicionar" class="btn btn-primary" [isEnabled]="element.valid && elementNome.valid && !cargaHorariaValidator() && !notaValorValidation() && !notaValidator()" (tap)="addDisciplina()"></button>
             </StackLayout>

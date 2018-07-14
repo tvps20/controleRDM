@@ -67,6 +67,10 @@ export class DisciplinaUpdateComponent {
         this.databaseService.deleteHorarios(idDisciplina);
     }
 
+    public haveHorario(){
+        return this.disciplinaService.haveHorario(this.horarios);
+    }
+
     public updateDisciplina(){
         if(this.verificaStatus(this.disciplina)){
             this.databaseService.deleteHorarios(this.disciplina.id);

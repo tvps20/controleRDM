@@ -65,6 +65,10 @@ export class DisciplinaComponent implements OnInit {
     public deleteHorario(horario: Horario){
         this.disciplinaService.deleteHorario(horario, this.horarios);
     }
+
+    public haveHorario(){
+        return this.disciplinaService.haveHorario(this.horarios);
+    }
     
     // Validators
     public notaValorValidation(){
