@@ -17,26 +17,36 @@ refer to http://docs.nativescript.org/ui/theme.
 .fa {
     font-family: "fontawesome-webfont";
     font-size: 28px;
-    color: #000000;
+    color: #95a5a6;
     vertical-align: middle;
 }
 
-.form-content {
-    background-color: white;
-    padding-top: 60px;
-    padding-left: 42px;
-    padding-right: 42px;
-    padding-bottom: 30px;
-    transform: scale(0.9, 0.9);
+.action-bar {
+    background-color: #5e94ff;
+}
+
+.btn-primary{
+    background-color: #5485e4;
+}
+
+.text-danger{
+    color: #d9595c;
+}
+
+.input-field{
+    color:  #3d3d3d;
 }
 
 .page { 
-    background-color: teal;
+    background-color: #f5f5f5;
 }
 
+.form-content{
+    margin: 25px;
+}
 
 .cargaHoraria {
-    background-color: #3498db;
+    background-color: #5e94ff;
     border-radius: 5%;
     color: white;
     padding: 7px;
@@ -46,7 +56,7 @@ refer to http://docs.nativescript.org/ui/theme.
 }
 
 .statusRE {
-    background-color: #c0392b;
+    background-color: #d9595c;
     border-radius: 5%;
     color: white;
     padding: 7px;
@@ -66,7 +76,7 @@ refer to http://docs.nativescript.org/ui/theme.
 }
 
 .list-group-horario {
-    background-color: #40c4ff;
+    background-color: #5485e4;
     border-radius: 5%;
     padding: 10px;
     font-weight: bold;

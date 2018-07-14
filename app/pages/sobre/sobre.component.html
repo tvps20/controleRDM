@@ -1,19 +1,22 @@
 <ActionBar title="Sobre o App" class="action-bar"></ActionBar>
 
-<scrollView>
-    <stackLayout class="m-10">
-        <label [text]="iconInformation" class="fa text-center m-t-10"></label>
-        <label text="Controle do CRE" class="h2 text-center m-t-10"></label>
-        <label textWrap="true" class="text-left m-10" text="        Esse aplicativo foi desenvolvido como o objetivo de ajudar o aluno a estipular uma media de como ficará seu CRE de acordo com notas estimadas.
+<StackLayout class="page">
+    <scrollView>
+        <stackLayout class="form-content">
+            <label [text]="iconInformation" class="fa text-center m-t-10"></label>
+            <label text="Controle do CRE" class="h2 text-center m-t-10"></label>
+            <label textWrap="true" class="text-left m-10" text="
+            O controle CRE é uma aplicação que objetiva proporcionar aos estudantes universitários uma visão de suas notas. A partir de informações básicas, é possível obter uma visão do seu coeficiente acadêmico para o próximo semestre, como também, um panorama de suas médias em cada disciplina e uma perspectiva para as próximas provas.                
+            
+            Através de uma interface simples, agradável e de fácil acesso, o discente pode acompanhar suas notas.            
+            
+            Esta aplicação tem por base os cálculos de notas usados na Universidade Estadual da Paraíba (UEPB).           
+            
+            Σ(Nota da Disciplina * Carga Horaria) 
+            _________________________________________
+                Total de todas as Cargas Horarias
 
-        A ideia consiste em adicionar as cadeiras que se esta pagando no momento e automaticamente a partir de notas colocadas será calculada uma possível media de como ficará o CRE quando o período terminar. Além disso, é possível adicionar mais informações as disciplinas cadastradas, tais como: horário, nome do professor, carga horaria e as notas referentes à mesma.
-
-        Esse aplicativo usa o calculo de media do CRE da Universidade Estadual da Paraíba (UEPB).
-
-          Σ(Nota da Disciplina * Carga Horaria) 
-        _________________________________________
-            Total de todas as Cargas Horarias
-
-        Desenvolvedor: Thiago Vitor Porto Santiago."></label>
-    </stackLayout>
-</scrollView>
+            Desenvolvedor: Thiago Vitor Porto Santiago."></label>
+        </stackLayout>
+    </scrollView>
+</StackLayout>

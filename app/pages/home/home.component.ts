@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
 
     public disciplinasAbertas: Array<Disciplina> = [];
     public disciplinasFechadas: Array<Disciplina> = [];
-    public dias: Array<string> = ['Domingo', 'Segunda-Feira', 'Terça-Feira', 'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira', 'Sabado'];
+    public dias: Array<string> = ['Domingo', 'Segunda-Feira', 'Terça-Feira', 'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira', 'Sábado'];
     public horarios: Array<Horario>
     public icons: Map<string, string> = new Map<string, string>();
     public data: Date;

@@ -31,7 +31,7 @@ export class DataBaseService {
             this.createDB().then((res: any) => {
                 res.execSQL("INSERT INTO disciplinas (nome, professor, cargaHoraria, isClosed, status, primeiraNota, segundaNota, terceiraNota, quartaNota, notaFinal) VALUES (?,?,?,?,?,?,?,?,?,?)", [disciplina.nome, disciplina.professor, disciplina.cargaHoraria, disciplina.isClosed, disciplina.status, disciplina.primeiraNota, disciplina.segundaNota, disciplina.terceiraNota, disciplina.quartaNota, disciplina.notaFinal]).then(id => {
                     console.log("INSERT RESULT: ", id);
-                    resolve(true);
+                    resolve(id);
                 }, error => {
                     console.log("[DATABASE] - INSERT FAILED!", error);
                     reject(false);

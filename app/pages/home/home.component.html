@@ -1,9 +1,10 @@
 <ActionBar title="Controle do CRE" class="action-bar">
     <ActionItem text="Sobre" ios.position="right" nsRouterLink="/sobre" android.position="popup"></ActionItem>
+    <ActionItem text="Ajuda" ios.position="right" android.position="popup"></ActionItem>
 </ActionBar>
 
 <GridLayout rows="auto, *" sdkExampleTitle sdkToggleNavButton>
-    <TabView row="1" [selectedIndex]="index" androidOffscreenTabLimit="2" tabBackgroundColor="#006968" tabTextColor="white" androidSelectedTabHighlightColor="white" selectedTabTextColor="white">
+    <TabView row="1" [selectedIndex]="index" androidOffscreenTabLimit="2" tabBackgroundColor="#5e94ff" tabTextColor="white" style="background-color: #f5f5f5;" androidSelectedTabHighlightColor="white" selectedTabTextColor="white">
         <StackLayout *tabItem="{title: 'Inicio'}">~
             <ScrollView>
                 <StackLayout>

@@ -55,21 +55,6 @@ export class DisciplinaUpdateComponent {
         this.modalService.showModal(HorarioModalComponent, modalOptions).then(newHorario => this.setNewHorario(newHorario));
     }
 
-
-    public upDateHorarioModal(horario: Horario){
-        let modalOptions: ModalDialogOptions = {
-            fullscreen: false,
-            // Contanier onde o modal vai ser carregado. (Injetando no mesmo contanier de disciplinaComponent)
-            viewContainerRef: this.vcRef,
-            // Para Enviar os dados pra dentro do Modal
-            // context: {
-            //     preSelectedHorario: objeto do tipo horário
-            // }
-        };
-
-        this.modalService.showModal(HorarioModalComponent, modalOptions).then(newHorario => this.setNewHorario(newHorario));
-    }
-
     private setNewHorario(newHorario: Horario){
         this.disciplinaService.setNewHorario(newHorario, this.horarios);
     }
@@ -136,4 +121,5 @@ export class DisciplinaUpdateComponent {
     public cargaHorariaValidator(){
         return this.validatorService.cargaHorariaValidator(this.disciplina);
     }
+
 }
