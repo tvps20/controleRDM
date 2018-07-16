@@ -73,7 +73,6 @@ export class DisciplinaService {
       return parseFloat(previsaCre.toFixed(2));
 
     } else {
-      console.log("ta entrando aqui")
       return 0;
     }
   }
@@ -178,6 +177,6 @@ export class DisciplinaService {
         return true
     } else {
         return false;
+    }
   }
-}
 }

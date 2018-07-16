@@ -5,32 +5,51 @@
         <StackLayout class="form-content">
             <StackLayout class="form">   
                 <!-- Notas -->
-                <StackLayout style="text-align: center; font-size: 25px" class="h1">
-                    <GridLayout columns="*,*" rows="*,*,auto,auto">
-                        <label col="0" row="0" text="Unidade 1" class="label font-weight-bold h3"></label>
-                        <GridLayout col="0" row="1" columns="*,*" class="input-field">
-                            <TextField col="0" class="input" hint="1º Nota" keyboardType="number" [(ngModel)]="disciplina.primeiraNota" maxlength="4"></TextField>
-                            <TextField col="1" class="input" hint="2º Nota" keyboardType="number" [(ngModel)]="disciplina.segundaNota" maxlength="4"></TextField>
-                        </GridLayout>
+                <CardView class="cardStyle" margin="10" elevation="20" radius="15" style="margin-bottom: 50px;">
+                    <StackLayout style="text-align: center; font-size: 25px; padding-top: 25px;" class="h1">
+                        <label text="Notas" class="text-muted"></label>
+                        <StackLayout>
+                            <GridLayout columns="*,*" rows="*,*,auto,auto">
+                                <label col="0" row="0" text="Unidade 1" class="label font-weight-bold h3"></label>
+                                <GridLayout col="0" row="1" columns="*,*" class="input-field">
+                                    <StackLayout col="0" class="m-x-10">
+                                        <TextField class="input" hint="1º Nota" keyboardType="number" [(ngModel)]="disciplina.primeiraNota" maxlength="4"></TextField>
+                                        <StackLayout class="hr-light"></StackLayout>
+                                    </StackLayout>
+                                    <StackLayout col="1" class="m-x-10">
+                                        <TextField class="input" hint="2º Nota" keyboardType="number" [(ngModel)]="disciplina.segundaNota" maxlength="4"></TextField>
+                                        <StackLayout class="hr-light"></StackLayout>
+                                    </StackLayout>
+                                </GridLayout>
 
-                        <label col="1" row="0" text="Unidade 2" class="label font-weight-bold h3"></label>
-                        <GridLayout col="1" row="1" columns="*,*" class="input-field">
-                            <TextField col="0" class="input" hint="3º Nota" keyboardType="number" [(ngModel)]="disciplina.terceiraNota" maxlength="4"></TextField>
-                            <TextField col="1" class="input" hint="4º Nota" keyboardType="number" [(ngModel)]="disciplina.quartaNota" maxlength="4"></TextField>
-                        </GridLayout>
+                                <label col="1" row="0" text="Unidade 2" class="label font-weight-bold h3"></label>
+                                <GridLayout col="1" row="1" columns="*,*" class="input-field">
+                                    <StackLayout col="0" class="m-x-10">
+                                        <TextField class="input" hint="3º Nota" keyboardType="number" [(ngModel)]="disciplina.terceiraNota" maxlength="4"></TextField>
+                                        <StackLayout class="hr-light"></StackLayout>
+                                    </StackLayout>
+                                    <StackLayout col="1" class="m-x-10">
+                                        <TextField class="input" hint="4º Nota" keyboardType="number" [(ngModel)]="disciplina.quartaNota" maxlength="4"></TextField>
+                                        <StackLayout class="hr-light"></StackLayout>
+                                    </StackLayout>
+                                </GridLayout>
 
-                        <label col="0" colSpan="2" row="2" text="Final" class="label font-weight-bold h3"></label>
-                        <TextField col="0" colSpan="2" row="3" class="input" hint="Nota Final" keyboardType="number" [(ngModel)]="disciplina.notaFinal" maxlength="4"></TextField>
+                                <label col="0" colSpan="2" row="2" text="Final" class="label font-weight-bold h3"></label>
+                                <StackLayout col="0" colSpan="2" row="3" class="input-field m-b-10">
+                                    <TextField class="input" hint="Nota Final" keyboardType="number" [(ngModel)]="disciplina.notaFinal" maxlength="4"></TextField>
+                                    <StackLayout class="hr-light" style="width: 200px;"></StackLayout>
+                                </StackLayout>
+                            </GridLayout>
 
-                    </GridLayout>
-
-                    <StackLayout style="font-size: 15px;">
-                        <label *ngIf="notaValidator()" text="Essa nota não é válida" class="text-right text-danger"></label>
+                            <StackLayout style="font-size: 15px;">
+                                <label *ngIf="notaValidator()" text="Essa nota não é válida" class="text-right text-danger m-15"></label>
+                            </StackLayout>
+                        </StackLayout>
                     </StackLayout>
-                </StackLayout>
+                </CardView>
 
                 <!-- Nome -->
-                <StackLayout class="input-field" style="margin-top: -50px;">
+                <StackLayout class="input-field">
                     <label text="Nome" class="label font-weight-bold m-b-5"></label>
                     <TextField class="input" [(ngModel)]="disciplina.nome" #elementNome="ngModel" required></TextField>
                     <StackLayout class="hr-light"></StackLayout>

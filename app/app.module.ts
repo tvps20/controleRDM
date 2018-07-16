@@ -3,6 +3,9 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { AppRoutingModule } from "./app.routing";
 import { AppComponent } from "./app.component";
 import { TNSCheckBoxModule } from 'nativescript-checkbox/angular';
+import { registerElement } from 'nativescript-angular/element-registry';
+import { CardView } from 'nativescript-cardview';
+registerElement('CardView', () => CardView);
 
 // Import Modais
 import { HorarioModalComponent } from './modais/horarioModal.component'
@@ -39,7 +42,7 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
         NativeScriptModule,
         AppRoutingModule,
         NativeScriptFormsModule,
-        TNSCheckBoxModule
+        TNSCheckBoxModule, 
     ],
     declarations: [
         AppComponent,

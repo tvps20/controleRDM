@@ -6,13 +6,13 @@ import { ModalDialogService, ModalDialogOptions } from 'nativescript-angular/mod
 
 import { ValidatorService } from '~/services/validator.service';
 import { DataBaseService } from '~/services/database.service';
+import { DisciplinaService } from '~/services/disciplina.service';
+
+import { HorarioModalComponent } from '~/modais/horarioModal.component';
 
 import { Disciplina } from '~/shared/models/disciplina.model';
 import { Horario } from '~/shared/models/horario.model';
 import { Status } from '~/shared/statusDisciplina';
-
-import { HorarioModalComponent } from '~/modais/horarioModal.component';
-import { DisciplinaService } from '~/services/disciplina.service';
 
 
 @Component({
