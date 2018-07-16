@@ -56,7 +56,7 @@ export class DisciplinaService {
     let nota: number = 0;
     let totalCargaHoraria: number = 0;
 
-    if(!this.haveDisciplina(listaDeDisciplinasAbertas)){
+    if(!this.haveDisciplina(listaDeDisciplinasAbertas) || !this.haveDisciplina(listaDeDisciplinasFechadas)){
       listaDeDisciplinasAbertas.forEach(element => {
         nota += this.calcularMedia(element) * element.cargaHoraria;
         totalCargaHoraria += element.cargaHoraria; 
@@ -73,6 +73,7 @@ export class DisciplinaService {
       return parseFloat(previsaCre.toFixed(2));
 
     } else {
+      console.log("ta entrando aqui")
       return 0;
     }
   }
