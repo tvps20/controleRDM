@@ -1,5 +1,5 @@
 <ActionBar title="Controle do CRE" class="action-bar">
-    <ActionItem text="Sobre" ios.position="right" nsRouterLink="/sobre" android.position="popup"></ActionItem>
+    <ActionItem text="Sobre" ios.position="right" nsRouterLink="/sobre" android.position="popup" pageTransition="flipRight"></ActionItem>
     <ActionItem text="Ajuda" ios.position="right" android.position="popup"></ActionItem>
 </ActionBar>
 
@@ -59,14 +59,14 @@
                     <ng-template let-item="item">
                         <GridLayout columns="35px, *, 70px, 55px" class="list-group-item">
                             <label col="0" [text]="icons.get('trash')" class="fa" (tap)="deleteDisciplina(item)"></label>
-                            <Label col="1" [text]='item.nome' [nsRouterLink]="['/disciplina', item.id]"></Label>
+                            <Label col="1" [text]='item.nome' (tap)="navigateDisciplinaDetail(item)" pageTransition="fade"></Label>
                             <Label col="2" [text]="item.cargaHoraria + 'CH'" style="text-align: center" class="cargaHoraria"></Label>
-                            <Label col="3" [text]='calcularNota(item)' class="nota" [nsRouterLink]="['/disciplina', item.id]"></Label>
+                            <Label col="3" [text]='calcularNota(item)' class="nota"></Label>
                         </GridLayout> 
                     </ng-template>
                 </ListView>
 
-                <button col="1" text="+" nsRouterLink="/disciplina" class="btn btn-primary"></button>
+                <button col="1" text="+" class="btn btn-primary" pageTransition="fade" id="button-add" (tap)="navigateNewDisciplina($event)"></button>
                 
             </GridLayout>
         </StackLayout>

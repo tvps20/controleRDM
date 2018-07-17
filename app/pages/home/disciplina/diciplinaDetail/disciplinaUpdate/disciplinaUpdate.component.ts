@@ -78,7 +78,9 @@ export class DisciplinaUpdateComponent {
                 this.deleteHorariosBd(this.disciplina.id);
 
                 Toast.makeText("Disciplina Atualizada").show();
-                this.nav.navigate(['/home', 1], {clearHistory: true});
+                this.nav.navigate(['/home', 1], {clearHistory: true, transition: {
+                    name: 'fade', duration: 800, curve: 'linear'
+                }});
             })
             
         } else {

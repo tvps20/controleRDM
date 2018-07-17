@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import * as dialogs from 'ui/dialogs';
 import { Page } from 'ui/page';
 import { ActivatedRoute } from "@angular/router"
-import { AnimationCurve } from "ui/enums";
 // Importanto pacote para notificações simples
 import * as Toast from 'nativescript-toast';
 
@@ -11,6 +10,7 @@ import { Disciplina } from '~/shared/models/disciplina.model';
 import { DisciplinaService } from '~/services/disciplina.service';
 import { Dias } from '~/shared/statusDisciplina';
 import { Horario } from '~/shared/models/horario.model';
+import { RouterExtensions } from 'nativescript-angular/router';
 
 
 @Component({
@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
     public dia: number;
     public index: number;
     
-    public constructor(private router: ActivatedRoute, private databaseService: DataBaseService, private page: Page, private disciplinaService: DisciplinaService){
+    public constructor(private router: ActivatedRoute, private nav: RouterExtensions, private databaseService: DataBaseService, private page: Page, private disciplinaService: DisciplinaService){
         this.index = 0;
         this.data = new Date();
         this.dia = this.data.getDay();
@@ -107,6 +107,25 @@ export class HomeComponent implements OnInit {
         this.icons.set('aprovado', String.fromCharCode(0xf087));
         this.icons.set('reprovado', String.fromCharCode(0xf088));
         this.icons.set('reprovadoCheio', String.fromCharCode(0xf165));     
+    }
+
+    public navigateDisciplinaDetail(disciplina: Disciplina){
+        this.nav.navigate(['/disciplina', disciplina.id], { transition: {
+            name: 'fade', duration: 800, curve: 'linear'
+        }});
+    }
+
+    public navigateNewDisciplina(args: any){
+        let button = args.Object
+
+        button = this.page.getViewById("button-add");
+        button.animate({
+            scale: { x: 1.1, y: 1.1}, duration: 200   
+        }).then(() => {
+            this.nav.navigate(['/disciplina'], { transition: {
+                name: 'fade', duration: 500, curve: 'linear'
+            }})
+        }).then(() => {button.animate({scale: {x:1, y:1}, duration: 1000})});    
     }
 
     public calcularNota(disciplina: Disciplina){
