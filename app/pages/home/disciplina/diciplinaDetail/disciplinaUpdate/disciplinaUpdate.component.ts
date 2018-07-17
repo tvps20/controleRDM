@@ -116,7 +116,7 @@ export class DisciplinaUpdateComponent {
     }
 
     // Validators
-    public notaValorValidation(){
+    public finalValidator(){
         return this.validatorService.notaValorValidator(this.disciplina);  
     }
 

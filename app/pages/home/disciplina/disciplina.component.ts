@@ -73,7 +73,7 @@ export class DisciplinaComponent implements OnInit {
     }
     
     // Validators
-    public notaValorValidation(){
+    public finalValidator(){
         return this.validatorService.notaValorValidator(this.disciplina);  
     }
 

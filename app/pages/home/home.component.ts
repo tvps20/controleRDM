@@ -120,7 +120,7 @@ export class HomeComponent implements OnInit {
 
         button = this.page.getViewById("button-add");
         button.animate({
-            scale: { x: 1.1, y: 1.1}, duration: 200   
+            scale: { x: 1.1, y: 1.1}, duration: 300   
         }).then(() => {
             this.nav.navigate(['/disciplina'], { transition: {
                 name: 'fade', duration: 500, curve: 'linear'

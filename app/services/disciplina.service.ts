@@ -124,19 +124,18 @@ export class DisciplinaService {
         }
       }
     }
-
   }
 
   private verificaNotas(disciplina: Disciplina){
     let countNota: number = 0;
 
-    if(disciplina.primeiraNota)
+    if(disciplina.primeiraNota || disciplina.primeiraNota === 0)
       countNota++
-    if(disciplina.segundaNota)
+    if(disciplina.segundaNota || disciplina.segundaNota === 0)
       countNota++
-    if(disciplina.terceiraNota)
+    if(disciplina.terceiraNota || disciplina.terceiraNota === 0)
       countNota++
-    if(disciplina.quartaNota)
+    if(disciplina.quartaNota || disciplina.quartaNota === 0)
       countNota++
 
     return countNota;
