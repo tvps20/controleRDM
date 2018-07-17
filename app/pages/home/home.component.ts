@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as dialogs from 'ui/dialogs';
 import { Page } from 'ui/page';
 import { ActivatedRoute } from "@angular/router"
+import { AnimationCurve } from "ui/enums";
 // Importanto pacote para notificações simples
 import * as Toast from 'nativescript-toast';
 
@@ -123,12 +124,4 @@ export class HomeComponent implements OnInit {
     public chAcumulada(){
         return this.disciplinaService.calcularChAcumulada(this.disciplinasFechadas);
     }
-
-    // public getIcon({ isClosed }) {
-    //     if (isClosed === "true") {
-    //         return this.icons.get('aprovado')
-    //     } else if (isClosed === "false") {
-    //         return this.icons.get('reprovadoCheio');
-    //     }
-    // }
 }

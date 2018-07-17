@@ -12,24 +12,35 @@
                 </GridLayout>
 
                 <!-- Notas -->
-                <StackLayout style="text-align: center" class="quadroNota">
-                    <GridLayout columns="*,*" rows="*,*,auto,auto">   
-                        <label col="0" row="0" text="Unidade 1" class="h3"></label>
-                        <GridLayout col="0" row="1" columns="*,*" style="border-radius: 10%;" class="bg-primary m-x-5">
-                            <label col="0" [text]="disciplina.primeiraNota"></label>
-                            <label col="1" [text]="disciplina.segundaNota"></label>
-                        </GridLayout>
+                <CardView class="cardStyle" margin="10" elevation="20" radius="15" style="margin-bottom: 50px;">
+                    <StackLayout style="padding: 50px;">
+                        <StackLayout style="text-align: center" class="quadroNota">
+                            <label text="Notas" class="text-muted"></label>
+                            <GridLayout columns="*,*" rows="*,*,auto,auto">   
+                                <label col="0" row="0" text="Unidade 1" class="h3"></label>
+                                <CardView col="0" row="1" class="cardStyle" margin="5" elevation="5" radius="15" style=" background-color: #5485e4"> 
+                                    <GridLayout columns="*,*" style="border-radius: 10%;" class="bg-primary m-x-5">
+                                        <label col="0" [text]="disciplina.primeiraNota"></label>
+                                        <label col="1" [text]="disciplina.segundaNota"></label>
+                                    </GridLayout>
+                                </CardView>
 
-                        <label col="1" row="0" text="Unidade 2" class="h3"></label>
-                        <GridLayout col="1" row="1" columns="*,*" style="border-radius: 10%;" class="bg-primary m-x-5">
-                            <label col="0" [text]="disciplina.terceiraNota"></label>
-                            <label col="1" [text]="disciplina.quartaNota"></label>
-                        </GridLayout>
+                                <label col="1" row="0" text="Unidade 2" class="h3"></label>
+                                <CardView col="1" row="1" class="cardStyle" margin="5" elevation="5" radius="15" style=" background-color: #5485e4"> 
+                                    <GridLayout columns="*,*" style="border-radius: 10%;" class="bg-primary m-x-5">
+                                        <label col="0" [text]="disciplina.terceiraNota"></label>
+                                        <label col="1" [text]="disciplina.quartaNota"></label>
+                                    </GridLayout>
+                                </CardView>
 
-                        <label col="0" colSpan="2" row="2" text="Final" class="h3"></label>
-                        <label col="0" colSpan="2" row="3" [text]="disciplina.notaFinal" style="border-radius: 10%; width: 350px;" class="bg-primary"></label>  
-                    </GridLayout>
-                </StackLayout>
+                                <label col="0" colSpan="2" row="2" text="Final" class="h3"></label>
+                                <CardView col="0" colSpan="2" row="3" class="cardStyle" width="150" margin="5" elevation="5" radius="15" style=" background-color: #5485e4"> 
+                                    <label [text]="disciplina.notaFinal" class="bg-primary"></label>
+                                </CardView>
+                            </GridLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </CardView>
 
                 <!-- Professor -->
                 <StackLayout class="input-field">
@@ -60,11 +71,13 @@
 
                <!-- Lista de Hórarios -->
                 <StackLayout class="input-field">                    
-                    <label text="Horários" class="label font-weight-bold m-b-5"></label>
+                    <label text="Horários" class="label font-weight-bold"></label>
                     <label *ngIf="haveHorario()" text="Nenhum horário cadastrado." style="text-align: center;" class="text-muted"></label>
                     <ScrollView orientation="horizontal">                       
                         <StackLayout orientation="horizontal" class="list-group m-y-15">
-                            <label class="list-group-horario" *ngFor="let horario of horarios" [text]="horario.makeHorario()"></label>
+                            <CardView *ngFor="let horario of horarios" class="cardStyle" margin="5" elevation="5" radius="15" style=" background-color: #5485e4"> 
+                                <label class="list-group-horario"  [text]="horario.makeHorario()"></label>
+                            </CardView>
                         </StackLayout>
                     </ScrollView>
                 </StackLayout>
