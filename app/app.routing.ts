@@ -8,6 +8,7 @@ import { DisciplinaComponent } from "./pages/home/disciplina/disciplina.componen
 import { DisciplinaDetailComponent } from "./pages/home/disciplina/diciplinaDetail/disciplinaDetail.component";
 import { DisciplinaUpdateComponent } from './pages/home/disciplina/diciplinaDetail/disciplinaUpdate/disciplinaUpdate.component';
 import { SobreComponent } from "./pages/sobre/sobre.component";
+import { HelpComponent } from "./pages/help/help.component"
 
 const routes: Routes = [
     { path: "", redirectTo: "home", pathMatch: "full" },
@@ -16,7 +17,8 @@ const routes: Routes = [
     { path: "disciplina", component: DisciplinaComponent },
     { path: "disciplina/:id", component: DisciplinaDetailComponent },
     { path: "update/:id", component: DisciplinaUpdateComponent },
-    { path: "sobre", component: SobreComponent }
+    { path: "sobre", component: SobreComponent },
+    { path: "help", component: HelpComponent }
 ];
 
 @NgModule({

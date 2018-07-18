@@ -16,6 +16,7 @@ import { DisciplinaComponent } from "./pages/home/disciplina/disciplina.componen
 import { DisciplinaDetailComponent } from "./pages/home/disciplina/diciplinaDetail/disciplinaDetail.component";
 import { DisciplinaUpdateComponent } from './pages/home/disciplina/diciplinaDetail/disciplinaUpdate/disciplinaUpdate.component';
 import { SobreComponent } from "./pages/sobre/sobre.component";
+import { HelpComponent } from "./pages/help/help.component";
 
 // Services
 import { DataBaseService } from "~/services/database.service";
@@ -51,7 +52,8 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
         DisciplinaComponent,
         DisciplinaDetailComponent,
         DisciplinaUpdateComponent,
-        SobreComponent
+        SobreComponent,
+        HelpComponent
     ],
     providers: [
         DataBaseService,
