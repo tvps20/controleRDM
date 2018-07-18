@@ -105,7 +105,7 @@ export class DisciplinaService {
         // Reprovado
         return -1
       } else {
-        if(disciplina.notaFinal){
+        if(disciplina.notaFinal || disciplina.notaFinal === 0){
           let media: number = this.calcularMedia(disciplina)
           
           if(media >= 5 ){
