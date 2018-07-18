@@ -40,6 +40,7 @@ export class DisciplinaComponent implements OnInit {
         this.databaseService.insert(this.disciplina).then((id) => {
             this.horarios.forEach(element => {
                 element.idDisciplina = +id;
+                element.nomeDisciplina = this.disciplina.nome;
                 this.databaseService.insertHorario(element);                
             });
             
