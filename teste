@@ -1,1 +1,0 @@
-keytool -genkey -v -keystore creTool.keystore -alias creTool -keyalg RSA -keysize 2048 -validity 10000

@@ -88,7 +88,7 @@
                 <!-- Lista de Hórarios -->
                 <StackLayout>
                     <StackLayout orientation="horizontal" class="list-group">
-                        <CardView *ngFor="let horario of horarios" class="cardStyle" margin="5" elevation="5" radius="15" style=" background-color: #5485e4"> 
+                        <CardView *ngFor="let horario of horarios" class="cardStyle" margin="5" elevation="5" radius="15" style=" background-color: #ba68c8"> 
                             <label class="list-group-horario"  [text]="horario.makeHorario()" (tap)="deleteHorario(horario)"></label>
                         </CardView>
                     </StackLayout>

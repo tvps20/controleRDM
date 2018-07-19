@@ -88,7 +88,7 @@
                 <!-- Lista de Hórarios -->
                 <StackLayout>
                     <StackLayout orientation="horizontal" class="list-group">
-                        <CardView *ngFor="let horario of horarios" class="cardStyle" margin="5" elevation="5" radius="15" style=" background-color: #5485e4"> 
+                        <CardView *ngFor="let horario of horarios" class="cardStyle" margin="5" elevation="5" radius="15" style=" background-color: #ba68c8"> 
                             <label class="list-group-horario"  [text]="horario.makeHorario()" (tap)="deleteHorario(horario)"></label>
                         </CardView>
                     </StackLayout>
@@ -98,7 +98,7 @@
                 
                 <!-- Está Fechada? -->
                 <GridLayout class="input-field" rows="*, *">
-                    <CheckBox #CB1 row="0" text="Fechar Disciplina" fillColor="#5485e4" class="checkBox" [(ngModel)]="disciplina.isClosed"></CheckBox> 
+                    <CheckBox #CB1 row="0" text="Fechar Disciplina" fillColor="#ff4081" class="checkBox" [(ngModel)]="disciplina.isClosed"></CheckBox> 
                     <label row="1" textWrap="true" text="Uma disciplina fechada não poderá mais ser modificada." style="font-size: 15px; margin: -5px 25px 20px 15px;" class="text-muted"></label >  
                 </GridLayout>
 

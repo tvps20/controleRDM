@@ -22,11 +22,11 @@ refer to http://docs.nativescript.org/ui/theme.
 }
 
 .action-bar {
-    background-color: #5e94ff;
+    background-color: #ff80ab;
 }
 
 .btn-primary{
-    background-color: #5485e4;
+    background-color: #ff4081;
 }
 
 .text-danger{
@@ -76,7 +76,7 @@ refer to http://docs.nativescript.org/ui/theme.
 }
 
 .list-group-horario {
-    background-color: #5485e4;
+    background-color: #ba68c8;
     border-radius: 5%;
     padding: 10px;
     font-weight: bold;

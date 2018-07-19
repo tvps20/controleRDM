@@ -8,5 +8,6 @@ import { Component } from "@angular/core";
 })
 
 export class SobreComponent { 
-    public iconInformation: string = String.fromCharCode(0xf05a)
+    public iconInformation: string = String.fromCharCode(0xf004);
+    public iconLove: string = String.fromCharCode(0xf001);
 }

@@ -18,7 +18,7 @@
                             <label text="Notas" class="text-muted"></label>
                             <GridLayout columns="*,*" rows="*,*,auto,auto">   
                                 <label col="0" row="0" text="Unidade 1" class="h3"></label>
-                                <CardView col="0" row="1" class="cardStyle" margin="5" elevation="5" radius="15" style=" background-color: #5485e4"> 
+                                <CardView col="0" row="1" class="cardStyle" margin="5" elevation="5" radius="15" style=" background-color: #ff4081"> 
                                     <GridLayout columns="*,*" style="border-radius: 10%;" class="bg-primary m-x-5">
                                         <label col="0" [text]="disciplina.primeiraNota"></label>
                                         <label col="1" [text]="disciplina.segundaNota"></label>
@@ -26,7 +26,7 @@
                                 </CardView>
 
                                 <label col="1" row="0" text="Unidade 2" class="h3"></label>
-                                <CardView col="1" row="1" class="cardStyle" margin="5" elevation="5" radius="15" style=" background-color: #5485e4"> 
+                                <CardView col="1" row="1" class="cardStyle" margin="5" elevation="5" radius="15" style=" background-color: #ff4081"> 
                                     <GridLayout columns="*,*" style="border-radius: 10%;" class="bg-primary m-x-5">
                                         <label col="0" [text]="disciplina.terceiraNota"></label>
                                         <label col="1" [text]="disciplina.quartaNota"></label>
@@ -34,7 +34,7 @@
                                 </CardView>
 
                                 <label col="0" colSpan="2" row="2" text="Final" class="h3"></label>
-                                <CardView col="0" colSpan="2" row="3" class="cardStyle" width="150" margin="5" elevation="5" radius="15" style=" background-color: #5485e4"> 
+                                <CardView col="0" colSpan="2" row="3" class="cardStyle" width="150" margin="5" elevation="5" radius="15" style=" background-color: #ff4081"> 
                                     <label [text]="disciplina.notaFinal" class="bg-primary"></label>
                                 </CardView>
                             </GridLayout>
@@ -75,7 +75,7 @@
                     <label *ngIf="haveHorario()" text="Nenhum horário cadastrado." style="text-align: center;" class="text-muted"></label>
                     <ScrollView orientation="horizontal">                       
                         <StackLayout orientation="horizontal" class="list-group m-y-15">
-                            <CardView *ngFor="let horario of horarios" class="cardStyle" margin="5" elevation="5" radius="15" style=" background-color: #5485e4"> 
+                            <CardView *ngFor="let horario of horarios" class="cardStyle" margin="5" elevation="5" radius="15" style=" background-color: #ba68c8"> 
                                 <label class="list-group-horario"  [text]="horario.makeHorario()"></label>
                             </CardView>
                         </StackLayout>
