@@ -8,7 +8,7 @@
 android {  
   defaultConfig {  
     generatedDensities = []
-    applicationId = "org.nativescript.controleCRE"  
+    applicationId = "br.com.thiagoSantiago.creTool"  
   }  
   aaptOptions {  
     additionalParameters "--no-version-vectors"  
