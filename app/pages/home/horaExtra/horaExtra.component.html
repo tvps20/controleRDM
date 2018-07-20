@@ -1,0 +1,35 @@
+<ActionBar title="Nova Hora Extra" class="action-bar"></ActionBar>
+
+<StackLayout class="page">
+    <ScrollView>
+        <StackLayout class="form-content">
+            <StackLayout class="form">
+                <!-- Nome -->
+                <StackLayout class="input-field">
+                    <label text="Nome" class="label font-weight-bold m-b-5"></label>
+                    <TextField class="input" [(ngModel)]="horaExtra.nome" #elementNome="ngModel" required></TextField>
+                    <StackLayout class="hr-light"></StackLayout>
+        
+                    <StackLayout>
+                        <label *ngIf="!elementNome.valid && elementNome.dirty" text="Campo Obrigatório" class="text-right text-danger"></label>
+                    </StackLayout>
+                </StackLayout>            
+        
+                <!-- Carga Horária -->
+                <StackLayout class="input-field">
+                    <label text="Carga Horária" class="label font-weight-bold m-b-5"></label>
+                    <TextField class="input" keyboardType="number" [(ngModel)]="horaExtra.cargaHoraria" #element="ngModel" maxlength="4" required></TextField>
+                    <StackLayout class="hr-light"></StackLayout>
+        
+                    <StackLayout>
+                        <label *ngIf="!element.valid && element.dirty" text="Campo Obrigatório" class="text-right text-danger"></label>
+                        <label *ngIf="cargaHorariaValidator()" text="Minimo de 2 caracteres" class="text-right text-danger"></label>
+                    </StackLayout>
+                </StackLayout>
+                        
+                    
+                <button text="Adicionar" class="btn btn-primary" [isEnabled]="elementNome.valid && !cargaHorariaValidator()" (tap)="addHoraExtra()"></button>
+            </StackLayout>
+        </StackLayout>   
+    </ScrollView>
+</StackLayout>

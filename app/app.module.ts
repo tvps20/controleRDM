@@ -12,6 +12,7 @@ import { HorarioModalComponent } from './modais/horarioModal.component'
 
 // Import pages
 import { HomeComponent } from "./pages/home/home.component";
+import { HoraExtraComponent } from "./pages/home/horaExtra/horaExtra.component"; 
 import { DisciplinaComponent } from "./pages/home/disciplina/disciplina.component";
 import { DisciplinaDetailComponent } from "./pages/home/disciplina/diciplinaDetail/disciplinaDetail.component";
 import { DisciplinaUpdateComponent } from './pages/home/disciplina/diciplinaDetail/disciplinaUpdate/disciplinaUpdate.component';
@@ -49,6 +50,7 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
         AppComponent,
         HorarioModalComponent,
         HomeComponent,
+        HoraExtraComponent,
         DisciplinaComponent,
         DisciplinaDetailComponent,
         DisciplinaUpdateComponent,

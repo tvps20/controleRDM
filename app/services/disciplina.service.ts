@@ -5,6 +5,7 @@ import * as Toast from 'nativescript-toast';
 import { Disciplina } from "~/shared/models/disciplina.model";
 import { Horario } from "~/shared/models/horario.model";
 import { Status } from '~/shared/statusDisciplina';
+import { HoraExtra } from "~/shared/models/horaExtra.model";
 
 
 @Injectable()
@@ -77,12 +78,16 @@ export class DisciplinaService {
     }
   }
 
-  public calcularChAcumulada(listaDeDisciplinasFechadas: Array<Disciplina>){
+  public calcularChAcumulada(listaDeDisciplinasFechadas: Array<Disciplina>, listaHorasExras: Array<HoraExtra>){
     let totalCargaHoraria: number = 0;
 
     listaDeDisciplinasFechadas.forEach(element => {
       if(element.status != Status.Reprovado)
         totalCargaHoraria += element.cargaHoraria;
+    });
+
+    listaHorasExras.forEach(element => {
+      totalCargaHoraria += element.cargaHoraria;
     });
 
     return totalCargaHoraria;

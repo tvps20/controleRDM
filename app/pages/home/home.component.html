@@ -84,5 +84,20 @@
                 </ng-template>
             </ListView>
         </StackLayout>
+
+        <StackLayout *tabItem="{title: 'Extras'}"> 
+            <GridLayout row="0" columns="*, auto">
+                <ListView colSpan="2" col="0" [items]="horasExtra" class="list-group">     
+                    <ng-template let-item="item">
+                        <GridLayout columns="*, 70px" class="list-group-item" (tap)="deleteHoraExtra(item)">
+                            <label col="0" [text]='item.nome'></label>
+                            <Label col="1" [text]="item.cargaHoraria + 'CH'" style="text-align: center" class="cargaHoraria"></Label>
+                        </GridLayout> 
+                    </ng-template>
+                </ListView>
+
+                <button col="1" text="+" class="btn btn-primary" pageTransition="fade" id="button-add" (tap)="navigateNewHoraExtra()"></button>
+            </GridLayout>
+        </StackLayout>
     </TabView>
 </StackLayout>

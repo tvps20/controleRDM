@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 
 import { Disciplina } from "~/shared/models/disciplina.model";
+import { HoraExtra } from "~/shared/models/horaExtra.model";
 
 
 @Injectable()
@@ -34,6 +35,13 @@ export class ValidatorService {
   
     public cargaHorariaValidator(disciplina: Disciplina){
         if(disciplina.cargaHoraria < 10)
+            return true;
+        else 
+            return false;    
+    }
+
+    public cargaHoraExtraValidator(horaExtra: HoraExtra){
+        if(horaExtra.cargaHoraria < 10)
             return true;
         else 
             return false;    

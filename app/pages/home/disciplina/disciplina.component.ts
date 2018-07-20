@@ -50,9 +50,9 @@ export class DisciplinaComponent implements OnInit {
         }
         
         Toast.makeText("Disciplina Adicionada").show();
-            this.nav.navigate(['/home', 1], {clearHistory: true, transition: {
-                name: 'fade', duration: 300, curve: 'linear'
-            }});
+        this.nav.navigate(['/home', 1], {clearHistory: true, transition: {
+            name: 'fade', duration: 300, curve: 'linear'
+        }});
     }
 
 

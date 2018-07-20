@@ -13,6 +13,7 @@ import { DisciplinaService } from '~/services/disciplina.service';
 import { Disciplina } from '~/shared/models/disciplina.model';
 import { Dias } from '~/shared/statusDisciplina';
 import { Horario } from '~/shared/models/horario.model';
+import { HoraExtra } from '~/shared/models/horaExtra.model';
 
 
 @Component({
@@ -25,6 +26,7 @@ export class HomeComponent implements OnInit {
 
     public disciplinasAbertas: Array<Disciplina> = [];
     public disciplinasFechadas: Array<Disciplina> = [];
+    public horasExtra: Array<HoraExtra> = [];
     public dias: Array<string> = ['Domingo', 'Segunda-Feira', 'Terça-Feira', 'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira', 'Sábado'];
     public horarios: Array<Horario>
     public icons: Map<string, string> = new Map<string, string>();
@@ -59,6 +61,17 @@ export class HomeComponent implements OnInit {
         })
     }
 
+    public deleteHoraExtra(horaExtra: HoraExtra){
+        dialogs.confirm({title: "Apagar", message: `Deseja realmente excluir a Hora Extra "${horaExtra.nome}"?`, okButtonText: "Sim", cancelButtonText: "Cancelar",})
+            .then(result => {
+                if(result) {
+                    this.databaseService.deleteHoraExtra(horaExtra.id);
+                    Toast.makeText("Hora Extra Apagada").show();
+                    this.loadDisciplinas();
+                }
+        })
+    }
+
     private loadDisciplinas(){
 
         this.disciplinasAbertas = [];
@@ -77,6 +90,10 @@ export class HomeComponent implements OnInit {
                 
                 this.databaseService.getAllHorarioDia(this.abreviarDia(this.dias[this.dia])).then((horarios: Array<Horario>) => {
                     this.horarios = horarios;
+                })
+
+                this.databaseService.getAllHorasExtra().then((horasExtras: Array<HoraExtra>) => {
+                    this.horasExtra = horasExtras;
                 })
 
             })
@@ -120,6 +137,12 @@ export class HomeComponent implements OnInit {
         }});   
     }
 
+    public navigateNewHoraExtra(){
+        this.nav.navigate(['/horaExtra'], { transition: {
+            name: 'fade', duration: 300, curve: 'linear'
+        }});   
+    }
+
     public calcularNota(disciplina: Disciplina){
         return this.disciplinaService.calcularMedia(disciplina);
     }
@@ -133,6 +156,6 @@ export class HomeComponent implements OnInit {
     }
 
     public chAcumulada(){
-        return this.disciplinaService.calcularChAcumulada(this.disciplinasFechadas);
+        return this.disciplinaService.calcularChAcumulada(this.disciplinasFechadas, this.horasExtra);
     }
 }
