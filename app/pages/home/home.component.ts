@@ -101,7 +101,11 @@ export class HomeComponent implements OnInit {
     }
 
     public haveHorario(){
-        return this.disciplinaService.haveHorario(this.horarios);
+        return this.disciplinaService.haveElement(this.horarios);
+    }
+
+    public haveExtras(){
+        return this.disciplinaService.haveElement(this.horasExtra);
     }
 
     private abreviarDia(dia: string): string {

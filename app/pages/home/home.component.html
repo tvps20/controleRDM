@@ -87,6 +87,7 @@
 
         <StackLayout *tabItem="{title: 'Extras'}"> 
             <GridLayout row="0" columns="*, auto">
+                <label colSpan="2" col="0" *ngIf="haveExtras()" textWrap="true" class="text-muted" text="Nessa sessão poderá ser cadastrada todas as atividades extracurriculares."></label>
                 <ListView colSpan="2" col="0" [items]="horasExtra" class="list-group">     
                     <ng-template let-item="item">
                         <GridLayout columns="*, 70px" class="list-group-item" (tap)="deleteHoraExtra(item)">

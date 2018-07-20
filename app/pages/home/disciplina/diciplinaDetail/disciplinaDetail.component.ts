@@ -29,18 +29,18 @@ export class DisciplinaDetailComponent implements OnInit{
     }
 
     ngOnInit(): void {        
-        this.page.on("navigatingTo", () =>  { this.loadDisciplina(); }); 
+        this.page.on("navigatingTo", () =>  { this.loadDisciplina();}); 
         this.disciplina.ajustarNotas(); 
     }
 
     public haveHorario(){
-        return this.disciplinaService.haveHorario(this.horarios);
+        return this.disciplinaService.haveElement(this.horarios);
     }
     
     public loadDisciplina(){
         this.databaseService.getDisciplina(this.id).then((res: Disciplina) => {
             this.disciplina = res;
-            this.media = parseFloat(this.disciplinaService.calcularMedia(this.disciplina).toFixed(2));
+            this.media = +this.disciplinaService.calcularMedia(this.disciplina).toFixed(2);
             this.previsaoNota();
             this.disciplina.ajustarNotas();   
 

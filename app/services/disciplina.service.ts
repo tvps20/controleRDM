@@ -37,7 +37,7 @@ export class DisciplinaService {
     let nota: number = 0;
     let totalCargaHoraria: number = 0;
 
-    if(!this.haveDisciplina(listaDeDisciplinasFechadas)){
+    if(!this.haveElement(listaDeDisciplinasFechadas)){
     
       listaDeDisciplinasFechadas.forEach(element => {
         nota += this.calcularMedia(element) * element.cargaHoraria;
@@ -57,7 +57,7 @@ export class DisciplinaService {
     let nota: number = 0;
     let totalCargaHoraria: number = 0;
 
-    if(!this.haveDisciplina(listaDeDisciplinasAbertas) || !this.haveDisciplina(listaDeDisciplinasFechadas)){
+    if(!this.haveElement(listaDeDisciplinasAbertas) || !this.haveElement(listaDeDisciplinasFechadas)){
       listaDeDisciplinasAbertas.forEach(element => {
         nota += this.calcularMedia(element) * element.cargaHoraria;
         totalCargaHoraria += element.cargaHoraria; 
@@ -168,16 +168,8 @@ export class DisciplinaService {
     })
   }
 
-  public haveHorario(horarios: Array<Horario>){
-    if(horarios.length <= 0){
-        return true
-    } else {
-        return false;
-    }
-  }
-
-  public haveDisciplina(disciplinas: Array<Disciplina>){
-    if(disciplinas.length <= 0){
+  public haveElement(array: Array<any>){
+    if(array.length <= 0){
         return true
     } else {
         return false;
