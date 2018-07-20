@@ -4,7 +4,7 @@
 </ActionBar>
 
 <StackLayout sdkExampleTitle sdkToggleNavButton>
-    <TabView [selectedIndex]="index" androidOffscreenTabLimit="2" tabBackgroundColor="#5e94ff" tabTextColor="white" style="background-color: #f5f5f5;" androidSelectedTabHighlightColor="white" selectedTabTextColor="white">
+    <TabView [selectedIndex]="index" tabBackgroundColor="#5e94ff" tabTextColor="white" style="background-color: #f5f5f5;" androidSelectedTabHighlightColor="white" selectedTabTextColor="white">
         <StackLayout *tabItem="{title: 'Inicio'}">
             <ScrollView>
                 <StackLayout>
@@ -66,7 +66,7 @@
                     </ng-template>
                 </ListView>
 
-                <button col="1" text="+" class="btn btn-primary" pageTransition="fade" id="button-add" (tap)="navigateNewDisciplina($event)"></button>
+                <button col="1" text="+" class="btn btn-primary" pageTransition="fade" id="button-add" (tap)="showHorarioDisciplina()"></button>
                 
             </GridLayout>
         </StackLayout>

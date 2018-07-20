@@ -38,4 +38,11 @@ export class ValidatorService {
         else 
             return false;    
     }
+
+    public notaGeralValidator(nota: number){
+        if((nota < 0) || (nota > 10))
+            return true;
+        else
+            return false;
+    }
 }
