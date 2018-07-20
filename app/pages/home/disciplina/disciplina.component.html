@@ -1,0 +1,60 @@
+<ActionBar title="Nova Disciplina" class="action-bar"></ActionBar>
+
+<StackLayout class="page">
+    <ScrollView>
+        <StackLayout class="form-content">
+            <StackLayout class="form">
+                <!-- Nome -->
+                <StackLayout class="input-field">
+                    <label text="Nome" class="label font-weight-bold m-b-5"></label>
+                    <TextField class="input" [(ngModel)]="disciplina.nome" #elementNome="ngModel" required></TextField>
+                    <StackLayout class="hr-light"></StackLayout>
+        
+                    <StackLayout>
+                        <label *ngIf="!elementNome.valid && elementNome.dirty" text="Campo Obrigatório" class="text-right text-danger"></label>
+                    </StackLayout>
+                </StackLayout>
+        
+                <!-- Professor -->
+                <StackLayout class="input-field">
+                    <label text="Professor" class="label font-weight-bold"></label>
+                    <TextField class="input" [(ngModel)]="disciplina.professor" ></TextField>
+                    <StackLayout class="hr-light"></StackLayout>
+                </StackLayout>
+        
+                <!-- Carga Horária -->
+                <StackLayout class="input-field">
+                    <label text="Carga Horária" class="label font-weight-bold"></label>
+                    <TextField class="input" keyboardType="number" [(ngModel)]="disciplina.cargaHoraria" #element="ngModel" maxlength="4" required></TextField>
+                    <StackLayout class="hr-light"></StackLayout>
+        
+                    <StackLayout>
+                        <label *ngIf="!element.valid && element.dirty" text="Campo Obrigatório" class="text-right text-danger"></label>
+                        <label *ngIf="cargaHorariaValidator()" text="Minimo de 2 caracteres" class="text-right text-danger"></label>
+                    </StackLayout>
+                </StackLayout>
+        
+                <!-- Está Fechada? -->
+                <GridLayout class="input-field m-b-5" rows="*, *">
+                    <CheckBox #CB1 row="0" text="Fechar Disciplina" fillColor="#5485e4" class="checkBox" [(ngModel)]="disciplina.isClosed"></CheckBox> 
+                    <label row="1" textWrap="true" text="Uma disciplina fechada não poderá mais ser modificada. Ela irá para o Histórico" style="font-size: 15px; margin: 0px 25px 20px 15px;" class="text-muted"></label >  
+                </GridLayout>
+        
+                <!-- Nota Geral -->
+                <StackLayout class="input-field" *ngIf="disciplina.isClosed">
+                    <StackLayout style="text-align: center; width: 300px;">
+                        <label text="Nota da cadeira" class="label font-weight-bold"></label>
+                        <TextField class="input" keyboardType="number" [(ngModel)]="notaGeral" maxlength="4"></TextField>
+                        <StackLayout class="hr-light"></StackLayout>   
+                    </StackLayout>
+                    <StackLayout style="font-size: 15px;">
+                        <label *ngIf="notaValidator()" text="Essa nota não é válida" class="text-center text-danger m-15"></label>
+                    </StackLayout> 
+                </StackLayout>
+                
+                    
+                <button text="Adicionar" class="btn btn-primary" [isEnabled]="element.valid && elementNome.valid && !cargaHorariaValidator() && !notaValidator()" (tap)="addDisciplina()"></button>
+            </StackLayout>
+        </StackLayout>   
+    </ScrollView>
+</StackLayout>

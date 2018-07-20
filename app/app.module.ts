@@ -9,10 +9,10 @@ registerElement('CardView', () => CardView);
 
 // Import Modais
 import { HorarioModalComponent } from './modais/horarioModal.component'
-import { DisciplinaModalComponent } from './modais/disciplina/disciplinaModal.component'
 
 // Import pages
 import { HomeComponent } from "./pages/home/home.component";
+import { DisciplinaComponent } from "./pages/home/disciplina/disciplina.component";
 import { DisciplinaDetailComponent } from "./pages/home/disciplina/diciplinaDetail/disciplinaDetail.component";
 import { DisciplinaUpdateComponent } from './pages/home/disciplina/diciplinaDetail/disciplinaUpdate/disciplinaUpdate.component';
 import { SobreComponent } from "./pages/sobre/sobre.component";
@@ -48,8 +48,8 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
     declarations: [
         AppComponent,
         HorarioModalComponent,
-        DisciplinaModalComponent,
         HomeComponent,
+        DisciplinaComponent,
         DisciplinaDetailComponent,
         DisciplinaUpdateComponent,
         SobreComponent,
@@ -67,7 +67,6 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
     entryComponents: [
         // Local onde o angular vai carregar os components mesmo sem existir tags para ele.
         HorarioModalComponent,
-        DisciplinaModalComponent
     ]
 })
 /*

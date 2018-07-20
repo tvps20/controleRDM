@@ -6,7 +6,7 @@ import { Disciplina } from "~/shared/models/disciplina.model";
 @Injectable()
 export class ValidatorService {
 
-    public notaValorValidator(disciplina: Disciplina){
+    public notaFinalValidator(disciplina: Disciplina){
         let somaNota: number = (+disciplina.primeiraNota) + (+disciplina.segundaNota) + (+disciplina.terceiraNota) + (+disciplina.quartaNota);
 
         if((somaNota >= 16) && (somaNota < 28) && (!disciplina.notaFinal))
