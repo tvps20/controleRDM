@@ -57,7 +57,7 @@
             <GridLayout row="0" columns="*, auto">
                 <ListView  colSpan="2" col="0" [items]="disciplinasAbertas" class="list-group">     
                     <ng-template let-item="item">
-                        <GridLayout columns="35px, *, 70px, 55px" class="list-group-item">
+                        <GridLayout columns="35px, *, 70px, 60px" class="list-group-item">
                             <label col="0" [text]="icons.get('trash')" class="fa" (tap)="deleteDisciplina(item)"></label>
                             <Label col="1" [text]='item.nome' (tap)="navigateDisciplinaDetail(item)" pageTransition="fade"></Label>
                             <Label col="2" [text]="item.cargaHoraria + 'CH'" style="text-align: center" class="cargaHoraria"></Label>
@@ -74,7 +74,7 @@
         <StackLayout *tabItem="{title: 'Histórico'}"> 
             <ListView [items]="disciplinasFechadas" class="list-group">     
                 <ng-template let-item="item">
-                    <GridLayout columns="*, 70px, 55px, auto" class="list-group-item" (tap)="deleteDisciplina(item)">
+                    <GridLayout columns="*, 70px, 60px, auto" class="list-group-item" (tap)="deleteDisciplina(item)">
                         <label col="0" [text]='item.nome'></label>
                         <Label col="1" [text]="item.cargaHoraria + 'CH'" style="text-align: center" class="cargaHoraria"></Label>
                         <label col="2" [text]="calcularNota(item)" style="text-align: center" class="nota"></label>

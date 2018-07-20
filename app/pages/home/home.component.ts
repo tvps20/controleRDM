@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import * as dialogs from 'ui/dialogs';
 import { Page } from 'ui/page';
 import { ActivatedRoute } from "@angular/router"
+import { RouterExtensions } from 'nativescript-angular/router';
 // Importanto pacote para notificações simples
 import * as Toast from 'nativescript-toast';
+import { ModalDialogService, ModalDialogOptions } from 'nativescript-angular/modal-dialog'
 
 import { DataBaseService } from '~/services/database.service';
-import { Disciplina } from '~/shared/models/disciplina.model';
 import { DisciplinaService } from '~/services/disciplina.service';
+// Models
+import { Disciplina } from '~/shared/models/disciplina.model';
 import { Dias } from '~/shared/statusDisciplina';
 import { Horario } from '~/shared/models/horario.model';
-import { RouterExtensions } from 'nativescript-angular/router';
 
 
 @Component({
@@ -41,7 +43,7 @@ export class HomeComponent implements OnInit {
     ngOnInit(): void {
         this.index = +this.router.snapshot.params["index"];
         this.setIcons();
-        this.loadDisciplinas();  
+        this.loadDisciplinas(); 
         this.page.on("navigatingTo", () => this.loadDisciplinas());
     }
     
@@ -103,29 +105,19 @@ export class HomeComponent implements OnInit {
     }
 
     private setIcons() {
-        this.icons.set('trash', String.fromCharCode(0xf014));
-        this.icons.set('aprovado', String.fromCharCode(0xf087));
-        this.icons.set('reprovado', String.fromCharCode(0xf088));
-        this.icons.set('reprovadoCheio', String.fromCharCode(0xf165));     
+        this.icons.set('trash', String.fromCharCode(0xf014));   
     }
 
     public navigateDisciplinaDetail(disciplina: Disciplina){
         this.nav.navigate(['/disciplina', disciplina.id], { transition: {
-            name: 'fade', duration: 800, curve: 'linear'
+            name: 'fade', duration: 300, curve: 'linear'
         }});
     }
 
-    public navigateNewDisciplina(args: any){
-        let button = args.Object
-
-        button = this.page.getViewById("button-add");
-        button.animate({
-            scale: { x: 1.1, y: 1.1}, duration: 300   
-        }).then(() => {
-            this.nav.navigate(['/disciplina'], { transition: {
-                name: 'fade', duration: 500, curve: 'linear'
-            }})
-        }).then(() => {button.animate({scale: {x:1, y:1}, duration: 1000})});    
+    public navigateNewDisciplina(){
+        this.nav.navigate(['/disciplina'], { transition: {
+            name: 'fade', duration: 300, curve: 'linear'
+        }});   
     }
 
     public calcularNota(disciplina: Disciplina){
