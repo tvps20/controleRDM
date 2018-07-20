@@ -68,7 +68,7 @@ export class DisciplinaUpdateComponent {
     }
 
     public haveHorario(){
-        return this.disciplinaService.haveHorario(this.horarios);
+        return this.disciplinaService.haveElement(this.horarios);
     }
 
     public updateDisciplina(){

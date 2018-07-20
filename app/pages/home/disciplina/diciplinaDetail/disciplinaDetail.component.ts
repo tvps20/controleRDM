@@ -34,7 +34,7 @@ export class DisciplinaDetailComponent implements OnInit{
     }
 
     public haveHorario(){
-        return this.disciplinaService.haveHorario(this.horarios);
+        return this.disciplinaService.haveElement(this.horarios);
     }
     
     public loadDisciplina(){

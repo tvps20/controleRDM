@@ -84,7 +84,7 @@ export class HomeComponent implements OnInit {
     }
 
     public haveHorario(){
-        return this.disciplinaService.haveHorario(this.horarios);
+        return this.disciplinaService.haveElement(this.horarios);
     }
 
     private abreviarDia(dia: string): string {
@@ -121,15 +121,15 @@ export class HomeComponent implements OnInit {
     }
 
     public calcularNota(disciplina: Disciplina){
-        return this.disciplinaService.calcularMedia(disciplina);
+        return this.disciplinaService.calcularMedia(disciplina).toFixed(2);
     }
 
     public calcularCre(){
-        return this.disciplinaService.calculoCRE(this.disciplinasFechadas);
+        return this.disciplinaService.calculoCRE(this.disciplinasFechadas).toFixed(2);
     }
 
     public previsaoCre(){
-        return this.disciplinaService.calculoPrecisaoCRE(this.disciplinasAbertas, this.disciplinasFechadas);
+        return this.disciplinaService.calculoPrecisaoCRE(this.disciplinasAbertas, this.disciplinasFechadas).toFixed(2);
     }
 
     public chAcumulada(){
