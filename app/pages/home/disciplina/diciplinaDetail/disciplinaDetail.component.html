@@ -61,10 +61,10 @@
                 <!-- Status -->
                 <StackLayout class="input-field">
                     <GridLayout rows="auto, *">
-                        <label row="0" text="Status" class="label font-weight-bold m-b-5"></label>
-                        <label row="1" *ngIf="previsaoNota() === 0" text="Aprovado" class="statusAP"></label>
-                        <label row="1" *ngIf="previsaoNota()" [text]="previsaoNota()" class="statusMT"></label>
-                        <label row="1" *ngIf="previsaoNota() === false" [text]="'Você esta repovado nessa disciplina.'" class="statusRE"></label>
+                        <label row="0" text="Status" textWrap="true" class="label font-weight-bold m-b-5"></label>
+                        <label row="1" *ngIf="previsaoNota() === 0" textWrap="true" text="Aprovado" class="statusAP"></label>
+                        <label row="1" *ngIf="previsaoNota()" textWrap="true" [text]="previsaoNota()" class="statusMT"></label>
+                        <label row="1" *ngIf="previsaoNota() === false" textWrap="true" [text]="'Você esta repovado nessa disciplina.'" class="statusRE"></label>
                     </GridLayout>
                     <StackLayout class="hr-light"></StackLayout>
                 </StackLayout>
@@ -72,7 +72,7 @@
                <!-- Lista de Hórarios -->
                 <StackLayout class="input-field">                    
                     <label text="Horários" class="label font-weight-bold"></label>
-                    <label *ngIf="haveHorario()" text="Nenhum horário cadastrado." style="text-align: center;" class="text-muted"></label>
+                    <label *ngIf="haveHorario()" textWrap="true" text="Nenhum horário cadastrado." style="text-align: center;" class="text-muted"></label>
                     <ScrollView orientation="horizontal">                       
                         <StackLayout orientation="horizontal" class="list-group m-y-15">
                             <CardView *ngFor="let horario of horarios" class="cardStyle" margin="5" elevation="5" radius="15" style=" background-color: #5485e4"> 
