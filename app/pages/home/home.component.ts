@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import * as dialogs from 'ui/dialogs';
-import { Page } from 'ui/page';
+import { Page, View } from 'ui/page';
 import { ActivatedRoute } from "@angular/router"
 import { RouterExtensions } from 'nativescript-angular/router';
 // Importanto pacote para notificações simples
 import * as Toast from 'nativescript-toast';
-import { ModalDialogService, ModalDialogOptions } from 'nativescript-angular/modal-dialog'
+import { exit } from 'nativescript-exit'
+const timerModule = require("tns-core-modules/timer");
 
 import { DataBaseService } from '~/services/database.service';
 import { DisciplinaService } from '~/services/disciplina.service';
@@ -13,6 +14,7 @@ import { DisciplinaService } from '~/services/disciplina.service';
 import { Disciplina } from '~/shared/models/disciplina.model';
 import { Dias } from '~/shared/statusDisciplina';
 import { Horario } from '~/shared/models/horario.model';
+import * as application from 'tns-core-modules/application';
 
 
 @Component({
@@ -31,13 +33,15 @@ export class HomeComponent implements OnInit {
     public data: Date;
     public dia: number;
     public index: number;
+    public doubleCountTap: number;
     
     public constructor(private router: ActivatedRoute, private nav: RouterExtensions, private databaseService: DataBaseService, private page: Page, private disciplinaService: DisciplinaService){
         this.index = 0;
         this.data = new Date();
         this.dia = this.data.getDay();
         this.horarios = [];   
-        this.index = 0;   
+        this.index = 0; 
+        this.doubleCountTap = 0;
     }
 
     ngOnInit(): void {
@@ -45,8 +49,31 @@ export class HomeComponent implements OnInit {
         this.setIcons();
         this.loadDisciplinas(); 
         this.page.on("navigatingTo", () => this.loadDisciplinas());
+        this.onDoubleTap();
+    }
+
+    onDoubleTap() {
+        console.log(this.doubleCountTap)
+        application.android.on(application.AndroidApplication.activityBackPressedEvent, (args: any) => {
+            this.doubleCountTap++;           
+            console.log("incrementou: " + this.doubleCountTap)
+            if(this.doubleCountTap >= 2){      
+                args.cancel = false;
+            } else if(this.doubleCountTap === 1){
+                args.cancel = true;
+                Toast.makeText("Toque 2 vezes pra sair").show(); 
+            } else {
+                args.cancel = true;        
+            }      
+        });
+
+        timerModule.setInterval(() => {
+            this.doubleCountTap = 0;
+            console.log("zerou: " +this.doubleCountTap);
+        }, 500);
     }
     
+
     public deleteDisciplina(disciplina: Disciplina){
         dialogs.confirm({title: "Apagar", message: `Deseja realmente excluir a disciplina "${disciplina.nome}"?`, okButtonText: "Sim", cancelButtonText: "Cancelar",})
             .then(result => {
