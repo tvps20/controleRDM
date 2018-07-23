@@ -31,10 +31,8 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
 
 //import { ReactiveFormsModule } from '@angular/forms'
 
-
 // Uncomment and add to NgModule imports  if you need to use the HTTP wrapper
 // import { NativeScriptHttpModule } from "nativescript-angular/http";
-
 @NgModule({
     bootstrap: [
         AppComponent
@@ -66,7 +64,7 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
     ],
     entryComponents: [
         // Local onde o angular vai carregar os components mesmo sem existir tags para ele.
-        HorarioModalComponent,
+        HorarioModalComponent
     ]
 })
 /*
