@@ -11,22 +11,22 @@
                     <GridLayout rows="auto, auto">
                         <CardView class="cardStyle" margin="10" elevation="20" radius="15" style="background-color: #673ab7">
                             <GridLayout row="0" columns="*, auto" class="PrevisaoCre">
-                                <Label col="0"  text="Previsao do CRE" class="m-15 h2 text-left"></Label>
-                                <label col="1" [text]="previsaoCre()" class="m-15 h2 text-left"></label>
+                                <Label col="0"  text="Previsao do CRE" textWrap="true" class="m-15 h2 text-left"></Label>
+                                <label col="1" [text]="previsaoCre()"  textWrap="true" class="m-15 h2 text-left"></label>
                             </GridLayout>
                         </CardView>
 
                         <GridLayout row="1" columns="*, *">
                             <CardView col="0" class="cardStyle" margin="10" elevation="20" radius="15" style="background-color: #34495e;">
                                 <GridLayout  rows="*,*" class="cre">
-                                    <Label col="0" row="0" text="CRE Atual" class="m-15 h3 text-left"></Label>
-                                    <label col="0" row="1" [text]="calcularCre()" class="m-15 h3 text-left"></label>
+                                    <Label col="0" row="0"  textWrap="true" text="CRE Atual" class="m-15 h3 text-left"></Label>
+                                    <label col="0" row="1"  textWrap="true" [text]="calcularCre()" class="m-15 h3 text-left"></label>
                                 </GridLayout>
                             </CardView>
                             <CardView col="1" class="cardStyle" margin="10" elevation="20" radius="15" style="background-color: #3498db;">
                                 <GridLayout  rows="auto,auto" class="cargaHorariaStatus">
-                                    <Label col="0" row="0" text="CH Acumulada" class="m-15 h3 text-left"></Label>
-                                    <label col="0" row="1" [text]="chAcumulada()" class="m-15 h3 text-left"></label>
+                                    <Label col="0" row="0"  textWrap="true" text="CH Acumulada" class="m-15 h3 text-left"></Label>
+                                    <label col="0" row="1"  textWrap="true" [text]="chAcumulada()" class="m-15 h3 text-left"></label>
                                 </GridLayout>   
                             </CardView>     
                         </GridLayout> 
@@ -42,8 +42,8 @@
                             <StackLayout class="input-field">
                                 <CardView *ngFor="let horario of horarios" class="cardStyle" margin="5" elevation="10" radius="15" style=" background-color: #ba68c8">                    
                                     <GridLayout  columns="*, *" class="tabelaHorarios-item">
-                                        <label col="0" [text]="horario.nomeDisciplina"></label>
-                                        <label col="1" [text]="horario.makeHorario()"></label>
+                                        <label col="0"  textWrap="true" [text]="horario.nomeDisciplina"></label>
+                                        <label col="1"  textWrap="true" [text]="horario.makeHorario()"></label>
                                     </GridLayout>
                                 </CardView>
                             </StackLayout>
@@ -59,7 +59,7 @@
                     <ng-template let-item="item">
                         <GridLayout columns="35px, *, 70px, 60px" class="list-group-item">
                             <label col="0" [text]="icons.get('trash')" class="fa" (tap)="deleteDisciplina(item)"></label>
-                            <Label col="1" [text]='item.nome' (tap)="navigateDisciplinaDetail(item)" pageTransition="fade"></Label>
+                            <Label col="1" [text]='item.nome' textWrap="true" (tap)="navigateDisciplinaDetail(item)" pageTransition="fade"></Label>
                             <Label col="2" [text]="item.cargaHoraria + 'CH'" style="text-align: center" class="cargaHoraria"></Label>
                             <Label col="3" [text]='calcularNota(item)' class="nota"></Label>
                         </GridLayout> 
@@ -74,8 +74,8 @@
         <StackLayout *tabItem="{title: 'Histórico'}"> 
             <ListView [items]="disciplinasFechadas" class="list-group">     
                 <ng-template let-item="item">
-                    <GridLayout columns="*, 70px, 60px, auto" class="list-group-item" (tap)="deleteDisciplina(item)">
-                        <label col="0" [text]='item.nome'></label>
+                    <GridLayout columns="*, 70px, 60px, 35px;" class="list-group-item" (tap)="deleteDisciplina(item)">
+                        <label col="0" [text]='item.nome' textWrap="true"></label>
                         <Label col="1" [text]="item.cargaHoraria + 'CH'" style="text-align: center" class="cargaHoraria"></Label>
                         <label col="2" [text]="calcularNota(item)" style="text-align: center" class="nota"></label>
                         <label *ngIf="item.status === 'AP'" col="3" [text]="item.status" class="statusAP"></label>
@@ -91,7 +91,7 @@
                 <ListView colSpan="2" col="0" [items]="horasExtra" class="list-group">     
                     <ng-template let-item="item">
                         <GridLayout columns="*, 70px" class="list-group-item" (tap)="deleteHoraExtra(item)">
-                            <label col="0" [text]='item.nome'></label>
+                            <label col="0" [text]='item.nome' textWrap="true"></label>
                             <Label col="1" [text]="item.cargaHoraria + 'CH'" style="text-align: center" class="cargaHoraria"></Label>
                         </GridLayout> 
                     </ng-template>
