@@ -5,7 +5,6 @@ import { ActivatedRoute } from "@angular/router"
 import { RouterExtensions } from 'nativescript-angular/router';
 // Importanto pacote para notificações simples
 import * as Toast from 'nativescript-toast';
-import { exit } from 'nativescript-exit'
 const timerModule = require("tns-core-modules/timer");
 
 import { DataBaseService } from '~/services/database.service';
@@ -53,23 +52,22 @@ export class HomeComponent implements OnInit {
     }
 
     onDoubleTap() {
-        console.log(this.doubleCountTap)
-        application.android.on(application.AndroidApplication.activityBackPressedEvent, (args: any) => {
-            this.doubleCountTap++;           
-            console.log("incrementou: " + this.doubleCountTap)
-            if(this.doubleCountTap >= 2){      
-                args.cancel = false;
-            } else if(this.doubleCountTap === 1){
-                args.cancel = true;
-                Toast.makeText("Toque 2 vezes pra sair").show(); 
-            } else {
-                args.cancel = true;        
-            }      
+        application.android.on(application.AndroidApplication.activityBackPressedEvent, (args: any) => {    
+            if(this.nav.router.url === "/home"){
+                this.doubleCountTap++;        
+                if(this.doubleCountTap >= 2){      
+                    args.cancel = false;
+                } else if(this.doubleCountTap === 1){
+                    args.cancel = true;
+                    Toast.makeText("Toque 2 vezes pra sair").show(); 
+                } else {
+                    args.cancel = true;       
+                }  
+            }    
         });
 
         timerModule.setInterval(() => {
             this.doubleCountTap = 0;
-            console.log("zerou: " +this.doubleCountTap);
         }, 500);
     }
     

@@ -27,7 +27,7 @@ export class DisciplinaComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        
+           
     }
 
     public addDisciplina(){
