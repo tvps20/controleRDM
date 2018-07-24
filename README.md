@@ -6,7 +6,7 @@
  Departamento de computação  
 
 
-# **Ficha Técnica – Objeto de Aprendizagem**
+# **Ficha Técnica – Controle de Notas Acadêmicas**
 
  **Titulo:** CRE Tool 
  **Autor:** Thiago Vitor Porto Santiago  
