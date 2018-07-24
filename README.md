@@ -12,7 +12,7 @@
  **Autor:** Thiago Vitor Porto Santiago  
  **Software:** Aplicativo Mobile com a finalidade de ajudar o aluno a monitor e organizar suas notas.  
  **Versão Disponível:** Versão 1.00.  
- **Data:** 24 de Julho de 2018 
+ **Data:** 24 de Julho de 2018.   
  **Palavras Chave:** Disciplinas, Notas, Histórico.  
  **Nível Acadêmico:** Indicado para publico universitário.  
  **Idioma:** Português  
