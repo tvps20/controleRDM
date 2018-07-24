@@ -19,7 +19,7 @@
  **Compatibilidade:** Aplicação para dispositivos móveis.  
  **Direitos de Utilização:** Livre  
  **Aplicação:** 
-> O controle CRE é uma aplicação que objetiva proporcionar aos estudantes universitários uma visão de suas notas. A partir de informações básicas, é possível obter uma visão do seu coeficiente acadêmico para o próximo semestre, como também, um panorama de suas médias em cada disciplina e uma perspectiva para as próximas provas.
+> O controle CRE é uma aplicação que objetiva proporcionar aos estudantes universitários uma visão de suas notas. A partir de informações básicas, é possível obter uma visão do seu coeficiente acadêmico para o próximo semestre, como também, um panorama de suas médias em cada disciplina e uma perspectiva para as próximas provas. Desenvolvida usando NativeScript, Angular e TypeScript.
 > Esta aplicação tem por base os cálculos de notas usados na Universidade Estadual da Paraíba (UEPB).
 
 
