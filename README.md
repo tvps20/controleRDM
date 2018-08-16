@@ -24,10 +24,10 @@
 
 
 ## Telas da Aplicação  
-[Tela Inicial](#)  
-[Tela de Temas](#)  
-[Tela de Novo Tema](#)  
-[Tela de Descrição](#)  
-[Tela de treino](#)  
-[Tela de Sobre](#)  
+[Tela Inicial](https://drive.google.com/file/d/1sTVbN72VArTHWzk6OI4tbKCs_0k_gwa7/view?usp=sharing)  
+[Tela de Disciplinas](https://drive.google.com/file/d/1YjuiekrvP7HP-Ec3pD1qUwUuTx-6PLXv/view?usp=sharing)  
+[Tela de Novo Disciplina](https://drive.google.com/file/d/11dJlekbC5sjjZfXqtpOv_W-Ele3bhTCc/view?usp=sharing)  
+[Tela de Detalhes](https://drive.google.com/file/d/1A8fDa4IPFqSpLiZFJIw8-qAe0g1F3ViM/view?usp=sharing)  
+[Tela de Histórico](https://drive.google.com/file/d/18RvdqA21iv94aRsG3zfs4s8S4Y6uSWgY/view?usp=sharing)  
+[Tela de Ajuda](https://drive.google.com/file/d/1KpPBPZ8EGiq4jW6aXVSUjJRjldQNPfXB/view?usp=sharing)  
 
