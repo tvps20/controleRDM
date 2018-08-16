@@ -41,9 +41,9 @@
                              <!-- Lista de Hórarios -->
                             <StackLayout class="input-field">
                                 <CardView *ngFor="let horario of horarios" class="cardStyle" margin="5" elevation="10" radius="15" style=" background-color: #1DE9B6;">                    
-                                    <GridLayout  columns="*, *" class="tabelaHorarios-item">
-                                        <label col="0" textWrap="true" [text]="horario.nomeDisciplina"></label>
-                                        <label col="1" textWrap="true" [text]="horario.makeHorario()"></label>
+                                    <GridLayout  rows="*, *" class="tabelaHorarios-item">
+                                        <label row="0" textWrap="true" [text]="horario.nomeDisciplina"></label>
+                                        <label row="1" textWrap="true" [text]="horario.makeHorario()"></label>
                                     </GridLayout>
                                 </CardView>
                             </StackLayout>
@@ -67,7 +67,7 @@
                 </ListView>
 
                 <!-- <button col="1" text="+" class="btn btn-primary" pageTransition="fade" id="button-add" (tap)="navigateNewDisciplina()"></button> -->
-                <Image col="1" src="~/images/add.png" pageTransition="fade" (tap)="navigateNewDisciplina()"></Image>
+                <Image col="1" src="~/images/add.png" stretch="fill" pageTransition="fade" (tap)="navigateNewDisciplina()"></Image>
                 
             </GridLayout>
         </StackLayout>

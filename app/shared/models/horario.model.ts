@@ -13,7 +13,11 @@ export class Horario {
     }
 
     public makeHorario(){
-        let horario: string = this.dia + "/" + this.qtdAulas + " " + this.hora + " " + this.sala;
+        let horario:string;
+        if(this.qtdAulas <= 1)
+            horario = this.dia + "/" + this.qtdAulas + " aula" + " " + this.hora + "h" + "/" + this.sala;
+        else
+            horario = this.dia + "/" + this.qtdAulas + " aulas" + " " + this.hora + "h" + "/" + this.sala;
 
         return horario;
     }

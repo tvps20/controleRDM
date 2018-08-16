@@ -102,6 +102,7 @@ export class HomeComponent implements OnInit {
                 
                 this.databaseService.getAllHorarioDia(this.abreviarDia(this.dias[this.dia])).then((horarios: Array<Horario>) => {
                     this.horarios = horarios;
+                    this.horarios.sort((a, b) => (a.hora.substring(0,2) < b.hora.substring(0,2)) ? -1:1);
                 })
 
             })
