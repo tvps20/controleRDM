@@ -17,13 +17,13 @@
                         </CardView>
 
                         <GridLayout row="1" columns="*, *">
-                            <CardView col="0" class="cardStyle" margin="10" elevation="20" radius="15" style="background-color: #34495e;">
+                            <CardView col="0" class="cardStyle" margin="10" elevation="15" radius="15" style="background-color: #34495e;">
                                 <GridLayout  rows="*,*" class="cre">
                                     <Label col="0" row="0" textWrap="true" text="CRE Atual" class="m-15 h4 text-left"></Label>
                                     <label col="0" row="1" textWrap="true" [text]="calcularCre()" class="m-15 h4 text-left"></label>
                                 </GridLayout>
                             </CardView>
-                            <CardView col="1" class="cardStyle" margin="10" elevation="20" radius="15" style="background-color: #3498db;">
+                            <CardView col="1" class="cardStyle" margin="10" elevation="15" radius="15" style="background-color: #3498db;">
                                 <GridLayout  rows="auto,auto" class="cargaHorariaStatus">
                                     <Label col="0" row="0" textWrap="true" text="CH Acumulada" class="m-15 h4 text-left"></Label>
                                     <label col="0" row="1" textWrap="true" [text]="chAcumulada()" class="m-15 h4 text-left"></label>
@@ -32,7 +32,7 @@
                         </GridLayout> 
                     </GridLayout>
                     <!-- Tabela de horarios  -->
-                    <CardView class="cardStyle" margin="10" elevation="20" radius="15" style=" background-color: #00BFA5;">
+                    <CardView class="cardStyle" margin="10" elevation="15" radius="15" style=" background-color: #00BFA5;">
                         <StackLayout class="tabelaHorarios">
                             <label text="Aulas de Hoje" style="color: white;" class="h3"></label>
                             <label [text]="dias[dia]" style="color: white; margin-left: 10px;" class="h1"></label>
@@ -41,9 +41,10 @@
                              <!-- Lista de Hórarios -->
                             <StackLayout class="input-field">
                                 <CardView *ngFor="let horario of horarios" class="cardStyle" margin="5" elevation="10" radius="15" style=" background-color: #1DE9B6;">                    
-                                    <GridLayout  rows="*, *" class="tabelaHorarios-item">
-                                        <label row="0" textWrap="true" [text]="horario.nomeDisciplina"></label>
-                                        <label row="1" textWrap="true" [text]="horario.makeHorario()"></label>
+                                    <GridLayout  rows="*, *, *" class="tabelaHorarios-item">
+                                        <label row="0" textWrap="true" [text]="horario.getNomeDisciplina()"></label>
+                                        <label row="1" textWrap="true" [text]="horario.getHorario()"></label>
+                                        <label row="2" textWrap="true" [text]="horario.getSala()"></label>
                                     </GridLayout>
                                 </CardView>
                             </StackLayout>
@@ -67,7 +68,7 @@
                 </ListView>
 
                 <!-- <button col="1" text="+" class="btn btn-primary" pageTransition="fade" id="button-add" (tap)="navigateNewDisciplina()"></button> -->
-                <Image col="1" src="~/images/add.png" stretch="fill" pageTransition="fade" (tap)="navigateNewDisciplina()"></Image>
+                <Image col="1" src="~/images/add128x128.png" stretch="fill" pageTransition="fade" (tap)="navigateNewDisciplina()"></Image>
                 
             </GridLayout>
         </StackLayout>
